@@ -3,34 +3,37 @@
 /**
  * Render the settings screen
  */
-function faqftw_settings() {
-    ?>
+function faqftw_settings()
+{
+?>
 
-    <div class="wrap faq-wrapper baf-option-panel">
+<div class="wrap faq-wrapper baf-option-panel">
 
-        <h2><?php esc_html_e('FAQ Tab For WooCommerce Settings', 'baf-faqtfw'); ?></h2>
+  <h2><?php esc_html_e('FAQ Tab For WooCommerce Settings', 'baf-faqtfw'); ?></h2>
 
-    <?php if (isset($_GET['settings-updated'])) { ?>
-            <div id="message" class="updated">
-                <p><strong><?php esc_html_e('Settings saved.', 'baf-faqtfw') ?></strong></p>
-            </div>
-    <?php } ?>
+  <?php if (isset($_GET['settings-updated'])) { ?>
+  <div id="message" class="updated">
+    <p><strong><?php esc_html_e('Settings saved.', 'baf-faqtfw') ?></strong></p>
+  </div>
+  <?php } ?>
 
-        <form action="options.php" method="post">
+  <form action="options.php" method="post">
     <?php settings_fields('faqftw_options') ?>
-            <?php do_settings_sections(__FILE__); ?>
+    <?php do_settings_sections(__FILE__); ?>
 
-            <p class="submit">
-                <input name="submit" type="submit" class="button-primary" value="<?php esc_html_e('Save Settings', 'baf-faqtfw'); ?>"/>
-            </p>
-        </form>    
+    <p class="submit">
+      <input name="submit" type="submit" class="button-primary"
+        value="<?php esc_html_e('Save Settings', 'baf-faqtfw'); ?>" />
+    </p>
+  </form>
 
-    </div> 
+</div>
 
-    <?php
+<?php
 }
 
-function faqftw_register_settings_fields() {
+function faqftw_register_settings_fields()
+{
 
     // First Parameter option group.
     // Second Parameter contain keyword. use in get_options() function.
@@ -57,7 +60,8 @@ function faqftw_register_settings_fields() {
  * @Last Edited AT: 04-08-2015
  * @Created By: Mahbub
  * */
-function faqftw_tab_title_settings() {
+function faqftw_tab_title_settings()
+{
 
     $faqftw_options = get_option('faqftw_options');
 
@@ -68,7 +72,7 @@ function faqftw_tab_title_settings() {
         $faqftw_tab_title = $faqftw_options['faqftw_tab_title'];
     }
 
-    echo '<input type="text" name="faqftw_options[faqftw_tab_title]" id="faqftw_tab_title" class="medium-text" value="' . sanitize_textarea_field( $faqftw_tab_title ) . '" />';
+    echo '<input type="text" name="faqftw_options[faqftw_tab_title]" id="faqftw_tab_title" class="medium-text" value="' . sanitize_textarea_field($faqftw_tab_title) . '" />';
 }
 
 /**
@@ -77,7 +81,8 @@ function faqftw_tab_title_settings() {
  * @Last Edited AT: 04-08-2015
  * @Created By: Mahbub
  * */
-function faqftw_tab_position_settings() {
+function faqftw_tab_position_settings()
+{
 
     $faqftw_options = get_option('faqftw_options');
 
@@ -88,7 +93,7 @@ function faqftw_tab_position_settings() {
         $faqftw_tab_position = strtoupper($faqftw_options['faqftw_tab_position']);
     }
 
-    echo '<input type="text" name="faqftw_options[faqftw_tab_position]" id="faqftw_tab_position" class="small-text" value="' . absint( $faqftw_tab_position ) . '" /><em><small> ' . esc_html__('Set number like- 1,2,3. Set big number(100, 200, 300) to display FAQ tab at the last of tab contain .', 'baf-faqtfw') . '</small></em>';
+    echo '<input type="text" name="faqftw_options[faqftw_tab_position]" id="faqftw_tab_position" class="small-text" value="' . absint($faqftw_tab_position) . '" /><em><small> ' . esc_html__('Set number like- 1,2,3. Set big number(100, 200, 300) to display FAQ tab at the last of tab contain .', 'baf-faqtfw') . '</small></em>';
 }
 
 /**
@@ -97,7 +102,8 @@ function faqftw_tab_position_settings() {
  * @Last Edited AT: 04-07-2015
  * @Created By: Mahbub
  * */
-function faqftw_faq_counter_settings() {
+function faqftw_faq_counter_settings()
+{
 
     $faqftw_options = get_option('faqftw_options');
 
@@ -131,7 +137,8 @@ function faqftw_faq_counter_settings() {
  * @Last Edited AT: 04-07-2015
  * @Created By: Mahbub
  * */
-function faqftw_auto_hide_tab_settings() {
+function faqftw_auto_hide_tab_settings()
+{
 
     $faqftw_options = get_option('faqftw_options');
 
@@ -165,7 +172,8 @@ function faqftw_auto_hide_tab_settings() {
  * @Last Edited AT: 04-07-2015
  * @Created By: Mahbub
  * */
-function faqftw_show_search_box_settings() {
+function faqftw_show_search_box_settings()
+{
 
     $faqftw_options = get_option('faqftw_options');
 
@@ -199,7 +207,8 @@ function faqftw_show_search_box_settings() {
  * @Last Edited AT: 04-07-2015
  * @Created By: Mahbub
  * */
-function faqftw_show_voting_box_settings() {
+function faqftw_show_voting_box_settings()
+{
 
     $faqftw_options = get_option('faqftw_options');
 
@@ -232,7 +241,8 @@ function faqftw_show_voting_box_settings() {
  * @Last Edited AT: 04-07-2015
  * @Created By: Mahbub
  * */
-function faqftw_show_meta_box_settings() {
+function faqftw_show_meta_box_settings()
+{
 
     $faqftw_options = get_option('faqftw_options');
 
@@ -266,7 +276,8 @@ function faqftw_show_meta_box_settings() {
  * @Last Edited AT: 04-07-2015
  * @Created By: Mahbub
  * */
-function faqftw_enable_pagination_settings() {
+function faqftw_enable_pagination_settings()
+{
 
     $faqftw_options = get_option('faqftw_options');
 
@@ -300,7 +311,8 @@ function faqftw_enable_pagination_settings() {
  * @Last Edited AT: 04-08-2015
  * @Created By: Mahbub
  * */
-function faqftw_item_per_page_settings() {
+function faqftw_item_per_page_settings()
+{
 
     $faqftw_options = get_option('faqftw_options');
 
@@ -308,29 +320,35 @@ function faqftw_item_per_page_settings() {
 
     if (isset($faqftw_options['faqftw_tab_position'])) {
 
-        $faqftw_item_per_page = trim( $faqftw_options['faqftw_item_per_page'] );
+        $faqftw_item_per_page = trim($faqftw_options['faqftw_item_per_page']);
     }
 
-    echo '<input type="text" name="faqftw_options[faqftw_item_per_page]" id="faqftw_item_per_page" class="small-text" value="' . absint( $faqftw_item_per_page ) . '" />';
+    echo '<input type="text" name="faqftw_options[faqftw_item_per_page]" id="faqftw_item_per_page" class="small-text" value="' . absint($faqftw_item_per_page) . '" />';
 }
 
 /*---Form Input---*/
 
-function faqftw_display_section_cb() {
+function faqftw_display_section_cb()
+{
     // Add option Later.        
 }
 
 /**
  * Add the settings page to the admin menu
  */
-function faqftw_settings_submenu() {
+function faqftw_settings_submenu()
+{
 
     add_submenu_page(
-            'edit.php?post_type=bwl_advanced_faq', esc_html__('FAQ Tab For WooCommerce Settings', 'baf-faqtfw'), esc_html__('WooCommerce TAB', 'baf-faqtfw'), 'administrator', 'faqftw-settings', 'faqftw_settings'
+        'edit.php?post_type=bwl_advanced_faq',
+        esc_html__('FAQ Tab For WooCommerce Settings', 'baf-faqtfw'),
+        esc_html__('WooCommerce TAB', 'baf-faqtfw'),
+        'administrator',
+        'faqftw-settings',
+        'faqftw_settings'
     );
 }
 
 add_action('admin_menu', 'faqftw_settings_submenu');
-
 
 add_action('admin_init', 'faqftw_register_settings_fields');
