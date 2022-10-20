@@ -10,7 +10,7 @@
 
 <h3>Requirements</h3>
 
-<p>You need to install <a href="http://codecanyon.net/item/bwl-advanced-faq-manager/5007135?ref=xenioushk" target="_blank"> BWL Advanced FAQ Manager Plugin</a> to use "FAQ Tab For WooCommerce - Advanced FAQ Addon". Minimum version <b>1.6.5</b> required.</p>
+<p>You need to install <a href="https://1.envato.market/baf-wp" target="_blank"> BWL Advanced FAQ Manager Plugin</a> to use "FAQ Tab For WooCommerce - Advanced FAQ Addon". Minimum version <b>1.6.5</b> required.</p>
 <p>
   You need at least WordPress version 4.8+ installed for this plugin to work properly. It is strongly recommended that you always use the latest stable version of WordPress to ensure all known bugs and security issues are fixed.
 </p>

@@ -1,19 +1,20 @@
 <?php
-/*--- Custom Meta Box Section---*/
+class BAF_WC_Meta_Box
+{
 
-class BAF_WC_Meta_Box {
-
-    function __construct($custom_fields) {
+    function __construct($custom_fields)
+    {
 
         $this->custom_fields = $custom_fields; //Set custom field data as global value.
 
-        add_action('add_meta_boxes', array(&$this, 'baf_wc_metaboxes'));
-        add_action('save_post_product', array(&$this, 'save_baf_wc_meta_box_data'));
+        add_action('add_meta_boxes', [&$this, 'baf_wc_metaboxes']);
+        add_action('save_post_product', [&$this, 'save_baf_wc_meta_box_data']);
     }
 
     //Custom Meta Box.
 
-    function baf_wc_metaboxes() {
+    function baf_wc_metaboxes()
+    {
 
         $bwl_cmb_custom_fields = $this->custom_fields;
 
@@ -23,18 +24,24 @@ class BAF_WC_Meta_Box {
         // Last paramenter must be same as post_type_name
 
         add_meta_box(
-                $bwl_cmb_custom_fields['meta_box_id'], $bwl_cmb_custom_fields['meta_box_heading'], array(&$this, 'show_meta_box'), $bwl_cmb_custom_fields['post_type'], $bwl_cmb_custom_fields['context'], $bwl_cmb_custom_fields['priority']
+            $bwl_cmb_custom_fields['meta_box_id'],
+            $bwl_cmb_custom_fields['meta_box_heading'],
+            [&$this, 'show_meta_box'],
+            $bwl_cmb_custom_fields['post_type'],
+            $bwl_cmb_custom_fields['context'],
+            $bwl_cmb_custom_fields['priority']
         );
     }
 
-    function show_meta_box($post) {
+    function show_meta_box($post)
+    {
 
         $bwl_cmb_custom_fields = $this->custom_fields;
 
         foreach ($bwl_cmb_custom_fields['fields'] as $custom_field) :
 
             $field_value = get_post_meta($post->ID, $custom_field['id'], true);
-            ?>
+?>
 
 <?php if ($custom_field['type'] == 'text') : ?>
 
@@ -80,7 +87,7 @@ class BAF_WC_Meta_Box {
 <p class="bwl_cmb_row bwl_cmb_db">
   <label for="<?php echo $custom_field['id'] ?>"><?php echo $custom_field['title'] ?>: </label>
 
-  <?php if (isset($custom_field['desc']) && $custom_field['desc'] != ""): ?>
+  <?php if (isset($custom_field['desc']) && $custom_field['desc'] != "") : ?>
   <small class="small-text"><?php echo $custom_field['desc']; ?></small>
   <?php endif; ?>
 </p>
@@ -90,16 +97,16 @@ class BAF_WC_Meta_Box {
 <ul class="bwl_cmb_repeat_field_container">
 
   <?php
-                $i = 0;
-                $field_value = apply_filters('filter_baftfwc_content_data', get_post_meta($post->ID, $custom_field['id']));
+                    $i = 0;
+                    $field_value = apply_filters('filter_baftfwc_content_data', get_post_meta($post->ID, $custom_field['id']));
 
-                if (!empty($field_value) && is_array($field_value)) {
+                    if (!empty($field_value) && is_array($field_value)) {
 
-                    foreach ($field_value as $db_save_key => $db_save_value) {
+                        foreach ($field_value as $db_save_key => $db_save_value) {
 
 
-                        // Find Current Selected Field.
-                        ?>
+                            // Find Current Selected Field.
+                    ?>
 
   <li class="bwl_cmb_repeat_row" data-row_count="<?php echo $i; ?>">
     <span class="label"><?php echo $custom_field['label_text']; ?></span>
@@ -121,10 +128,10 @@ class BAF_WC_Meta_Box {
   </li>
 
   <?php
-                        $i++;
+                            $i++;
+                        }
                     }
-                }
-                ?>
+                    ?>
 </ul>
 
 <input id="add_new_row" type="button" class="button" value="<?php echo $custom_field['btn_text']; ?>"
@@ -139,7 +146,8 @@ class BAF_WC_Meta_Box {
         endforeach;
     }
 
-    function save_baf_wc_meta_box_data($id) {
+    function save_baf_wc_meta_box_data($id)
+    {
 
         global $post;
 
@@ -150,7 +158,7 @@ class BAF_WC_Meta_Box {
 
             $baf_wc_meta_custom_fields = $this->custom_fields;
 
-            $baf_wc_excluded_fileds = array('faqftw_faq_post_ids');
+            $baf_wc_excluded_fileds = ['faqftw_faq_post_ids'];
 
             foreach ($baf_wc_meta_custom_fields['fields'] as $custom_field) {
 
@@ -176,33 +184,32 @@ class BAF_WC_Meta_Box {
                     //remove old meta fields and then update data.
                     delete_post_meta($id, 'faqftw_faq_post_ids');
                 }
-                
+
                 update_post_meta($id, 'faqftw_faq_post_ids', $_POST['faqftw_faq_post_ids']);
-                
-            } else if( isset( $_POST['action']) &&  $_POST['action'] != 'inline-save' ) {
+            } else if (isset($_POST['action']) &&  $_POST['action'] != 'inline-save') {
 
                 delete_post_meta($id, 'faqftw_faq_post_ids');
             }
         }
     }
-
 }
 
 // Register Custom Meta Box For BWL Pro Related Post Manager
 
-function baf_wc_custom_meta_init() {
+function baf_wc_custom_meta_init()
+{
 
-    $args = array(
+    $args = [
         'post_status' => 'publish',
         'post_type' => 'bwl_advanced_faq',
         'orderby' => 'title',
         'order' => 'ASC',
         'posts_per_page' => -1
-    );
+    ];
 
     $loop = new WP_Query($args);
 
-    $faqftw_faq_post_ids = array();
+    $faqftw_faq_post_ids = [];
 
     if ($loop->have_posts()) :
 
@@ -222,26 +229,26 @@ function baf_wc_custom_meta_init() {
 
     wp_reset_query();
 
-    $cmb_bkb_woo_item_fields = array(
+    $cmb_bkb_woo_item_fields = [
         'meta_box_id' => 'cmb_bkb_woo_item_settings', // Unique id of meta box.
         'meta_box_heading' => 'FAQ Item Settings', // That text will be show in meta box head section.
         'post_type' => 'product', // define post type. go to register_post_type method to view post_type name.        
         'context' => 'normal',
         'priority' => 'high',
-        'fields' => array(
-            'baf_woo_tab_hide_status' => array(
+        'fields' => [
+            'baf_woo_tab_hide_status' => [
                 'title' => esc_html__('Hide FAQ Tab?', 'baf-faqtfw'),
                 'id' => 'baf_woo_tab_hide_status',
                 'name' => 'baf_woo_tab_hide_status',
                 'type' => 'select',
-                'value' => array(
+                'value' => [
                     '1' => esc_html__('Yes', 'baf-faqtfw'),
                     '2' => esc_html__('No', 'baf-faqtfw')
-                ),
+                ],
                 'default_value' => 2,
                 'class' => 'widefat'
-            ),
-            'faqftw_faq_post_ids' => array(
+            ],
+            'faqftw_faq_post_ids' => [
                 'title' => esc_html__('Add FAQ Items', 'baf-faqtfw'),
                 'id' => 'faqftw_faq_post_ids',
                 'name' => 'faqftw_faq_post_ids',
@@ -252,9 +259,9 @@ function baf_wc_custom_meta_init() {
                 'btn_text' => 'Add New FAQ',
                 'label_text' => 'FAQ Post',
                 'field_type' => 'select'
-            ),
-        )
-    );
+            ]
+        ]
+    ];
 
 
     new BAF_WC_Meta_Box($cmb_bkb_woo_item_fields);

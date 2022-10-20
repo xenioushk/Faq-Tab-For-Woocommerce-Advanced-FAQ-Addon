@@ -1,36 +1,37 @@
 <?php
 
-class BAF_faqtfw {
+class BAF_faqtfw
+{
 
     const VERSION = '1.0.0';
-    
+
     protected $plugin_slug = 'baf-faqtfw';
-    
+
     protected static $instance = null;
-    
-    private function __construct() {
+
+    private function __construct()
+    {
 
         if (class_exists('BWL_Advanced_Faq_Manager') && class_exists('WooCommerce') && FAQTFW_PARENT_PLUGIN_INSTALLED_VERSION > '1.5.9') {
 
             // Load public-facing style sheet and JavaScript.
-            add_action('init', array($this, 'load_plugin_textdomain'));
-            add_action('wp_head', array($this, 'baf_faqtfw_custom_scripts'));
-//                    add_action( 'wp_enqueue_scripts', array( $this, 'baf_faqtfw_enqueue_styles' ) );
-            add_action('wp_enqueue_scripts', array($this, 'baf_faqtfw_enqueue_scripts'));
+            add_action('init', [$this, 'load_plugin_textdomain']);
+            add_action('wp_head', [$this, 'baf_faqtfw_custom_scripts']);
+            add_action('wp_enqueue_scripts', [$this, 'baf_faqtfw_enqueue_scripts']);
 
-            add_filter('woocommerce_product_tabs', array($this, 'faqtfw_add_custom_product_tab'));
+            add_filter('woocommerce_product_tabs', [$this, 'faqtfw_add_custom_product_tab']);
 
             $this->include_files();
-            
         }
-        
     }
-    
-    public function get_plugin_slug() {
+
+    public function get_plugin_slug()
+    {
         return $this->plugin_slug;
     }
-    
-    public static function get_instance() {
+
+    public static function get_instance()
+    {
 
         // If the single instance hasn't been set, set it now.
         if (null == self::$instance) {
@@ -39,8 +40,9 @@ class BAF_faqtfw {
 
         return self::$instance;
     }
-    
-    public static function activate($network_wide) {
+
+    public static function activate($network_wide)
+    {
 
         if (function_exists('is_multisite') && is_multisite()) {
 
@@ -63,8 +65,9 @@ class BAF_faqtfw {
             self::single_activate();
         }
     }
-    
-    public static function deactivate($network_wide) {
+
+    public static function deactivate($network_wide)
+    {
 
         if (function_exists('is_multisite') && is_multisite()) {
 
@@ -87,8 +90,9 @@ class BAF_faqtfw {
             self::single_deactivate();
         }
     }
-    
-    public function activate_new_site($blog_id) {
+
+    public function activate_new_site($blog_id)
+    {
 
         if (1 !== did_action('wpmu_new_blog')) {
             return;
@@ -98,8 +102,9 @@ class BAF_faqtfw {
         self::single_activate();
         restore_current_blog();
     }
-    
-    private static function get_blog_ids() {
+
+    private static function get_blog_ids()
+    {
 
         global $wpdb;
 
@@ -116,7 +121,8 @@ class BAF_faqtfw {
      *
      * @since    1.0.0
      */
-    private static function single_activate() {
+    private static function single_activate()
+    {
         // @TODO: Define activation functionality here
     }
 
@@ -125,19 +131,21 @@ class BAF_faqtfw {
      *
      * @since    1.0.0
      */
-    private static function single_deactivate() {
+    private static function single_deactivate()
+    {
         // @TODO: Define deactivation functionality here
     }
 
-     function include_files() {
+    function include_files()
+    {
 
-        require_once( FAQTFW_DIR . 'includes/baf-wc-helpers.php' );
-        require_once( FAQTFW_DIR . 'public/class-faqtfw-addon.php' );
-        require_once( FAQTFW_DIR . 'public/shortcode/baf-faqtfw-shortcodes.php' );
-        
+        require_once(FAQTFW_DIR . 'includes/baf-wc-helpers.php');
+        require_once(FAQTFW_DIR . 'public/class-faqtfw-addon.php');
+        require_once(FAQTFW_DIR . 'public/shortcode/baf-faqtfw-shortcodes.php');
     }
 
-    public function baf_faqtfw_custom_scripts() {
+    public function baf_faqtfw_custom_scripts()
+    {
 
         $faqftw_options = get_option('faqftw_options');
 
@@ -147,14 +155,12 @@ class BAF_faqtfw {
 
             $faqftw_faq_counter = 0;
         }
-        ?>
-        <script type="text/javascript">
+?>
+<script type="text/javascript">
+var faqftw_faq_counter = '<?php echo $faqftw_faq_counter; ?>';
+</script>
 
-            var faqftw_faq_counter = '<?php echo $faqftw_faq_counter; ?>';
-
-        </script>
-
-        <?php
+<?php
     }
 
     /**
@@ -162,7 +168,8 @@ class BAF_faqtfw {
      *
      * @since    1.0.0
      */
-    public function load_plugin_textdomain() {
+    public function load_plugin_textdomain()
+    {
 
         $domain = $this->plugin_slug;
         $locale = apply_filters('plugin_locale', get_locale(), $domain);
@@ -175,8 +182,8 @@ class BAF_faqtfw {
      *
      * @since    1.0.0
      */
-    public function baf_faqtfw_enqueue_styles() {
-        
+    public function baf_faqtfw_enqueue_styles()
+    {
     }
 
     /**
@@ -184,11 +191,13 @@ class BAF_faqtfw {
      *
      * @since    1.0.0
      */
-    public function baf_faqtfw_enqueue_scripts() {
-        wp_enqueue_script($this->plugin_slug . '-custom-script', plugins_url('assets/js/faqtfw-custom-scripts.js', __FILE__), array('jquery'), self::VERSION);
+    public function baf_faqtfw_enqueue_scripts()
+    {
+        wp_enqueue_script($this->plugin_slug . '-custom-script', plugins_url('assets/js/faqtfw-custom-scripts.js', __FILE__), ['jquery'], self::VERSION);
     }
 
-    public function faqtfw_add_custom_product_tab($tabs) {
+    public function faqtfw_add_custom_product_tab($tabs)
+    {
 
         global $product;
 
@@ -201,7 +210,7 @@ class BAF_faqtfw {
         $faqftw_tab_title = esc_html__("FAQ ", 'baf-faqtfw'); // Set the title of FAQ Tab.
 
         if (isset($faqftw_options['faqftw_tab_title']) && $faqftw_options['faqftw_tab_title'] != "") {
-            $faqftw_tab_title = esc_html( $faqftw_options['faqftw_tab_title'] ); // Introduced in version 1.0.1
+            $faqftw_tab_title = esc_html($faqftw_options['faqftw_tab_title']); // Introduced in version 1.0.1
         }
 
         /*---Start Tab Auto Hide Section---*/
@@ -298,22 +307,22 @@ class BAF_faqtfw {
 
         $faqftw_faq_post_ids = implode(',', $get_faqftw_faq_post_ids);
 
-        $tabs['faqtfw_tab'] = array(
-            'title' => esc_html( $faqftw_tab_title . $faqtfw_total_faq_string ),
+        $tabs['faqtfw_tab'] = [
+            'title' => esc_html($faqftw_tab_title . $faqtfw_total_faq_string),
             'priority' => $faqftw_tab_position, // Always display at the end of tab :)
-            'callback' => array($this, 'faqtfw_custom_tab_panel_content'),
+            'callback' => [$this, 'faqtfw_custom_tab_panel_content'],
             'content' => '[baf_woo_tab post_ids="' . $faqftw_faq_post_ids . '" sbox="' . $faqftw_show_search_box . '"  paginate="' . $faqftw_enable_pagination . '"  pag_limit="' . $faqftw_item_per_page . '" meta_info="' . $faqftw_show_meta_box . '" voting="' . $faqftw_show_voting_box . '"/]' // custom field
-        );
+        ];
 
         return $tabs;
     }
 
-    public function faqtfw_custom_tab_panel_content($key, $tab) {
+    public function faqtfw_custom_tab_panel_content($key, $tab)
+    {
 
         // allow shortcodes to function
         $content = apply_filters('the_content', $tab['content']);
         $content = str_replace(']]>', ']]&gt;', $content);
         echo apply_filters('woocommerce_custom_product_tabs_lite_content', $content, $tab);
     }
-
 }
