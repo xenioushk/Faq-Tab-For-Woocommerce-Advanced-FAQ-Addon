@@ -16,7 +16,6 @@ if (!defined('WPINC')) {
 }
 
 //Version Define For Parent Plugin And Addon.
-// @Since: 1.0.1
 
 define('FAQTFW_PARENT_PLUGIN_INSTALLED_VERSION', get_option('bwl_advanced_faq_version'));
 define('FAQTFW_ADDON_PARENT_PLUGIN_TITLE', '<b>BWL Advanced FAQ Manager</b> ');
