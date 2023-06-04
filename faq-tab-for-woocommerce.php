@@ -2,22 +2,18 @@
 
 /**
  * Plugin Name:     FAQ Tab For WooCommerce - Advanced FAQ Addon
- * Plugin URI:        https://codecanyon.net/item/faq-tab-for-woocommerce-advanced-faq-addon/12509686?ref=xenioushk
+ * Plugin URI: https://bluewindlab.net
  * Description:      FAQ tab for woocommerce Addon allows you to convert you're existing FAQ posts in to WooCommerce product FAQ item with in a minute. You can add unlimited number of FAQ post as product FAQ items and using drag drop feature sort them according to you're choice.
  * Author: Md Mahbub Alam Khan
- * Version: 1.0.8
- * Author URI: http://codecanyon.net/user/xenioushk?ref=xenioushk
- * WP Requires at least: 4.8+
+ * Version: 1.0.9
+ * Author URI: https://bluewindlab.net
+ * WP Requires at least: 5.6+
  * Text Domain: baf-faqtfw
  */
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
     die;
 }
-
-/* ----------------------------------------------------------------------------*
- * Public-Facing Functionality
- * ---------------------------------------------------------------------------- */
 
 //Version Define For Parent Plugin And Addon.
 // @Since: 1.0.1
@@ -26,7 +22,7 @@ define('FAQTFW_PARENT_PLUGIN_INSTALLED_VERSION', get_option('bwl_advanced_faq_ve
 define('FAQTFW_ADDON_PARENT_PLUGIN_TITLE', '<b>BWL Advanced FAQ Manager</b> ');
 define('FAQTFW_ADDON_TITLE', '<b>FAQ Tab For WooCommerce - Advanced FAQ Addon</b>');
 define('FAQTFW_PARENT_PLUGIN_REQUIRED_VERSION', '1.5.9'); // change plugin required version in here.
-define('FAQTFW_ADDON_CURRENT_VERSION', '1.0.8'); // change plugin current version in here.
+define('FAQTFW_ADDON_CURRENT_VERSION', '1.0.9'); // change plugin current version in here.
 
 define('FAQTFW_DIR', plugin_dir_path(__FILE__));
 
