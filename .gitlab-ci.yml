@@ -5,7 +5,7 @@ variables:
   FTP_HOST: ftp.bluewindlab.net
   FTP_PUSERNAME: u138608855.projects_production
   BUILD_DIR: /builds/baf-addon/faq-tab-for-woocommerce-advanced-faq-addon
-  DEPLOY_DIR: baf/wp-content/plugins/ajaxified-faq-search
+  DEPLOY_DIR: baf/wp-content/plugins/faq-tab-for-woocommerce
 stages:
   - staging
   - production
