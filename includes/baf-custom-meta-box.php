@@ -12,7 +12,6 @@ class BAF_WC_Meta_Box
     }
 
     //Custom Meta Box.
-s
     function baf_wc_metaboxes()
     {
 
