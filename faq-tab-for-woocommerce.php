@@ -22,6 +22,7 @@ define('FAQTFW_ADDON_PARENT_PLUGIN_TITLE', '<b>BWL Advanced FAQ Manager</b> ');
 define('FAQTFW_ADDON_TITLE', '<b>FAQ Tab For WooCommerce - Advanced FAQ Addon</b>');
 define('FAQTFW_PARENT_PLUGIN_REQUIRED_VERSION', '1.5.9'); // change plugin required version in here.
 define('FAQTFW_ADDON_CURRENT_VERSION', '1.1.0'); // change plugin current version in here.
+define('FAQTFW_ADDON_UPDATER_SLUG', plugin_basename(__FILE__)); // change plugin current version in here.
 define("BAF_WC_PLUGIN_DIR", plugins_url() . '/faq-tab-for-woocommerce/');
 define('FAQTFW_DIR', plugin_dir_path(__FILE__));
 

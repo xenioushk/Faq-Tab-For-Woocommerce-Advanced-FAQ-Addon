@@ -19,6 +19,7 @@ class BAF_faqtfw_Admin
         $plugin = BAF_faqtfw::get_instance();
         $this->plugin_slug = $plugin->get_plugin_slug();
         $post_types = 'product';
+        $this->includedFiles();
         // Load public-facing style sheet and JavaScript.
         add_action('admin_enqueue_scripts', [$this, 'baf_faqtfw_admin_enqueue_scripts']);
         // After manage text we need to add "custom_post_type" value.
@@ -46,6 +47,13 @@ class BAF_faqtfw_Admin
         }
 
         return self::$instance;
+    }
+
+    public function includedFiles()
+    {
+        require_once(FAQTFW_DIR . 'includes/autoupdater/WpAutoUpdater.php');
+        require_once(FAQTFW_DIR . 'includes/autoupdater/installer.php');
+        require_once(FAQTFW_DIR . 'includes/autoupdater/updater.php');
     }
 
     //Version Manager:  Update Checking
@@ -82,6 +90,15 @@ class BAF_faqtfw_Admin
             wp_enqueue_script('baf-cmb-admin-main', BAF_WC_PLUGIN_DIR . 'includes/baf-cmb-framework/admin/js/baf_cmb.js', ['jquery', 'jquery-ui-core', 'jquery-ui-sortable'], false, false);
             wp_enqueue_style('baf-cmb-admin-style', BAF_WC_PLUGIN_DIR . 'includes/baf-cmb-framework/admin/css/baf_cmb.css', [], false, 'all');
             wp_enqueue_script($this->plugin_slug . '-admin', BAF_WC_PLUGIN_DIR . 'assets/scripts/admin.js', ['jquery'], BAF_faqtfw::VERSION, TRUE);
+
+            wp_localize_script(
+                $this->plugin_slug . '-admin',
+                'BafFtfwcAdminData',
+                [
+                    'product_id' => 12509686,
+                    'installation' => get_option('baf_ftfwc_installation')
+                ]
+            );
         } else {
 
             return;
