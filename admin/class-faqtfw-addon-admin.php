@@ -5,6 +5,7 @@ class BAF_faqtfw_Admin
 
     protected static $instance = null;
     protected $plugin_screen_hook_suffix = null;
+    public $plugin_slug;
 
     private function __construct()
     {
@@ -78,13 +79,9 @@ class BAF_faqtfw_Admin
 
         if ($current_post_type == "product") {
 
-            wp_register_script('baf-cmb-admin-main', BAF_WC_PLUGIN_DIR . 'includes/baf-cmb-framework/admin/js/baf_cmb.js', ['jquery', 'jquery-ui-core', 'jquery-ui-sortable'], false, false);
-            wp_register_style('baf-cmb-admin-style', BAF_WC_PLUGIN_DIR . 'includes/baf-cmb-framework/admin/css/baf_cmb.css', [], false, 'all');
-
-            wp_enqueue_script('baf-cmb-admin-main');
-            wp_enqueue_style('baf-cmb-admin-style');
-
-            wp_enqueue_script($this->plugin_slug . '-admin-custom-script', plugins_url('assets/js/faqtfw-admin-scripts.js', __FILE__), ['jquery'], BAF_faqtfw::VERSION, TRUE);
+            wp_enqueue_script('baf-cmb-admin-main', BAF_WC_PLUGIN_DIR . 'includes/baf-cmb-framework/admin/js/baf_cmb.js', ['jquery', 'jquery-ui-core', 'jquery-ui-sortable'], false, false);
+            wp_enqueue_style('baf-cmb-admin-style', BAF_WC_PLUGIN_DIR . 'includes/baf-cmb-framework/admin/css/baf_cmb.css', [], false, 'all');
+            wp_enqueue_script($this->plugin_slug . '-admin', BAF_WC_PLUGIN_DIR . 'assets/scripts/admin.js', ['jquery'], BAF_faqtfw::VERSION, TRUE);
         } else {
 
             return;
@@ -203,25 +200,25 @@ class BAF_faqtfw_Admin
 ?>
 
 
-<fieldset class="inline-edit-col-left">
-  <div class="inline-edit-col">
-    <div class="inline-edit-group">
-      <label class="alignleft">
+                        <fieldset class="inline-edit-col-left">
+                            <div class="inline-edit-col">
+                                <div class="inline-edit-group">
+                                    <label class="alignleft">
 
-        <span class="checkbox-title"><?php esc_html_e('Hide FAQ Tab?', 'baf-faqtfw'); ?></span>
-        <select name="baf_woo_tab_hide_status">
-          <option value="3"><?php esc_html_e('- No Change -', 'baf-faqtfw'); ?></option>
-          <option value="1"><?php esc_html_e('Yes', 'baf-faqtfw'); ?></option>
-          <option value="2"><?php esc_html_e('No', 'baf-faqtfw'); ?></option>
-        </select>
-      </label>
+                                        <span class="checkbox-title"><?php esc_html_e('Hide FAQ Tab?', 'baf-faqtfw'); ?></span>
+                                        <select name="baf_woo_tab_hide_status">
+                                            <option value="3"><?php esc_html_e('- No Change -', 'baf-faqtfw'); ?></option>
+                                            <option value="1"><?php esc_html_e('Yes', 'baf-faqtfw'); ?></option>
+                                            <option value="2"><?php esc_html_e('No', 'baf-faqtfw'); ?></option>
+                                        </select>
+                                    </label>
 
-    </div>
-  </div>
-</fieldset>
+                                </div>
+                            </div>
+                        </fieldset>
 
 
-<?php
+                    <?php
                         break;
                 }
 
@@ -284,20 +281,20 @@ class BAF_faqtfw_Admin
 
                     case 'baf_woo_tab_hide_status':
                     ?>
-<fieldset class="inline-edit-col-right">
-  <div class="inline-edit-col">
-    <div class="inline-edit-group">
-      <label class="alignleft">
-        <span class="checkbox-title"><?php esc_html_e('Hide FAQ Tab?', 'baf-faqtfw'); ?></span>
-        <select name="baf_woo_tab_hide_status">
-          <option value="3"><?php esc_html_e('- No Change -', 'baf-faqtfw'); ?></option>
-          <option value="1"><?php esc_html_e('Yes', 'baf-faqtfw'); ?></option>
-          <option value="2"><?php esc_html_e('No', 'baf-faqtfw'); ?></option>
-        </select>
-      </label>
-    </div>
-  </div>
-</fieldset>
+                        <fieldset class="inline-edit-col-right">
+                            <div class="inline-edit-col">
+                                <div class="inline-edit-group">
+                                    <label class="alignleft">
+                                        <span class="checkbox-title"><?php esc_html_e('Hide FAQ Tab?', 'baf-faqtfw'); ?></span>
+                                        <select name="baf_woo_tab_hide_status">
+                                            <option value="3"><?php esc_html_e('- No Change -', 'baf-faqtfw'); ?></option>
+                                            <option value="1"><?php esc_html_e('Yes', 'baf-faqtfw'); ?></option>
+                                            <option value="2"><?php esc_html_e('No', 'baf-faqtfw'); ?></option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
 
 <?php
                         break;
