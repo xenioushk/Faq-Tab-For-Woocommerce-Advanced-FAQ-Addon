@@ -3,7 +3,7 @@
 class BAF_faqtfw
 {
 
-    const VERSION = '1.0.0';
+    const VERSION = FAQTFW_ADDON_CURRENT_VERSION;
 
     protected $plugin_slug = 'baf-faqtfw';
 
@@ -193,7 +193,7 @@ var faqftw_faq_counter = '<?php echo $faqftw_faq_counter; ?>';
      */
     public function baf_faqtfw_enqueue_scripts()
     {
-        wp_enqueue_script($this->plugin_slug . '-custom-script', plugins_url('assets/js/faqtfw-custom-scripts.js', __FILE__), ['jquery'], self::VERSION);
+        wp_enqueue_script($this->plugin_slug . '-frontend', BAF_WC_PLUGIN_DIR . 'assets/scripts/frontend.js', ['jquery'], self::VERSION);
     }
 
     public function faqtfw_add_custom_product_tab($tabs)
