@@ -95,7 +95,7 @@ class BAF_faqtfw_Admin
                 $this->plugin_slug . '-admin',
                 'BafFtfwcAdminData',
                 [
-                    'product_id' => 12509686,
+                    'product_id' => FAQTFW_PLUGIN_CC_ID,
                     'installation' => get_option('baf_ftfwc_installation')
                 ]
             );
