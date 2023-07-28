@@ -96,7 +96,7 @@ class BAF_faqtfw_Admin
                 'BafFtfwcAdminData',
                 [
                     'product_id' => FAQTFW_PLUGIN_CC_ID,
-                    'installation' => get_option('baf_ftfwc_installation')
+                    'installation' => get_option(FAQTFW_PLUGIN_INSTALLATION_TAG)
                 ]
             );
         } else {
