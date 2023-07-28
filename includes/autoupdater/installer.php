@@ -21,7 +21,8 @@ function bafFtfwcInstallationData()
   $site_url = get_site_url();
   $product_id = FAQTFW_PLUGIN_CC_ID; // change the id
   $ip = $_SERVER['REMOTE_ADDR'];
-  $requestUrl = $apiURL . "wp-json/bwlapi/v1/installation/count?product_id=$product_id&site=$site_url&referer=$ip";
+  $ver = FAQTFW_ADDON_CURRENT_VERSION;
+  $requestUrl = $apiURL . "wp-json/bwlapi/v1/installation/count?product_id=$product_id&site=$site_url&referer=$ip&ver=$ver";
 
   $output = wp_remote_get($requestUrl);
 
@@ -38,9 +39,9 @@ function bafFtfwcInstallationData()
 
     $output_decode = json_decode($data, true);
 
-    if (isset($output_decode['status']) && $output_decode['status'] == 1) {
+    if (isset($output_decode['status']) && $output_decode['status'] != 0) {
 
-      update_option('baf_ftfwc_installation', '1'); // change the tag
+      update_option(FAQTFW_PLUGIN_INSTALLATION_TAG, '1'); // change the tag
 
       $data = [
         'status' => $output_decode['status'],
