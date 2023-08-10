@@ -51,6 +51,12 @@ class BAF_faqtfw_Admin
 
     public function includedFiles()
     {
+
+        // Addon Installation Date Time.
+        if (empty(get_option("baf_ftfwc_installation_date"))) {
+            update_option("baf_ftfwc_installation_date", date("Y-m-d H:i:s"));
+        }
+
         require_once(FAQTFW_DIR . 'includes/autoupdater/WpAutoUpdater.php');
         require_once(FAQTFW_DIR . 'includes/autoupdater/installer.php');
         require_once(FAQTFW_DIR . 'includes/autoupdater/updater.php');
