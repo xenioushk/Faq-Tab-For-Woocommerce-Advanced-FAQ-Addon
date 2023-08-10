@@ -87,11 +87,8 @@ class BAF_faqtfw_Admin
 
         if ($current_post_type == "product") {
 
-            wp_enqueue_script('baf-cmb-admin-main', BAF_WC_PLUGIN_DIR . 'includes/baf-cmb-framework/admin/js/baf_cmb.js', ['jquery', 'jquery-ui-core', 'jquery-ui-sortable'], false, false);
-            wp_enqueue_style('baf-cmb-admin-style', BAF_WC_PLUGIN_DIR . 'includes/baf-cmb-framework/admin/css/baf_cmb.css', [], false, 'all');
-
             wp_enqueue_style($this->plugin_slug . '-admin', BAF_WC_PLUGIN_DIR . 'assets/styles/admin.css', [], BAF_faqtfw::VERSION, 'all');
-            wp_enqueue_script($this->plugin_slug . '-admin', BAF_WC_PLUGIN_DIR . 'assets/scripts/admin.js', ['jquery'], BAF_faqtfw::VERSION, TRUE);
+            wp_enqueue_script($this->plugin_slug . '-admin', BAF_WC_PLUGIN_DIR . 'assets/scripts/admin.js', ['jquery', 'jquery-ui-core', 'jquery-ui-sortable'], BAF_faqtfw::VERSION, TRUE);
 
             wp_localize_script(
                 $this->plugin_slug . '-admin',
@@ -163,7 +160,7 @@ class BAF_faqtfw_Admin
             $columns,
             [
                 'faqftw_faq_post_ids' => esc_html__('FAQs', 'baf-faqtfw'),
-                'baf_woo_tab_hide_status' => esc_html__('FAQs Visibility', 'baf-faqtfw')
+                'baf_woo_tab_hide_status' => esc_html__('FAQs Visibility', 'baf-faqtfw'),
             ]
         );
     }
