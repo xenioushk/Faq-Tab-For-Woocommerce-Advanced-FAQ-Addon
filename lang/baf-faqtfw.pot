@@ -1,9 +1,13 @@
+# Copyright (C) 2015 Automattic
+# This file is distributed under the GNU General Public License v2 or later.
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FAQ Tab For WooCommerce - Advanced FAQ Addon\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2023-08-10 17:10+0600\n"
-"PO-Revision-Date: 2023-08-10 17:10+0600\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2018-01-31 21:24+0600\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: BlueWindLab <hkhan.cse@gmail.com>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -11,16 +15,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.3.2\n"
+"X-Poedit-KeywordsList: _;__;_n;_x;_e;esc_attr__;esc_attr_e;esc_html__;"
+"esc_html_e\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: _e;__;_n;esc_html__;esc_html_e\n"
-"X-Poedit-SearchPath-0: lang\n"
-"X-Poedit-SearchPath-1: .\n"
+"X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
 "X-Poedit-SearchPathExcluded-1: .git\n"
 
 #: admin/class-faqtfw-addon-admin.php:145
 #: admin/class-faqtfw-addon-admin.php:229
-#: admin/class-faqtfw-addon-admin.php:309 includes/baf-custom-meta-box.php:239
+#: admin/class-faqtfw-addon-admin.php:309
+#: includes/baf-custom-meta-box.php:239
 msgid "Hide FAQ Tab?"
 msgstr ""
 
@@ -126,8 +131,8 @@ msgstr ""
 
 #: admin/includes/settings/faqtfw-admin-settings.php:96
 msgid ""
-"Set number like- 1,2,3. Set big number(100, 200, 300) to display FAQ tab at "
-"the last of tab contain ."
+"Set number like- 1,2,3. Set big number(100, 200, 300) to display FAQ tab "
+"at the last of tab contain ."
 msgstr ""
 
 #: admin/includes/settings/faqtfw-admin-settings.php:129

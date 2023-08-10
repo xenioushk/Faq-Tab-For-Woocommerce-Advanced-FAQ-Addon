@@ -89,6 +89,8 @@ class BAF_faqtfw_Admin
 
             wp_enqueue_script('baf-cmb-admin-main', BAF_WC_PLUGIN_DIR . 'includes/baf-cmb-framework/admin/js/baf_cmb.js', ['jquery', 'jquery-ui-core', 'jquery-ui-sortable'], false, false);
             wp_enqueue_style('baf-cmb-admin-style', BAF_WC_PLUGIN_DIR . 'includes/baf-cmb-framework/admin/css/baf_cmb.css', [], false, 'all');
+
+            wp_enqueue_style($this->plugin_slug . '-admin', BAF_WC_PLUGIN_DIR . 'assets/styles/admin.css', [], BAF_faqtfw::VERSION, 'all');
             wp_enqueue_script($this->plugin_slug . '-admin', BAF_WC_PLUGIN_DIR . 'assets/scripts/admin.js', ['jquery'], BAF_faqtfw::VERSION, TRUE);
 
             wp_localize_script(
@@ -160,8 +162,8 @@ class BAF_faqtfw_Admin
         return array_merge(
             $columns,
             [
-                'faqftw_faq_post_ids' => esc_html__('Total FAQ', 'baf-faqtfw'),
-                'baf_woo_tab_hide_status' => esc_html__('FAQ Tab Status', 'baf-faqtfw')
+                'faqftw_faq_post_ids' => esc_html__('FAQs', 'baf-faqtfw'),
+                'baf_woo_tab_hide_status' => esc_html__('FAQs Visibility', 'baf-faqtfw')
             ]
         );
     }
@@ -190,9 +192,11 @@ class BAF_faqtfw_Admin
 
                 // FAQ Display Status In Text.
 
-                $baf_woo_tab_hide_status_in_text = ($baf_woo_tab_hide_status == 1) ? esc_html__("Hidden", "baf-faqtfw") : esc_html__("Visible", "baf-faqtfw");
+                $visibilityIcon = BAF_WC_PLUGIN_DIR . 'libs/images/';
 
-                echo '<div id="baf_woo_tab_hide_status-' . $post->ID . '" data-status_code="' . $baf_woo_tab_hide_status . '" >' . $baf_woo_tab_hide_status_in_text . '</div>';
+                $iconType = ($baf_woo_tab_hide_status == 1) ? 'hidden.png' : 'visible.png';
+
+                echo '<div id="baf_woo_tab_hide_status-' . $post->ID . '" data-status_code="' . $baf_woo_tab_hide_status . '" ><img src="' . $visibilityIcon . $iconType . '"></div>';
 
                 break;
         }
