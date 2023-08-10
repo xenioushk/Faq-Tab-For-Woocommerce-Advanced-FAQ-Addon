@@ -3,6 +3,31 @@
     Author     : BlueWindLab
 */
 
+.bwl_cmb_repeat_field_container {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.bwl_cmb_repeat_row {
+  clear: both;
+  padding: 10px 14px;
+  overflow: hidden;
+  position: relative;
+  list-style: none;
+  cursor: move;
+  background: #fafafa;
+  border: 1px solid #eee;
+  flex-basis: 320px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 8px;
+}
+
 .bwl_cmb_row {
   clear: both;
 }
@@ -42,7 +67,7 @@ p.bwl_cmb_row input[type="text"].img-path {
 }
 
 .bwl_cmb_repeat_row select {
-  width: 70% !important;
+  width: 100% !important;
 }
 .bwl_cmb_repeat_row input[type="text"]:focus,
 .bwl_cmb_repeat_row textarea:focus {
@@ -51,47 +76,29 @@ p.bwl_cmb_row input[type="text"].img-path {
 .bwl_cmb_repeat_row select {
   width: 270px;
 }
-.bwl_cmb_repeat_row {
-  clear: both;
-  padding: 8px 15px;
-  overflow: hidden;
-  position: relative;
-  border-bottom: 1px solid #f8f8f8;
-}
 
-.bwl_cmb_repeat_row {
-  margin: 0 0 5px;
-  list-style: none;
-  cursor: move;
-  background: #fafafa;
-  border: 1px solid #eee;
-}
 .bwl_cmb_repeat_row .clear {
   height: 5px;
 }
 .bwl-cmb-sort-highlight {
   background-color: #f9f9f9;
   border: 1px dashed #eb644a;
-  height: 60px;
+  height: 48px;
+  flex-basis: 320px;
 }
+
 .delete_row {
   background-color: #bb3415;
   border: 1px solid #c93d1e;
   -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
   border-radius: 3px;
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
   color: #fff;
   cursor: pointer;
-  margin: 0 10px 0 0;
   padding: 4px 8px 4px;
   text-align: left;
   text-shadow: 0 0 0 transparent, 1px 1px 0 rgba(0, 0, 0, 0.1);
   -webkit-transition: border-color, 0.3s;
-  -moz-transition: border-color, 0.3s;
-  -o-transition: border-color, 0.3s;
   transition: border-color, 0.3s;
   opacity: 1;
   position: relative;
@@ -101,11 +108,11 @@ p.bwl_cmb_row input[type="text"].img-path {
   color: #fff;
   opacity: 0.85;
 }
-.bwl_cmb_repeat_field_container .delete_row {
-  position: absolute;
-  bottom: 13px;
-  right: 2px;
-}
+// .bwl_cmb_repeat_field_container .delete_row {
+//   position: absolute;
+//   bottom: 13px;
+//   right: 2px;
+// }
 
 .bwl_cmb_row_deleted {
   background: #eb644a;

@@ -16,7 +16,7 @@
           $select_options += '<option value="' + index + '">' + element + "</option>"
         })
 
-        $repeat_row += '<li class="bwl_cmb_repeat_row" data-row_count="' + $count_val + '">' + '<span class="label">' + $label_text + "</span> " + '<select id="' + $field_name + "_" + $count_val + '_url" name="' + $field_name + "[" + $count_val + ']">' + '<option value="" selected="selected">- Select -</option>' + $select_options + "</select>" + '<div class="clear"></div>' + '<a class="delete_row" title="' + $delete_text + '">' + $delete_text + "</a>" + "</li>"
+        $repeat_row += '<li class="bwl_cmb_repeat_row" data-row_count="' + $count_val + '">' + '<select id="' + $field_name + "_" + $count_val + '_url" name="' + $field_name + "[" + $count_val + ']">' + '<option value="" selected="selected">- Select -</option>' + $select_options + "</select>" + '<a class="delete_row" title="' + $delete_text + '">' + $delete_text + "</a>" + "</li>"
       } else {
         $repeat_row += '<li class="bwl_cmb_repeat_row" data-row_count="' + $count_val + '">' + '<span class="label">' + $label_text + "</span> " + '<input id="' + $field_name + "_" + $count_val + '_url" name="' + $field_name + "[" + $count_val + ']" type="text" class="img-path" value="" />' + '<input id="upload_' + $field_name + "_" + $count_val + '_button" type="button" class="button bwl_cmb_upload_file" value="' + $upload_text + '" data-parent_field="' + $field_name + '" data-row_count="' + $count_val + '"/>' + '<div class="clear"></div>' + '<a class="delete_row" title="' + $delete_text + '">' + $delete_text + "</a>" + "</li>"
       }
