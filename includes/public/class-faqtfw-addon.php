@@ -5,7 +5,7 @@ class BAF_faqtfw
 
     const VERSION = FAQTFW_ADDON_CURRENT_VERSION;
 
-    protected $plugin_slug = 'baf-faqtfw';
+    protected $plugin_slug = "baf-faqtfw";
 
     protected static $instance = null;
 
@@ -140,8 +140,8 @@ class BAF_faqtfw
     {
 
         require_once(FAQTFW_DIR . 'includes/baf-wc-helpers.php');
-        require_once(FAQTFW_DIR . 'public/class-faqtfw-addon.php');
-        require_once(FAQTFW_DIR . 'public/shortcode/baf-faqtfw-shortcodes.php');
+        require_once(FAQTFW_DIR . 'includes/public/class-faqtfw-addon.php');
+        require_once(FAQTFW_DIR . 'includes/public/shortcode/baf-faqtfw-shortcodes.php');
     }
 
     public function baf_faqtfw_custom_scripts()
@@ -156,9 +156,9 @@ class BAF_faqtfw
             $faqftw_faq_counter = 0;
         }
 ?>
-<script type="text/javascript">
-var faqftw_faq_counter = '<?php echo $faqftw_faq_counter; ?>';
-</script>
+        <script type="text/javascript">
+            var faqftw_faq_counter = '<?php echo $faqftw_faq_counter; ?>';
+        </script>
 
 <?php
     }
@@ -207,7 +207,7 @@ var faqftw_faq_counter = '<?php echo $faqftw_faq_counter; ?>';
         // Initialize Values.
 
         $baf_woo_tab_hide_status = 1; // Enable Auto hide
-        $faqftw_tab_title = esc_html__("FAQ ", 'baf-faqtfw'); // Set the title of FAQ Tab.
+        $faqftw_tab_title = esc_html__("FAQ ", "baf-faqtfw"); // Set the title of FAQ Tab.
 
         if (isset($faqftw_options['faqftw_tab_title']) && $faqftw_options['faqftw_tab_title'] != "") {
             $faqftw_tab_title = esc_html($faqftw_options['faqftw_tab_title']); // Introduced in version 1.0.1

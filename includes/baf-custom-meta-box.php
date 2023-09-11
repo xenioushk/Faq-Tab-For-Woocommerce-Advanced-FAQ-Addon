@@ -114,7 +114,7 @@ class BAF_WC_Meta_Box
 
                                 <select id="<?php echo $custom_field['id'] . '_' . $i; ?>" name="<?php echo $custom_field['name'] . '[' . $i . ']' ?>">
 
-                                    <option value="" selected="selected"><?php esc_html_e('- Select -', 'baf-faqtfw') ?></option>
+                                    <option value="" selected="selected"><?php esc_html_e("- Select -", "baf-faqtfw") ?></option>
 
                                     <?php foreach ($custom_field['default_value'] as $default_key => $default_value) : ?>
                                         <option value="<?php echo $default_key ?>" <?php echo ($db_save_value == $default_key) ? 'selected=selected' : ''; ?>><?php echo $default_value; ?>
@@ -123,7 +123,7 @@ class BAF_WC_Meta_Box
 
                                 </select>
 
-                                <a class="delete_row" title="<?php esc_html_e('Delete', 'baf-faqtfw') ?>"><?php esc_html_e('Delete', 'baf-faqtfw') ?></a>
+                                <a class="delete_row" title="<?php esc_html_e("Delete", "baf-faqtfw") ?>"><?php esc_html_e("Delete", "baf-faqtfw") ?></a>
                             </li>
 
                     <?php
@@ -133,7 +133,7 @@ class BAF_WC_Meta_Box
                     ?>
                 </ul>
 
-                <input id="add_new_row" type="button" class="button" value="<?php echo $custom_field['btn_text']; ?>" data-delete_text="<?php esc_html_e('Delete', 'baf-faqtfw') ?>" data-upload_text="<?php esc_html_e('Upload', 'baf-faqtfw') ?>" data-field_type="<?php echo $custom_field['type'] ?>" data-field_name="<?php echo $custom_field['name'] ?>" data-label_text="<?php echo $custom_field['label_text']; ?>">
+                <input id="add_new_row" type="button" class="button" value="<?php echo $custom_field['btn_text']; ?>" data-delete_text="<?php esc_html_e("Delete", "baf-faqtfw") ?>" data-upload_text="<?php esc_html_e("Upload", "baf-faqtfw") ?>" data-field_type="<?php echo $custom_field['type'] ?>" data-field_name="<?php echo $custom_field['name'] ?>" data-label_text="<?php echo $custom_field['label_text']; ?>">
 
 
             <?php endif; ?>
@@ -233,19 +233,19 @@ function baf_wc_custom_meta_init()
         'priority' => 'high',
         'fields' => [
             'baf_woo_tab_hide_status' => [
-                'title' => esc_html__('Hide FAQ Tab?', 'baf-faqtfw'),
+                'title' => esc_html__("Hide FAQ Tab?", "baf-faqtfw"),
                 'id' => 'baf_woo_tab_hide_status',
                 'name' => 'baf_woo_tab_hide_status',
                 'type' => 'select',
                 'value' => [
-                    '1' => esc_html__('Yes', 'baf-faqtfw'),
-                    '2' => esc_html__('No', 'baf-faqtfw')
+                    '1' => esc_html__("Yes", "baf-faqtfw"),
+                    '2' => esc_html__("No", "baf-faqtfw")
                 ],
                 'default_value' => 2,
                 'class' => 'widefat'
             ],
             'faqftw_faq_post_ids' => [
-                'title' => esc_html__('Add FAQ Items', 'baf-faqtfw'),
+                'title' => esc_html__("Add FAQ Items", "baf-faqtfw"),
                 'id' => 'faqftw_faq_post_ids',
                 'name' => 'faqftw_faq_post_ids',
                 'type' => 'repeatable_select',

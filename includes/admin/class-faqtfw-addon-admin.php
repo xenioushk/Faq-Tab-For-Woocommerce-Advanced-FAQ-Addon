@@ -67,7 +67,7 @@ class BAF_faqtfw_Admin
     public function baf_faqtfw_version_update_admin_notice()
     {
 
-        echo '<div class="updated"><p>You need to download & install both '
+        echo '<div class="notice notice-error"><p>You need to download & install both '
             . '<b><a href="http://downloads.wordpress.org/plugin/woocommerce.zip" target="_blank">WooCommerce Plugin</a></b> & '
             . '<b><a href="https://1.envato.market/baf-wp" target="_blank">BWL Advanced FAQ Manager Plugin</a></b> '
             . 'to use <b>FAQ Tab For WooCommerce - Advanced FAQ Addon</b>. Minimum version <b>1.5.9</b> required ! </p></div>';
@@ -145,12 +145,12 @@ class BAF_faqtfw_Admin
 
 
         $fields = [
-            ['id' => 'baf_woo_tab_hide_status', 'name' => esc_html__('Hide FAQ Tab?', 'baf-faqtfw'), 'type' => 'checkbox'],
-            ['id' => 'faqftw_faq_post_ids', 'name' => esc_html__('Click Add New Button to Add FAQ Items', 'baf-faqtfw'), 'type' => 'select', 'options' => $faqftw_faq_post_ids, 'allow_none' => true, 'sortable' => true, 'repeatable' => true],
+            ['id' => 'baf_woo_tab_hide_status', 'name' => esc_html__("Hide FAQ Tab?", "baf-faqtfw"), 'type' => 'checkbox'],
+            ['id' => 'faqftw_faq_post_ids', 'name' => esc_html__("Click Add New Button to Add FAQ Items", "baf-faqtfw"), 'type' => 'select', 'options' => $faqftw_faq_post_ids, 'allow_none' => true, 'sortable' => true, 'repeatable' => true],
         ];
 
         $meta_boxes[] = [
-            'title' => esc_html__('WooCommerce FAQ Item Settings', 'baf-faqtfw'),
+            'title' => esc_html__("WooCommerce FAQ Item Settings", "baf-faqtfw"),
             'pages' => 'product',
             'fields' => $fields,
             'priority' => 'high'
@@ -165,8 +165,8 @@ class BAF_faqtfw_Admin
         return array_merge(
             $columns,
             [
-                'faqftw_faq_post_ids' => esc_html__('FAQs', 'baf-faqtfw'),
-                'baf_woo_tab_hide_status' => esc_html__('FAQs Visibility', 'baf-faqtfw'),
+                'faqftw_faq_post_ids' => esc_html__("FAQs", "baf-faqtfw"),
+                'baf_woo_tab_hide_status' => esc_html__("FAQs Visibility", "baf-faqtfw"),
             ]
         );
     }
@@ -229,11 +229,11 @@ class BAF_faqtfw_Admin
                                 <div class="inline-edit-group">
                                     <label class="alignleft">
 
-                                        <span class="checkbox-title"><?php esc_html_e('Hide FAQ Tab?', 'baf-faqtfw'); ?></span>
+                                        <span class="checkbox-title"><?php esc_html_e("Hide FAQ Tab?", "baf-faqtfw"); ?></span>
                                         <select name="baf_woo_tab_hide_status">
-                                            <option value="3"><?php esc_html_e('- No Change -', 'baf-faqtfw'); ?></option>
-                                            <option value="1"><?php esc_html_e('Yes', 'baf-faqtfw'); ?></option>
-                                            <option value="2"><?php esc_html_e('No', 'baf-faqtfw'); ?></option>
+                                            <option value="3"><?php esc_html_e("- No Change -", "baf-faqtfw"); ?></option>
+                                            <option value="1"><?php esc_html_e("Yes", "baf-faqtfw"); ?></option>
+                                            <option value="2"><?php esc_html_e("No", "baf-faqtfw"); ?></option>
                                         </select>
                                     </label>
 
@@ -309,11 +309,11 @@ class BAF_faqtfw_Admin
                             <div class="inline-edit-col">
                                 <div class="inline-edit-group">
                                     <label class="alignleft">
-                                        <span class="checkbox-title"><?php esc_html_e('Hide FAQ Tab?', 'baf-faqtfw'); ?></span>
+                                        <span class="checkbox-title"><?php esc_html_e("Hide FAQ Tab?", "baf-faqtfw"); ?></span>
                                         <select name="baf_woo_tab_hide_status">
-                                            <option value="3"><?php esc_html_e('- No Change -', 'baf-faqtfw'); ?></option>
-                                            <option value="1"><?php esc_html_e('Yes', 'baf-faqtfw'); ?></option>
-                                            <option value="2"><?php esc_html_e('No', 'baf-faqtfw'); ?></option>
+                                            <option value="3"><?php esc_html_e("- No Change -", "baf-faqtfw"); ?></option>
+                                            <option value="1"><?php esc_html_e("Yes", "baf-faqtfw"); ?></option>
+                                            <option value="2"><?php esc_html_e("No", "baf-faqtfw"); ?></option>
                                         </select>
                                     </label>
                                 </div>

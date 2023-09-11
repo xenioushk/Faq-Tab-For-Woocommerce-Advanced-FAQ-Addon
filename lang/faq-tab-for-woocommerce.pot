@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FAQ Tab For WooCommerce - Advanced FAQ Addon\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2023-08-10 17:10+0600\n"
+"POT-Creation-Date: 2023-09-11 18:11+0300\n"
 "PO-Revision-Date: 2018-01-31 21:24+0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: BlueWindLab <hkhan.cse@gmail.com>\n"
@@ -21,59 +21,61 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
 "X-Poedit-SearchPathExcluded-1: .git\n"
+"X-Poedit-SearchPathExcluded-2: libs\n"
+"X-Poedit-SearchPathExcluded-3: src\n"
 
-#: admin/class-faqtfw-addon-admin.php:145
-#: admin/class-faqtfw-addon-admin.php:229
-#: admin/class-faqtfw-addon-admin.php:309
-#: includes/baf-custom-meta-box.php:239
+#: admin/class-faqtfw-addon-admin.php:148
+#: admin/class-faqtfw-addon-admin.php:232
+#: admin/class-faqtfw-addon-admin.php:312
+#: includes/baf-custom-meta-box.php:236
 msgid "Hide FAQ Tab?"
 msgstr ""
 
-#: admin/class-faqtfw-addon-admin.php:146
+#: admin/class-faqtfw-addon-admin.php:149
 msgid "Click Add New Button to Add FAQ Items"
 msgstr ""
 
-#: admin/class-faqtfw-addon-admin.php:150
+#: admin/class-faqtfw-addon-admin.php:153
 msgid "WooCommerce FAQ Item Settings"
 msgstr ""
 
-#: admin/class-faqtfw-addon-admin.php:165
+#: admin/class-faqtfw-addon-admin.php:168
 msgid "FAQs"
 msgstr ""
 
-#: admin/class-faqtfw-addon-admin.php:166
+#: admin/class-faqtfw-addon-admin.php:169
 msgid "FAQs Visibility"
 msgstr ""
 
-#: admin/class-faqtfw-addon-admin.php:231
-#: admin/class-faqtfw-addon-admin.php:311
+#: admin/class-faqtfw-addon-admin.php:234
+#: admin/class-faqtfw-addon-admin.php:314
 msgid "- No Change -"
 msgstr ""
 
-#: admin/class-faqtfw-addon-admin.php:232
-#: admin/class-faqtfw-addon-admin.php:312
+#: admin/class-faqtfw-addon-admin.php:235
+#: admin/class-faqtfw-addon-admin.php:315
+#: admin/includes/settings/faqtfw-admin-settings.php:163
+#: admin/includes/settings/faqtfw-admin-settings.php:198
+#: admin/includes/settings/faqtfw-admin-settings.php:232
+#: admin/includes/settings/faqtfw-admin-settings.php:267
+#: admin/includes/settings/faqtfw-admin-settings.php:302
+#: includes/baf-custom-meta-box.php:241
+msgid "Yes"
+msgstr ""
+
+#: admin/class-faqtfw-addon-admin.php:236
+#: admin/class-faqtfw-addon-admin.php:316
 #: admin/includes/settings/faqtfw-admin-settings.php:164
 #: admin/includes/settings/faqtfw-admin-settings.php:199
 #: admin/includes/settings/faqtfw-admin-settings.php:233
 #: admin/includes/settings/faqtfw-admin-settings.php:268
 #: admin/includes/settings/faqtfw-admin-settings.php:303
-#: includes/baf-custom-meta-box.php:244
-msgid "Yes"
-msgstr ""
-
-#: admin/class-faqtfw-addon-admin.php:233
-#: admin/class-faqtfw-addon-admin.php:313
-#: admin/includes/settings/faqtfw-admin-settings.php:165
-#: admin/includes/settings/faqtfw-admin-settings.php:200
-#: admin/includes/settings/faqtfw-admin-settings.php:234
-#: admin/includes/settings/faqtfw-admin-settings.php:269
-#: admin/includes/settings/faqtfw-admin-settings.php:304
-#: includes/baf-custom-meta-box.php:245
+#: includes/baf-custom-meta-box.php:242
 msgid "No"
 msgstr ""
 
 #: admin/includes/settings/faqtfw-admin-settings.php:12
-#: admin/includes/settings/faqtfw-admin-settings.php:344
+#: admin/includes/settings/faqtfw-admin-settings.php:343
 msgid "FAQ Tab For WooCommerce Settings"
 msgstr ""
 
@@ -81,89 +83,89 @@ msgstr ""
 msgid "Settings saved."
 msgstr ""
 
-#: admin/includes/settings/faqtfw-admin-settings.php:26
+#: admin/includes/settings/faqtfw-admin-settings.php:25
 msgid "Save Settings"
 msgstr ""
 
-#: admin/includes/settings/faqtfw-admin-settings.php:44
+#: admin/includes/settings/faqtfw-admin-settings.php:43
 msgid "TAB Content Settings: "
 msgstr ""
 
-#: admin/includes/settings/faqtfw-admin-settings.php:46
+#: admin/includes/settings/faqtfw-admin-settings.php:45
 msgid "Tab Title: "
 msgstr ""
 
-#: admin/includes/settings/faqtfw-admin-settings.php:47
+#: admin/includes/settings/faqtfw-admin-settings.php:46
 msgid "Tab Position: "
 msgstr ""
 
-#: admin/includes/settings/faqtfw-admin-settings.php:48
+#: admin/includes/settings/faqtfw-admin-settings.php:47
 msgid "Display FAQ Counter? "
 msgstr ""
 
-#: admin/includes/settings/faqtfw-admin-settings.php:49
+#: admin/includes/settings/faqtfw-admin-settings.php:48
 msgid "Hide Tab If Total FAQs Are Zero? "
 msgstr ""
 
-#: admin/includes/settings/faqtfw-admin-settings.php:50
+#: admin/includes/settings/faqtfw-admin-settings.php:49
 msgid "Show Search Box? "
 msgstr ""
 
-#: admin/includes/settings/faqtfw-admin-settings.php:51
+#: admin/includes/settings/faqtfw-admin-settings.php:50
 msgid "Show Meta Info Box? "
 msgstr ""
 
-#: admin/includes/settings/faqtfw-admin-settings.php:52
+#: admin/includes/settings/faqtfw-admin-settings.php:51
 msgid "Show Voting Box? "
 msgstr ""
 
-#: admin/includes/settings/faqtfw-admin-settings.php:53
+#: admin/includes/settings/faqtfw-admin-settings.php:52
 msgid "Enable FAQ Pagination? "
 msgstr ""
 
-#: admin/includes/settings/faqtfw-admin-settings.php:54
+#: admin/includes/settings/faqtfw-admin-settings.php:53
 msgid "Item Per Page: "
 msgstr ""
 
-#: admin/includes/settings/faqtfw-admin-settings.php:68
+#: admin/includes/settings/faqtfw-admin-settings.php:67
 msgid "FAQ"
 msgstr ""
 
-#: admin/includes/settings/faqtfw-admin-settings.php:96
+#: admin/includes/settings/faqtfw-admin-settings.php:95
 msgid ""
 "Set number like- 1,2,3. Set big number(100, 200, 300) to display FAQ tab "
 "at the last of tab contain ."
 msgstr ""
 
-#: admin/includes/settings/faqtfw-admin-settings.php:129
+#: admin/includes/settings/faqtfw-admin-settings.php:128
 msgid "Show"
 msgstr ""
 
-#: admin/includes/settings/faqtfw-admin-settings.php:130
+#: admin/includes/settings/faqtfw-admin-settings.php:129
 msgid "Hide"
 msgstr ""
 
-#: admin/includes/settings/faqtfw-admin-settings.php:131
+#: admin/includes/settings/faqtfw-admin-settings.php:130
 msgid "Show total number of FAQ items."
 msgstr ""
 
-#: admin/includes/settings/faqtfw-admin-settings.php:345
+#: admin/includes/settings/faqtfw-admin-settings.php:344
 msgid "WooCommerce TAB"
 msgstr ""
 
-#: includes/baf-custom-meta-box.php:115
+#: includes/baf-custom-meta-box.php:117
 msgid "- Select -"
 msgstr ""
 
-#: includes/baf-custom-meta-box.php:126 includes/baf-custom-meta-box.php:137
+#: includes/baf-custom-meta-box.php:126 includes/baf-custom-meta-box.php:136
 msgid "Delete"
 msgstr ""
 
-#: includes/baf-custom-meta-box.php:138
+#: includes/baf-custom-meta-box.php:136
 msgid "Upload"
 msgstr ""
 
-#: includes/baf-custom-meta-box.php:251
+#: includes/baf-custom-meta-box.php:248
 msgid "Add FAQ Items"
 msgstr ""
 
