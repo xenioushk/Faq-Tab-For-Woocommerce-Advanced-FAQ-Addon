@@ -2,13 +2,15 @@
 class BAF_WC_Meta_Box
 {
 
+    public $custom_fields;
+
     function __construct($custom_fields)
     {
 
         $this->custom_fields = $custom_fields; //Set custom field data as global value.
 
-        add_action('add_meta_boxes', [&$this, 'baf_wc_metaboxes']);
-        add_action('save_post_product', [&$this, 'save_baf_wc_meta_box_data']);
+        add_action('add_meta_boxes', [$this, 'baf_wc_metaboxes']);
+        add_action('save_post_product', [$this, 'save_baf_wc_meta_box_data']);
     }
 
     //Custom Meta Box.
