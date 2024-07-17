@@ -1,8 +1,11 @@
 <?php
 
-// @Description: if filter parameter is two dimentionsal array then it's return first content of array. other wise it's return the field value
-// @Since: Version 1.1.2
-// @Date: 15-04-2016
+/**
+ *  If the filter parameter is two dimentionsal array, function returns first content of array. 
+ *  other wise, function returns the field value
+ * @since: 1.1.2
+ * @return array
+ */
 
 add_filter('filter_baftfwc_content_data', 'filter_baftfwc_content_data');
 

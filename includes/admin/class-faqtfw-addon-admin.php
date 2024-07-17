@@ -10,24 +10,32 @@ class BAF_faqtfw_Admin
     private function __construct()
     {
 
-        if (!class_exists('BWL_Advanced_Faq_Manager') || !class_exists('WooCommerce') || FAQTFW_PARENT_PLUGIN_INSTALLED_VERSION < '1.5.9') {
-            add_action('admin_notices', [$this, 'baf_faqtfw_version_update_admin_notice']);
+        if (
+            !class_exists('BWL_Advanced_Faq_Manager')
+            || !class_exists('WooCommerce')
+            || FAQTFW_PARENT_PLUGIN_INSTALLED_VERSION < '1.5.9'
+        ) {
+            add_action('admin_notices', [$this, 'faqtfwPluginDependenciesNotice']);
             return false;
         }
 
+        if (FAQTFW_PARENT_PURCHASE_STATUS == 0) {
+            add_action('admin_notices', array($this, 'faqtfwPurchaseVerificationNotice'));
+            return false;
+        }
 
         $plugin = BAF_faqtfw::get_instance();
         $this->plugin_slug = $plugin->get_plugin_slug();
         $post_types = 'product';
         $this->includedFiles();
         // Load public-facing style sheet and JavaScript.
-        add_action('admin_enqueue_scripts', [$this, 'baf_faqtfw_admin_enqueue_scripts']);
+        add_action('admin_enqueue_scripts', [$this, 'faqtfwAdminEnqueueScripts']);
+
         // After manage text we need to add "custom_post_type" value.
         add_filter('manage_' . $post_types . '_posts_columns', [$this, 'faqtfw_custom_column_header']);
 
         // After manage text we need to add "custom_post_type" value.
         add_action('manage_' . $post_types . '_posts_custom_column', [$this, 'faqtfw_display_custom_column'], 10, 1);
-
 
         // Quick & Bulk Edit Section.
 
@@ -64,16 +72,27 @@ class BAF_faqtfw_Admin
 
     //Version Manager:  Update Checking
 
-    public function baf_faqtfw_version_update_admin_notice()
+    public function faqtfwPluginDependenciesNotice()
     {
 
         echo '<div class="notice notice-error"><p>You need to download & install both '
-            . '<b><a href="http://downloads.wordpress.org/plugin/woocommerce.zip" target="_blank">WooCommerce Plugin</a></b> & '
-            . '<b><a href="https://1.envato.market/baf-wp" target="_blank">BWL Advanced FAQ Manager Plugin</a></b> '
-            . 'to use <b>FAQ Tab For WooCommerce - Advanced FAQ Addon</b>. Minimum version <b>1.5.9</b> required ! </p></div>';
+            . '<b><a href="http://downloads.wordpress.org/plugin/woocommerce.zip" target="_blank">WooCommerce</a></b> & '
+            . '<b><a href="https://1.envato.market/baf-wp" target="_blank">' . FAQTFW_ADDON_PARENT_PLUGIN_TITLE . '</a></b> '
+            . 'to use <b>FAQ Tab For WooCommerce - Advanced FAQ Addon</b>.</p></div>';
     }
 
-    public function baf_faqtfw_admin_enqueue_scripts($hook)
+    public function faqtfwPurchaseVerificationNotice()
+    {
+        $licensePage = admin_url("admin.php?page=baf-license");
+
+        echo '<div class="notice notice-error"><p class="bwl_plugins_notice_text">
+        <span class="dashicons dashicons-lock bwl_plugins_notice_text--danger"></span> 
+        You need to <a href="' . $licensePage . '" class="bwl_plugins_notice_text--danger bwl_plugins_notice_text--bold">ACTIVATE</a> the '
+            . '<b>' . FAQTFW_ADDON_PARENT_PLUGIN_TITLE . '</b> plugin '
+            . 'to use <b>' . FAQTFW_ADDON_TITLE . '</b>.</p></div>';
+    }
+
+    public function faqtfwAdminEnqueueScripts($hook)
     {
 
         // We only load this JS script in product add/edit page.

@@ -1,8 +1,8 @@
 <?php
 
-add_shortcode('baf_woo_tab', 'baf_woo_tab');
+add_shortcode('baf_woo_tab', 'cbFtfwcTabContent');
 
-function baf_woo_tab($atts)
+function cbFtfwcTabContent($atts)
 {
     extract(shortcode_atts([
         'post_type'     => 'bwl_advanced_faq',
