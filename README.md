@@ -8,14 +8,25 @@ In the admin panel, Addon automatically integrates two custom columns(No of FAQs
 
 Addon also brings an extensive options panel that allows you to configure FAQ tabs according to your needs. You can set FAQ tab order, set TAB title, set Pagination & many more.
 
-## Addon Requirements
+[Demo](https://projects.bluewindlab.net/wpplugin/baf/product/woo-single-2/) | [Download](https://bluewindlab.net/portfolio/faq-tab-for-woocommerce-advanced-faq-addon/) | [Documentation](https://xenioushk.github.io/docs-plugins-addon/baf-addon/ftfwc/index.html)
+
+## Addon requirements
 
 You need to install [BWL Advanced FAQ Manager Plugin](https://1.envato.market/baf-wp) to use **FAQ Tab For WooCommerce - Advanced FAQ Addon**. Minimum version **1.6.5** required.
 
 You need at least WordPress version 4.8+ installed for this plugin to work properly. It is strongly recommended that you always use the latest stable version of WordPress to ensure all known bugs and security issues are fixed.
 
-## Technical Requirements
+## Technical requirements
 
 - WordPress 5.6 or greater.
 - PHP version 7.4 or greater.
 - MySQL version 5.5.51 or greater.
+
+## Change log
+
+- [Change log](https://xenioushk.github.io/docs-plugins-addon/baf-addon/ftfwc/index.html#changelog)
+
+## Acknowledgement
+
+- [bluewindlab.net](https://bluewindlab.net)
+- [BWL KB Manager WordPress plugin](https://1.envato.market/baf-wp)
