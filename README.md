@@ -4,6 +4,8 @@
 
 Addon comes with Unique Searchable Accordion jQuery Plugin. So that the users can easily find their required content from the FAQ lists. Also, the pagination feature gives the flexibility to quickly present a large no of FAQ items.
 
+![FAQ Tab For WooCommerce - Advanced FAQ Addon](https://xenioushk.github.io/docs-plugins-addon/baf-addon/ftfwc/img/addon_output/demo.png)
+
 In the admin panel, Addon automatically integrates two custom columns(No of FAQs and FAQ Tab Display Status) with each WooCommerce product. This option gives you a quick overview of product FAQ status. you can easily show/hide the FAQ tab using the Quick and Bulk Edit options. You can also do this while adding/editing product information.
 
 Addon also brings an extensive options panel that allows you to configure FAQ tabs according to your needs. You can set FAQ tab order, set TAB title, set Pagination & many more.
