@@ -1,28 +1,38 @@
-# Copyright (C) 2015 Automattic
-# This file is distributed under the GNU General Public License v2 or later.
-#, fuzzy
+# Copyright (C) 2024 Mahbub Alam Khan
+# This file is distributed under the same license as the FAQ Tab For WooCommerce - Advanced FAQ Addon plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: FAQ Tab For WooCommerce - Advanced FAQ Addon\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2024-07-17 15:39+0300\n"
-"PO-Revision-Date: 2018-01-31 21:24+0600\n"
+"Project-Id-Version: FAQ Tab For WooCommerce - Advanced FAQ Addon 1.1.8\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/faq-tab-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: BlueWindLab <hkhan.cse@gmail.com>\n"
-"Language: en\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.1\n"
-"X-Poedit-KeywordsList: _;__;_n;_x;_e;esc_attr__;esc_attr_e;esc_html__;"
-"esc_html_e\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: node_modules\n"
-"X-Poedit-SearchPathExcluded-1: .git\n"
-"X-Poedit-SearchPathExcluded-2: libs\n"
-"X-Poedit-SearchPathExcluded-3: src\n"
+"POT-Creation-Date: 2024-12-08T23:39:43+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.9.0\n"
+"X-Domain: baf-faqtfw\n"
+
+#. Plugin Name of the plugin
+msgid "FAQ Tab For WooCommerce - Advanced FAQ Addon"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://bluewindlab.net/portfolio/faq-tab-for-woocommerce-advanced-faq-addon/"
+msgstr ""
+
+#. Description of the plugin
+msgid "FAQ tab for woocommerce Addon allows you to convert you're existing FAQ posts in to WooCommerce product FAQ item with in a minute. You can add unlimited number of FAQ post as product FAQ items and using drag drop feature sort them according to you're choice."
+msgstr ""
+
+#. Author of the plugin
+msgid "Mahbub Alam Khan"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://codecanyon.net/user/xenioushk"
+msgstr ""
 
 #: includes/admin/class-faqtfw-addon-admin.php:167
 #: includes/admin/class-faqtfw-addon-admin.php:251
@@ -132,9 +142,7 @@ msgid "FAQ"
 msgstr ""
 
 #: includes/admin/includes/settings/faqtfw-admin-settings.php:95
-msgid ""
-"Set number like- 1,2,3. Set big number(100, 200, 300) to display FAQ tab "
-"at the last of tab contain ."
+msgid "Set number like- 1,2,3. Set big number(100, 200, 300) to display FAQ tab at the last of tab contain ."
 msgstr ""
 
 #: includes/admin/includes/settings/faqtfw-admin-settings.php:128
@@ -157,7 +165,8 @@ msgstr ""
 msgid "- Select -"
 msgstr ""
 
-#: includes/baf-custom-meta-box.php:128 includes/baf-custom-meta-box.php:138
+#: includes/baf-custom-meta-box.php:128
+#: includes/baf-custom-meta-box.php:138
 msgid "Delete"
 msgstr ""
 
