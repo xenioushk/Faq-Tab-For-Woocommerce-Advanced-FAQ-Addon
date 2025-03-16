@@ -12,10 +12,8 @@ class BAF_faqtfw
     private function __construct()
     {
 
-        if (
-            class_exists('BWL_Advanced_Faq_Manager')
+        if (class_exists('BwlFaqManager\\Init')
             && class_exists('WooCommerce')
-            && FAQTFW_PARENT_PLUGIN_INSTALLED_VERSION > '1.5.9'
             && FAQTFW_PARENT_PURCHASE_STATUS == 1
         ) {
 
@@ -124,7 +122,7 @@ class BAF_faqtfw
     /**
      * Fired for each blog when the plugin is activated.
      *
-     * @since    1.0.0
+     * @since 1.0.0
      */
     private static function single_activate()
     {
@@ -134,7 +132,7 @@ class BAF_faqtfw
     /**
      * Fired for each blog when the plugin is deactivated.
      *
-     * @since    1.0.0
+     * @since 1.0.0
      */
     private static function single_deactivate()
     {
@@ -144,9 +142,9 @@ class BAF_faqtfw
     function include_files()
     {
 
-        require_once(FAQTFW_DIR . 'includes/baf-wc-helpers.php');
-        require_once(FAQTFW_DIR . 'includes/public/class-faqtfw-addon.php');
-        require_once(FAQTFW_DIR . 'includes/public/shortcode/baf-faqtfw-shortcodes.php');
+        include_once FAQTFW_DIR . 'includes/baf-wc-helpers.php';
+        include_once FAQTFW_DIR . 'includes/public/class-faqtfw-addon.php';
+        include_once FAQTFW_DIR . 'includes/public/shortcode/baf-faqtfw-shortcodes.php';
     }
 
     public function baf_faqtfw_custom_scripts()
@@ -160,18 +158,18 @@ class BAF_faqtfw
 
             $faqftw_faq_counter = 0;
         }
-?>
+        ?>
 <script type="text/javascript">
 var faqftw_faq_counter = '<?php echo $faqftw_faq_counter; ?>';
 </script>
 
-<?php
+        <?php
     }
 
     /**
      * Load the plugin text domain for translation.
      *
-     * @since    1.0.0
+     * @since 1.0.0
      */
     public function load_plugin_textdomain()
     {
@@ -184,7 +182,8 @@ var faqftw_faq_counter = '<?php echo $faqftw_faq_counter; ?>';
 
     /**
      * Enqueues front-end styles and scripts
-     * @since    1.0.0
+     *
+     * @since 1.0.0
      */
     public function faqtfwEnqueueScripts()
     {
@@ -193,9 +192,9 @@ var faqftw_faq_counter = '<?php echo $faqftw_faq_counter; ?>';
 
     /**
      * Register custom tab
+     *
      * @since: 1.0.0
      */
-
     public function faqtfwAddCustomProductTab($tabs)
     {
 
@@ -319,9 +318,9 @@ var faqftw_faq_counter = '<?php echo $faqftw_faq_counter; ?>';
 
     /**
      * Display tab contents
+     *
      * @since: 1.0.0
      */
-
     public function faqtfwCustomTabContent($key, $tab)
     {
         // allow shortcodes to function

@@ -10,10 +10,8 @@ class BAF_faqtfw_Admin
     private function __construct()
     {
 
-        if (
-            !class_exists('BWL_Advanced_Faq_Manager')
+        if (!class_exists('BwlFaqManager\\Init')
             || !class_exists('WooCommerce')
-            || FAQTFW_PARENT_PLUGIN_INSTALLED_VERSION < '1.5.9'
         ) {
             add_action('admin_notices', [$this, 'faqtfwPluginDependenciesNotice']);
             return false;
@@ -65,9 +63,9 @@ class BAF_faqtfw_Admin
             update_option("baf_ftfwc_installation_date", date("Y-m-d H:i:s"));
         }
 
-        require_once(FAQTFW_DIR . 'includes/autoupdater/WpAutoUpdater.php');
-        require_once(FAQTFW_DIR . 'includes/autoupdater/installer.php');
-        require_once(FAQTFW_DIR . 'includes/autoupdater/updater.php');
+        include_once FAQTFW_DIR . 'includes/autoupdater/WpAutoUpdater.php';
+        include_once FAQTFW_DIR . 'includes/autoupdater/installer.php';
+        include_once FAQTFW_DIR . 'includes/autoupdater/updater.php';
     }
 
     //Version Manager:  Update Checking
@@ -113,7 +111,7 @@ class BAF_faqtfw_Admin
         if ($current_post_type == "product") {
 
             wp_enqueue_style($this->plugin_slug . '-admin', BAF_WC_PLUGIN_DIR . 'assets/styles/admin.css', [], BAF_faqtfw::VERSION, 'all');
-            wp_enqueue_script($this->plugin_slug . '-admin', BAF_WC_PLUGIN_DIR . 'assets/scripts/admin.js', ['jquery', 'jquery-ui-core', 'jquery-ui-sortable'], BAF_faqtfw::VERSION, TRUE);
+            wp_enqueue_script($this->plugin_slug . '-admin', BAF_WC_PLUGIN_DIR . 'assets/scripts/admin.js', ['jquery', 'jquery-ui-core', 'jquery-ui-sortable'], BAF_faqtfw::VERSION, true);
 
             wp_localize_script(
                 $this->plugin_slug . '-admin',
@@ -199,28 +197,28 @@ class BAF_faqtfw_Admin
 
         switch ($column) {
 
-            case 'faqftw_faq_post_ids':
+        case 'faqftw_faq_post_ids':
 
 
-                $get_faqftw_faq_post_ids = apply_filters('filter_baftfwc_content_data', get_post_meta($post->ID, 'faqftw_faq_post_ids'));
-                $faqftw_faq_post_ids = (int) count($get_faqftw_faq_post_ids);
-                echo '<div id="faqftw_faq_post_ids-' . $post->ID . '" >&nbsp;' . $faqftw_faq_post_ids . '</div>';
+            $get_faqftw_faq_post_ids = apply_filters('filter_baftfwc_content_data', get_post_meta($post->ID, 'faqftw_faq_post_ids'));
+            $faqftw_faq_post_ids = (int) count($get_faqftw_faq_post_ids);
+            echo '<div id="faqftw_faq_post_ids-' . $post->ID . '" >&nbsp;' . $faqftw_faq_post_ids . '</div>';
 
-                break;
+            break;
 
-            case 'baf_woo_tab_hide_status':
+        case 'baf_woo_tab_hide_status':
 
-                $baf_woo_tab_hide_status = (get_post_meta($post->ID, "baf_woo_tab_hide_status", true) == "") ? "" : get_post_meta($post->ID, "baf_woo_tab_hide_status", true);
+            $baf_woo_tab_hide_status = (get_post_meta($post->ID, "baf_woo_tab_hide_status", true) == "") ? "" : get_post_meta($post->ID, "baf_woo_tab_hide_status", true);
 
-                // FAQ Display Status In Text.
+            // FAQ Display Status In Text.
 
-                $visibilityIcon = BAF_WC_PLUGIN_DIR . 'libs/images/';
+            $visibilityIcon = BAF_WC_PLUGIN_DIR . 'libs/images/';
 
-                $iconType = ($baf_woo_tab_hide_status == 1) ? 'hidden.png' : 'visible.png';
+            $iconType = ($baf_woo_tab_hide_status == 1) ? 'hidden.png' : 'visible.png';
 
-                echo '<div id="baf_woo_tab_hide_status-' . $post->ID . '" data-status_code="' . $baf_woo_tab_hide_status . '" ><img src="' . $visibilityIcon . $iconType . '"></div>';
+            echo '<div id="baf_woo_tab_hide_status-' . $post->ID . '" data-status_code="' . $baf_woo_tab_hide_status . '" ><img src="' . $visibilityIcon . $iconType . '"></div>';
 
-                break;
+            break;
         }
     }
 
@@ -233,39 +231,39 @@ class BAF_faqtfw_Admin
 
         switch ($post_type) {
 
-            case $post_type:
+        case $post_type:
 
-                switch ($column_name) {
+            switch ($column_name) {
 
-                    case 'baf_woo_tab_hide_status':
+            case 'baf_woo_tab_hide_status':
 
-                        $baf_woo_tab_hide_status = (get_post_meta($post->ID, "baf_woo_tab_hide_status", true) == "") ? "" : get_post_meta($post->ID, "baf_woo_tab_hide_status", true);
-?>
-
-
-                        <fieldset class="inline-edit-col-left">
-                            <div class="inline-edit-col">
-                                <div class="inline-edit-group">
-                                    <label class="alignleft">
-
-                                        <span class="checkbox-title"><?php esc_html_e("Hide FAQ Tab?", "baf-faqtfw"); ?></span>
-                                        <select name="baf_woo_tab_hide_status">
-                                            <option value="3"><?php esc_html_e("- No Change -", "baf-faqtfw"); ?></option>
-                                            <option value="1"><?php esc_html_e("Yes", "baf-faqtfw"); ?></option>
-                                            <option value="2"><?php esc_html_e("No", "baf-faqtfw"); ?></option>
-                                        </select>
-                                    </label>
-
-                                </div>
-                            </div>
-                        </fieldset>
+                $baf_woo_tab_hide_status = (get_post_meta($post->ID, "baf_woo_tab_hide_status", true) == "") ? "" : get_post_meta($post->ID, "baf_woo_tab_hide_status", true);
+                ?>
 
 
-                    <?php
-                        break;
-                }
+<fieldset class="inline-edit-col-left">
+  <div class="inline-edit-col">
+    <div class="inline-edit-group">
+      <label class="alignleft">
 
+        <span class="checkbox-title"><?php esc_html_e("Hide FAQ Tab?", "baf-faqtfw"); ?></span>
+        <select name="baf_woo_tab_hide_status">
+          <option value="3"><?php esc_html_e("- No Change -", "baf-faqtfw"); ?></option>
+          <option value="1"><?php esc_html_e("Yes", "baf-faqtfw"); ?></option>
+          <option value="2"><?php esc_html_e("No", "baf-faqtfw"); ?></option>
+        </select>
+      </label>
+
+    </div>
+  </div>
+</fieldset>
+
+
+                <?php
                 break;
+            }
+
+            break;
         }
     }
 
@@ -273,41 +271,45 @@ class BAF_faqtfw_Admin
     {
 
         // pointless if $_POST is empty (this happens on bulk edit)
-        if (empty($_POST))
+        if (empty($_POST)) {
             return $post_id;
+        }
 
         // verify quick edit nonce
-        if (isset($_POST['_inline_edit']) && !wp_verify_nonce($_POST['_inline_edit'], 'inlineeditnonce'))
+        if (isset($_POST['_inline_edit']) && !wp_verify_nonce($_POST['_inline_edit'], 'inlineeditnonce')) {
             return $post_id;
+        }
 
         // don't save for autosave
-        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
             return $post_id;
+        }
 
         // dont save for revisions
-        if (isset($post->post_type) && $post->post_type == 'revision')
+        if (isset($post->post_type) && $post->post_type == 'revision') {
             return $post_id;
+        }
 
         switch ($post->post_type) {
 
-            case $post->post_type:
+        case $post->post_type:
 
-                /**
-                 * Because this action is run in several places, checking for the array key
-                 * keeps WordPress from editing data that wasn't in the form, i.e. if you had
-                 * this post meta on your "Quick Edit" but didn't have it on the "Edit Post" screen.
-                 */
-                $custom_fields = ['baf_woo_tab_hide_status'];
+            /**
+             * Because this action is run in several places, checking for the array key
+             * keeps WordPress from editing data that wasn't in the form, i.e. if you had
+             * this post meta on your "Quick Edit" but didn't have it on the "Edit Post" screen.
+             */
+            $custom_fields = ['baf_woo_tab_hide_status'];
 
-                foreach ($custom_fields as $field) {
+            foreach ($custom_fields as $field) {
 
-                    if (array_key_exists($field, $_POST)) {
+                if (array_key_exists($field, $_POST)) {
 
-                        update_post_meta($post_id, $field, $_POST[$field]);
-                    }
+                    update_post_meta($post_id, $field, $_POST[$field]);
                 }
+            }
 
-                break;
+            break;
         }
     }
 
@@ -318,32 +320,32 @@ class BAF_faqtfw_Admin
 
         switch ($post_type) {
 
-            case $post_type:
+        case $post_type:
 
-                switch ($column_name) {
+            switch ($column_name) {
 
-                    case 'baf_woo_tab_hide_status':
-                    ?>
-                        <fieldset class="inline-edit-col-right">
-                            <div class="inline-edit-col">
-                                <div class="inline-edit-group">
-                                    <label class="alignleft">
-                                        <span class="checkbox-title"><?php esc_html_e("Hide FAQ Tab?", "baf-faqtfw"); ?></span>
-                                        <select name="baf_woo_tab_hide_status">
-                                            <option value="3"><?php esc_html_e("- No Change -", "baf-faqtfw"); ?></option>
-                                            <option value="1"><?php esc_html_e("Yes", "baf-faqtfw"); ?></option>
-                                            <option value="2"><?php esc_html_e("No", "baf-faqtfw"); ?></option>
-                                        </select>
-                                    </label>
-                                </div>
-                            </div>
-                        </fieldset>
+            case 'baf_woo_tab_hide_status':
+                ?>
+<fieldset class="inline-edit-col-right">
+  <div class="inline-edit-col">
+    <div class="inline-edit-group">
+      <label class="alignleft">
+        <span class="checkbox-title"><?php esc_html_e("Hide FAQ Tab?", "baf-faqtfw"); ?></span>
+        <select name="baf_woo_tab_hide_status">
+          <option value="3"><?php esc_html_e("- No Change -", "baf-faqtfw"); ?></option>
+          <option value="1"><?php esc_html_e("Yes", "baf-faqtfw"); ?></option>
+          <option value="2"><?php esc_html_e("No", "baf-faqtfw"); ?></option>
+        </select>
+      </label>
+    </div>
+  </div>
+</fieldset>
 
-<?php
-                        break;
-                }
-
+                <?php
                 break;
+            }
+
+            break;
         }
     }
 
@@ -351,7 +353,7 @@ class BAF_faqtfw_Admin
     {
 
         // we need the post IDs
-        $post_ids = (isset($_POST['post_ids']) && !empty($_POST['post_ids'])) ? $_POST['post_ids'] : NULL;
+        $post_ids = (isset($_POST['post_ids']) && !empty($_POST['post_ids'])) ? $_POST['post_ids'] : null;
 
         // if we have post IDs
         if (!empty($post_ids) && is_array($post_ids)) {
