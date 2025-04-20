@@ -95,7 +95,7 @@ class Init {
 	private static function get_helper_classes() {
 		$classes = [
 			Helpers\PluginConstants::class,
-			Helpers\UvtHelpers::class,
+			// Helpers\UvtHelpers::class,
 		];
 		return $classes;
 	}

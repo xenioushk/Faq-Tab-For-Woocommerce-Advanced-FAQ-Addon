@@ -20,13 +20,21 @@ class DependencyManager {
 	 *
 	 * @var string
 	 */
-	public static $bpvm_url;
+	public static $baf_url;
 	/**
 	 * Plugin parent BKBM license URL.
 	 *
 	 * @var string
 	 */
-	public static $bpvm_license_url;
+	public static $baf_license_url;
+
+	/**
+     * Plugin parent WPBakery Page Builder URL.
+     *
+     * @var string
+     */
+	public static $woocommerce_url;
+
 	/**
      * Plugin parent WPBakery Page Builder URL.
      *
@@ -53,16 +61,17 @@ class DependencyManager {
 	 * Set the plugin dependency URLs.
 	 */
 	private static function set_urls() {
-		self::$bpvm_url         = "<strong><a href='https://1.envato.market/bpvm-wp' target='_blank'>BWL Pro Voting Manager</a></strong>";
-		self::$bpvm_license_url = "<strong><a href='" . admin_url( 'admin.php?page=bpvm-license' ) . "'>BWL Pro Voting Manager license</a></strong>";
-		self::$addon_title      = '<strong>User Vote Tracker For BWL Pro Voting Manager</strong>';
+		self::$baf_url         = "<strong><a href='https://1.envato.market/baf-wp' target='_blank'>BWL Advanced FAQ Manager</a></strong>";
+		self::$baf_license_url = "<strong><a href='" . admin_url( 'admin.php?page=baf-license' ) . "'>BWL Advanced FAQ Manager license</a></strong>";
+		self::$addon_title     = '<strong>FAQ Tab For WooCommerce For BWL Advanced FAQ Manager</strong>';
+		self::$woocommerce_url = "<strong><a href='https://downloads.wordpress.org/plugin/woocommerce.zip' target='_blank'>WooCommerce</a></strong>";
 	}
 
 	/**
 	 * Set the plugin dependency constants.
 	 */
 	private static function set_dependency_constants() {
-		define( 'FTFWCWP_MIN_BPVM_VERSION', '1.4.5' );
+		define( 'FTFWCWP_MIN_BAF_VERSION', '2.1.6' );
 		define( 'FTFWCWP_MIN_PHP_VERSION', '7.0' );
 	}
 
@@ -76,13 +85,13 @@ class DependencyManager {
 		if ( ! function_exists( 'get_plugin_data' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
-		$plugin_data = get_plugin_data( WP_PLUGIN_DIR . '/bwl-pro-voting-manager/bwl-pro-voting-manager.php' );
+		$plugin_data = get_plugin_data( WP_PLUGIN_DIR . '/bwl-advanced-faq-manager/bwl_advanced_faq_manager.php' );
 
-		if ( ! defined( 'BPVM_CURRENT_PLUGIN_VERSION' ) ) {
-			define( 'BPVM_CURRENT_PLUGIN_VERSION', $plugin_data['Version'] );
+		if ( ! defined( 'BAF_CURRENT_PLUGIN_VERSION' ) ) {
+			define( 'BAF_CURRENT_PLUGIN_VERSION', $plugin_data['Version'] );
 		}
 
-		return ( version_compare( BPVM_CURRENT_PLUGIN_VERSION, FTFWCWP_MIN_BPVM_VERSION, '>=' ) );
+		return ( version_compare( BAF_CURRENT_PLUGIN_VERSION, FTFWCWP_MIN_BAF_VERSION, '>=' ) );
 	}
 
 	/**
@@ -92,7 +101,7 @@ class DependencyManager {
 	 */
 	public static function get_product_activation_status() {
 
-		return intval( get_option( 'bpvm_purchase_verified' ) );
+		return intval( get_option( 'baf_purchase_verified' ) );
 
 	}
 
@@ -105,11 +114,11 @@ class DependencyManager {
 
 		$message = sprintf(
 				// translators: 1: Plugin name, 2: Addon title, 3: Current version, 4: Minimum required version
-            esc_html__( 'The %2$s requires %1$s %4$s or higher. You are using %3$s', 'bpvm-recap' ),
-            self::$bpvm_url,
+            esc_html__( 'The %2$s requires %1$s %4$s or higher. You are using %3$s', 'baf-faqtfw' ),
+            self::$baf_url,
             self::$addon_title,
-            BPVM_CURRENT_PLUGIN_VERSION,
-            FTFWCWP_MIN_BPVM_VERSION
+            BAF_CURRENT_PLUGIN_VERSION,
+            FTFWCWP_MIN_BAF_VERSION
         );
 
 		printf( '<div class="notice notice-error"><p>⚠️ %1$s</p></div>', $message ); // phpcs:ignore
@@ -124,12 +133,29 @@ class DependencyManager {
 
 		$message = sprintf(
 						// translators: 1: Plugin name, 2: Addon title
-            esc_html__( 'Please install and activate the %1$s plugin to use %2$s.', 'bpvm-recap' ),
-            self::$bpvm_url,
+            esc_html__( 'Please install and activate the %1$s plugin to use %2$s.', 'baf-faqtfw' ),
+            self::$baf_url,
             self::$addon_title
 		);
 
 	printf( '<div class="notice notice-error"><p>⚠️ %1$s</p></div>', $message ); // phpcs:ignore
+	}
+
+	/**
+     * Function to handle the missing woocommerce plugin notice.
+     *
+     * @return void
+     */
+	public static function notice_missing_woocommerce_plugin() {
+
+		$message = sprintf(
+						// translators: 1: Plugin name, 2: Addon title
+            esc_html__( 'Please install and activate the %1$s plugin to use %2$s.', 'baf-faqtfw' ),
+            self::$woocommerce_url,
+            self::$addon_title
+		);
+
+		printf( '<div class="notice notice-error"><p>⚠️ %1$s</p></div>', $message ); // phpcs:ignore
 	}
 
 	/**
@@ -141,8 +167,8 @@ class DependencyManager {
 
 		$message = sprintf(
 						// translators: 1: Plugin activation link, 2: Addon title
-            esc_html__( 'Please Activate the %1$s to use the %2$s.', 'bpvm-recap' ),
-            self::$bpvm_license_url,
+            esc_html__( 'Please Activate the %1$s to use the %2$s.', 'baf-faqtfw' ),
+            self::$baf_license_url,
             self::$addon_title
 		);
 

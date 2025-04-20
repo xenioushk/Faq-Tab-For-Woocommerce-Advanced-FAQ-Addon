@@ -1,11 +1,11 @@
 <?php
-namespace UVTADDON\Base;
+namespace FTFWCWP\Base;
 
 /**
  * Class for plucin deactivation.
  *
  * @since: 1.1.0
- * @package UVTADDON
+ * @package FTFWCWP
  */
 class Deactivate {
 
