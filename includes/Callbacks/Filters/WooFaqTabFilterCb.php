@@ -119,7 +119,7 @@ class WooFaqTabFilterCb {
 
 		$faqtfw_total_faq_string = '';
 
-		$get_faqftw_faq_post_ids = apply_filters( 'ftfwc_get_the_content', get_post_meta( $product->get_id(), 'faqftw_faq_post_ids' ) );
+		$get_faqftw_faq_post_ids = apply_filters( 'filter_baftfwc_content_data', get_post_meta( $product->get_id(), 'faqftw_faq_post_ids' ) );
 
 		$faqftw_faq_post_ids = implode( ',', $get_faqftw_faq_post_ids );
 
