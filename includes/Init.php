@@ -28,7 +28,6 @@ class Init {
 			'meta'       => self::get_meta_classes(),
 			'cpt'        => self::get_cpt_classes(),
 			'filters'    => self::get_filter_classes(),
-			// 'actions'    => self::get_action_classes(),
 			'shortcodes' => self::get_shortcodes_classes(),
 		];
 
@@ -84,7 +83,6 @@ class Init {
 			Base\AdminEnqueue::class,
 			Base\PluginUpdate::class,
 			Base\Language::class,
-			// Base\FrontendAjaxHandlers::class,
 			Base\AdminAjaxHandlers::class,
 			Base\IncludePluginFiles::class,
 		];
@@ -99,7 +97,6 @@ class Init {
 	private static function get_helper_classes() {
 		$classes = [
 			Helpers\PluginConstants::class,
-			// Helpers\UvtHelpers::class,
 		];
 		return $classes;
 	}
@@ -123,10 +120,8 @@ class Init {
 	 */
 	private static function get_cpt_classes() {
 		$classes = [
-			// Controllers\Cpt\PluginCpt::class,
 			Controllers\Cpt\CustomColumns::class,
 			Controllers\Actions\Admin\QuickBulkEdit::class,
-			// Controllers\Cpt\TaxonomyFilters::class,
 		];
 		return $classes;
 	}
@@ -139,19 +134,6 @@ class Init {
 	private static function get_filter_classes() {
 		$classes = [
 			Controllers\Filters\AddonFilters::class,
-		];
-		return $classes;
-	}
-
-	/**
-	 * Get Action classes.
-	 *
-	 * @return array
-	 */
-	private static function get_action_classes() {
-
-		$classes = [
-			Controllers\Actions\UvtAdminMenu::class,
 		];
 		return $classes;
 	}

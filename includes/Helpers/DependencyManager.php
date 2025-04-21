@@ -16,31 +16,24 @@ class DependencyManager {
 	public static $allowed_themes = [];
 
 	/**
-	 * Plugin parent BKBM URL.
+	 * Plugin parent BAF URL.
 	 *
 	 * @var string
 	 */
 	public static $baf_url;
 	/**
-	 * Plugin parent BKBM license URL.
+	 * Plugin parent BAF license URL.
 	 *
 	 * @var string
 	 */
 	public static $baf_license_url;
 
 	/**
-     * Plugin parent WPBakery Page Builder URL.
+     * Plugin parent WooCommerce URL.
      *
      * @var string
      */
 	public static $woocommerce_url;
-
-	/**
-     * Plugin parent WPBakery Page Builder URL.
-     *
-     * @var string
-     */
-	public static $wpb_url;
 
 	/**
 	 * Plugin addon title.
@@ -62,7 +55,7 @@ class DependencyManager {
 	 */
 	private static function set_urls() {
 		self::$baf_url         = "<strong><a href='https://1.envato.market/baf-wp' target='_blank'>BWL Advanced FAQ Manager</a></strong>";
-		self::$baf_license_url = "<strong><a href='" . admin_url( 'admin.php?page=baf-license' ) . "'>BWL Advanced FAQ Manager license</a></strong>";
+		self::$baf_license_url = "<strong><a href='" . admin_url( 'edit.php?post_type=bwl_advanced_faq&page=baf-license' ) . "'>BWL Advanced FAQ Manager license</a></strong>";
 		self::$addon_title     = '<strong>FAQ Tab For WooCommerce For BWL Advanced FAQ Manager</strong>';
 		self::$woocommerce_url = "<strong><a href='https://downloads.wordpress.org/plugin/woocommerce.zip' target='_blank'>WooCommerce</a></strong>";
 	}

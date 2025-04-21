@@ -1,183 +1,191 @@
-# Copyright (C) 2024 Mahbub Alam Khan
+# Copyright (C) 2025 Mahbub Alam Khan
 # This file is distributed under the same license as the FAQ Tab For WooCommerce - Advanced FAQ Addon plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: FAQ Tab For WooCommerce - Advanced FAQ Addon 1.1.8\n"
+"Project-Id-Version: FAQ Tab For WooCommerce - Advanced FAQ Addon 2.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/faq-tab-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-08T23:39:43+00:00\n"
+"POT-Creation-Date: 2025-04-21T10:12:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.9.0\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: baf-faqtfw\n"
 
 #. Plugin Name of the plugin
+#: faq-tab-for-woocommerce.php
 msgid "FAQ Tab For WooCommerce - Advanced FAQ Addon"
 msgstr ""
 
 #. Plugin URI of the plugin
+#: faq-tab-for-woocommerce.php
 msgid "https://bluewindlab.net/portfolio/faq-tab-for-woocommerce-advanced-faq-addon/"
 msgstr ""
 
 #. Description of the plugin
+#: faq-tab-for-woocommerce.php
 msgid "FAQ tab for woocommerce Addon allows you to convert you're existing FAQ posts in to WooCommerce product FAQ item with in a minute. You can add unlimited number of FAQ post as product FAQ items and using drag drop feature sort them according to you're choice."
 msgstr ""
 
 #. Author of the plugin
+#: faq-tab-for-woocommerce.php
 msgid "Mahbub Alam Khan"
 msgstr ""
 
 #. Author URI of the plugin
+#: faq-tab-for-woocommerce.php
 msgid "https://codecanyon.net/user/xenioushk"
 msgstr ""
 
-#: includes/admin/class-faqtfw-addon-admin.php:167
-#: includes/admin/class-faqtfw-addon-admin.php:251
-#: includes/admin/class-faqtfw-addon-admin.php:331
-#: includes/baf-custom-meta-box.php:238
+#: includes/Callbacks/Actions/Admin/QuickEditCb.php:40
+#: includes/Controllers/Cmb/FtfwcCmb.php:250
 msgid "Hide FAQ Tab?"
 msgstr ""
 
-#: includes/admin/class-faqtfw-addon-admin.php:168
-msgid "Click Add New Button to Add FAQ Items"
-msgstr ""
-
-#: includes/admin/class-faqtfw-addon-admin.php:172
-msgid "WooCommerce FAQ Item Settings"
-msgstr ""
-
-#: includes/admin/class-faqtfw-addon-admin.php:187
-msgid "FAQs"
-msgstr ""
-
-#: includes/admin/class-faqtfw-addon-admin.php:188
-msgid "FAQs Visibility"
-msgstr ""
-
-#: includes/admin/class-faqtfw-addon-admin.php:253
-#: includes/admin/class-faqtfw-addon-admin.php:333
+#: includes/Callbacks/Actions/Admin/QuickEditCb.php:42
 msgid "- No Change -"
 msgstr ""
 
-#: includes/admin/class-faqtfw-addon-admin.php:254
-#: includes/admin/class-faqtfw-addon-admin.php:334
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:163
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:198
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:232
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:267
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:302
-#: includes/baf-custom-meta-box.php:243
+#: includes/Callbacks/Actions/Admin/QuickEditCb.php:43
+#: includes/Controllers/Cmb/FtfwcCmb.php:255
+#: includes/Controllers/OptionsPanel/Settings.php:157
+#: includes/Controllers/OptionsPanel/Settings.php:190
+#: includes/Controllers/OptionsPanel/Settings.php:223
+#: includes/Controllers/OptionsPanel/Settings.php:256
+#: includes/Controllers/OptionsPanel/Settings.php:289
 msgid "Yes"
 msgstr ""
 
-#: includes/admin/class-faqtfw-addon-admin.php:255
-#: includes/admin/class-faqtfw-addon-admin.php:335
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:164
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:199
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:233
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:268
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:303
-#: includes/baf-custom-meta-box.php:244
+#: includes/Callbacks/Actions/Admin/QuickEditCb.php:44
+#: includes/Controllers/Cmb/FtfwcCmb.php:256
+#: includes/Controllers/OptionsPanel/Settings.php:158
+#: includes/Controllers/OptionsPanel/Settings.php:191
+#: includes/Controllers/OptionsPanel/Settings.php:224
+#: includes/Controllers/OptionsPanel/Settings.php:257
+#: includes/Controllers/OptionsPanel/Settings.php:290
 msgid "No"
 msgstr ""
 
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:12
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:343
-msgid "FAQ Tab For WooCommerce Settings"
+#: includes/Callbacks/Filters/WooFaqTabFilterCb.php:31
+msgid "FAQ "
 msgstr ""
 
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:16
-msgid "Settings saved."
-msgstr ""
-
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:25
-msgid "Save Settings"
-msgstr ""
-
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:43
-msgid "TAB Content Settings: "
-msgstr ""
-
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:45
-msgid "Tab Title: "
-msgstr ""
-
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:46
-msgid "Tab Position: "
-msgstr ""
-
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:47
-msgid "Display FAQ Counter? "
-msgstr ""
-
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:48
-msgid "Hide Tab If Total FAQs Are Zero? "
-msgstr ""
-
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:49
-msgid "Show Search Box? "
-msgstr ""
-
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:50
-msgid "Show Meta Info Box? "
-msgstr ""
-
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:51
-msgid "Show Voting Box? "
-msgstr ""
-
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:52
-msgid "Enable FAQ Pagination? "
-msgstr ""
-
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:53
-msgid "Item Per Page: "
-msgstr ""
-
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:67
-msgid "FAQ"
-msgstr ""
-
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:95
-msgid "Set number like- 1,2,3. Set big number(100, 200, 300) to display FAQ tab at the last of tab contain ."
-msgstr ""
-
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:128
-msgid "Show"
-msgstr ""
-
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:129
-msgid "Hide"
-msgstr ""
-
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:130
-msgid "Show total number of FAQ items."
-msgstr ""
-
-#: includes/admin/includes/settings/faqtfw-admin-settings.php:344
-msgid "WooCommerce TAB"
-msgstr ""
-
-#: includes/baf-custom-meta-box.php:119
+#: includes/Controllers/Cmb/FtfwcCmb.php:127
 msgid "- Select -"
 msgstr ""
 
-#: includes/baf-custom-meta-box.php:128
-#: includes/baf-custom-meta-box.php:138
+#: includes/Controllers/Cmb/FtfwcCmb.php:138
+#: includes/Controllers/Cmb/FtfwcCmb.php:149
 msgid "Delete"
 msgstr ""
 
-#: includes/baf-custom-meta-box.php:138
+#: includes/Controllers/Cmb/FtfwcCmb.php:150
 msgid "Upload"
 msgstr ""
 
-#: includes/baf-custom-meta-box.php:250
+#: includes/Controllers/Cmb/FtfwcCmb.php:262
 msgid "Add FAQ Items"
 msgstr ""
 
-#: includes/public/class-faqtfw-addon.php:210
-msgid "FAQ "
+#: includes/Controllers/Cpt/CustomColumns.php:35
+msgid "FAQs"
+msgstr ""
+
+#: includes/Controllers/Cpt/CustomColumns.php:37
+msgid "FAQs Visibility"
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:12
+#: includes/Controllers/OptionsPanel/Settings.php:327
+msgid "FAQ Tab For WooCommerce Settings"
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:16
+msgid "Settings saved."
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:26
+msgid "Save Settings"
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:43
+msgid "TAB Content Settings: "
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:45
+msgid "Tab Title: "
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:46
+msgid "Tab Position: "
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:47
+msgid "Display FAQ Counter? "
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:48
+msgid "Hide Tab If Total FAQs Are Zero? "
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:49
+msgid "Show Search Box? "
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:50
+msgid "Show Meta Info Box? "
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:51
+msgid "Show Voting Box? "
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:52
+msgid "Enable FAQ Pagination? "
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:53
+msgid "Item Per Page: "
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:66
+msgid "FAQ"
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:93
+msgid "Set number like- 1,2,3. Set big number(100, 200, 300) to display FAQ tab at the last of tab contain ."
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:124
+msgid "Show"
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:125
+msgid "Hide"
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:126
+msgid "Show total number of FAQ items."
+msgstr ""
+
+#: includes/Controllers/OptionsPanel/Settings.php:328
+msgid "WooCommerce TAB"
+msgstr ""
+
+#. translators: 1: Plugin name, 2: Addon title, 3: Current version, 4: Minimum required version
+#: includes/Helpers/DependencyManager.php:117
+msgid "The %2$s requires %1$s %4$s or higher. You are using %3$s"
+msgstr ""
+
+#. translators: 1: Plugin name, 2: Addon title
+#: includes/Helpers/DependencyManager.php:136
+#: includes/Helpers/DependencyManager.php:153
+msgid "Please install and activate the %1$s plugin to use %2$s."
+msgstr ""
+
+#. translators: 1: Plugin activation link, 2: Addon title
+#: includes/Helpers/DependencyManager.php:170
+msgid "Please Activate the %1$s to use the %2$s."
 msgstr ""

@@ -63,6 +63,7 @@ class IncludePluginFiles {
 	 */
 	private function set_admin_files() {
 		$admin_files = [
+			'includes/Controllers/Cmb/FtfwcCmb',
 			'includes/Controllers/OptionsPanel/Settings',
 		];
 		return $admin_files;

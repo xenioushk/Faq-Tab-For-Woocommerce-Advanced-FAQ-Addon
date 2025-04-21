@@ -1,13 +1,12 @@
 <?php
-namespace UVTADDON\Base;
+namespace FTFWCWP\Base;
 
 use Xenioushk\BwlPluginApi\Api\AjaxHandlers\AjaxHandlersApi;
-use UVTADDON\Callbacks\FrontendAjaxHandlers\VoteDataCb;
 
 /**
  * Class for frontend ajax handlers.
  *
- * @package UVTADDON
+ * @package FTFWCWP
  * @since: 1.1.0
  * @author: Mahbub Alam Khan
  */
@@ -22,15 +21,9 @@ class FrontendAjaxHandlers {
 
 		// Initalize Callbacks.
 
-		$vote_data_cb = new VoteDataCb();
 		// Do not change the tag.
 		// If do so, you need to change in js file too.
-		$ajax_requests = [
-			[
-				'tag'      => 'get_user_vote_data',
-				'callback' => [ $vote_data_cb, 'get_data' ],
-			],
-		];
+		$ajax_requests = [];
 
 		$ajax_handlers_api->add_ajax_handlers( $ajax_requests )->register();
 	}
