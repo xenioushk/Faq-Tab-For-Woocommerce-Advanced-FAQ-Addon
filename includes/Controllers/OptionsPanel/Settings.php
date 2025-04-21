@@ -32,6 +32,9 @@ function faqftw_settings() {
 	<?php
 }
 
+/**
+ * Register the settings fields
+ */
 function faqftw_register_settings_fields() {
 
     // First Parameter option group.
@@ -323,14 +326,14 @@ function faqftw_display_section_cb() {
 function faqftw_settings_submenu() {
 
     add_submenu_page(
-        'edit.php?post_type=bwl_advanced_faq',
-        esc_html__( 'FAQ Tab For WooCommerce Settings', 'baf-faqtfw' ),
-        esc_html__( 'WooCommerce TAB', 'baf-faqtfw' ),
-        'administrator',
-        'faqftw-settings',
-        'faqftw_settings'
-    );
+		'edit.php?post_type=bwl_advanced_faq',
+		esc_html__( 'FAQ Tab For WooCommerce Settings', 'baf-faqtfw' ),
+		esc_html__( 'WooCommerce TAB', 'baf-faqtfw' ),
+		'administrator',
+		'faqftw-settings',
+		'faqftw_settings'
+	);
 }
 
-add_action( 'admin_menu', 'faqftw_settings_submenu' );
-add_action( 'admin_init', 'faqftw_register_settings_fields' );
+// add_action( 'admin_menu', [ __FILE__,'faqftw_settings_submenu' ] );
+// add_action( 'admin_init', [ __FILE__,'faqftw_register_settings_fields' ] );

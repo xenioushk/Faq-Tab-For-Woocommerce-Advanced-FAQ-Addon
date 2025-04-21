@@ -1,6 +1,8 @@
 <?php
 namespace FTFWCWP\Controllers\Cmb;
 
+use WP_Query;
+
 /**
  * Class for Initialize plugin custom meta box.
  *
@@ -50,59 +52,59 @@ class BAF_WC_Meta_Box {
             $field_value = get_post_meta( $post->ID, $custom_field['id'], true );
 			?>
 
-			<?php if ( $custom_field['type'] == 'text' ) : ?>
+<?php if ( $custom_field['type'] == 'text' ) : ?>
 
 <p class="bwl_cmb_row">
-    <label for="<?php echo $custom_field['id']; ?>"><?php echo $custom_field['title']; ?> </label>
-    <input type="<?php echo $custom_field['type']; ?>" id="<?php echo $custom_field['id']; ?>"
+  <label for="<?php echo $custom_field['id']; ?>"><?php echo $custom_field['title']; ?> </label>
+  <input type="<?php echo $custom_field['type']; ?>" id="<?php echo $custom_field['id']; ?>"
     name="<?php echo $custom_field['name']; ?>" class="<?php echo $custom_field['class']; ?>"
     value="<?php echo esc_attr( $field_value ); ?>" />
 </p>
 
-			<?php endif; ?>
+<?php endif; ?>
 
-			<?php if ( $custom_field['type'] == 'select' ) : ?>
+<?php if ( $custom_field['type'] == 'select' ) : ?>
 
-				<?php
+<?php
                 $values = get_post_custom( $post->ID );
 
                 $selected = isset( $values[ $custom_field['name'] ] ) ? esc_attr( $values[ $custom_field['name'] ][0] ) : $custom_field['default_value'];
 				?>
 
 <p class="bwl_cmb_row">
-    <label for="<?php echo $custom_field['id']; ?>"><?php echo $custom_field['title']; ?> </label>
-    <select name="<?php echo $custom_field['name']; ?>" id="<?php echo $custom_field['id']; ?>">
+  <label for="<?php echo $custom_field['id']; ?>"><?php echo $custom_field['title']; ?> </label>
+  <select name="<?php echo $custom_field['name']; ?>" id="<?php echo $custom_field['id']; ?>">
 
     <option value="" selected="selected">- Select -</option>
 
-				<?php foreach ( $custom_field['value'] as $key => $value ) : ?>
+    <?php foreach ( $custom_field['value'] as $key => $value ) : ?>
     <option value="<?php echo $key; ?>" <?php selected( $selected, $key ); ?>><?php echo $value; ?></option>
     <?php endforeach; ?>
 
-    </select>
+  </select>
 
-				<?php if ( isset( $custom_field['desc'] ) && $custom_field['desc'] != '' ) { ?>
-    <i><?php echo $custom_field['desc']; ?></i>
-    <?php } ?>
+  <?php if ( isset( $custom_field['desc'] ) && $custom_field['desc'] != '' ) { ?>
+  <i><?php echo $custom_field['desc']; ?></i>
+  <?php } ?>
 </p>
 
-			<?php endif; ?>
+<?php endif; ?>
 
-			<?php if ( $custom_field['type'] == 'repeatable_select' ) : ?>
+<?php if ( $custom_field['type'] == 'repeatable_select' ) : ?>
 
 <p class="bwl_cmb_row bwl_cmb_db">
-    <label for="<?php echo $custom_field['id']; ?>"><?php echo $custom_field['title']; ?>: </label>
+  <label for="<?php echo $custom_field['id']; ?>"><?php echo $custom_field['title']; ?>: </label>
 
-				<?php if ( isset( $custom_field['desc'] ) && $custom_field['desc'] != '' ) : ?>
-    <small class="small-text"><?php echo $custom_field['desc']; ?></small>
-    <?php endif; ?>
+  <?php if ( isset( $custom_field['desc'] ) && $custom_field['desc'] != '' ) : ?>
+  <small class="small-text"><?php echo $custom_field['desc']; ?></small>
+  <?php endif; ?>
 </p>
 <textarea id="bwl_cmb_data_set"
-    style="display: none;"><?php echo json_encode( $custom_field['default_value'] ); ?></textarea>
+  style="display: none;"><?php echo json_encode( $custom_field['default_value'] ); ?></textarea>
 
 <ul class="bwl_cmb_repeat_field_container">
 
-				<?php
+  <?php
                     $i           = 0;
                     $field_value = apply_filters( 'filter_baftfwc_content_data', get_post_meta( $post->ID, $custom_field['id'] ) );
 
@@ -113,32 +115,32 @@ class BAF_WC_Meta_Box {
 						// Find Current Selected Field.
 						?>
 
-    <li class="bwl_cmb_repeat_row" data-row_count="<?php echo $i; ?>">
+  <li class="bwl_cmb_repeat_row" data-row_count="<?php echo $i; ?>">
 
-						<?php
+    <?php
 						if ( ! empty( $custom_field['label_text'] ) ) {
 							echo "<span class='label'>" . $custom_field['label_text'] . '</span>';
 						}
 						?>
 
     <select id="<?php echo $custom_field['id'] . '_' . $i; ?>"
-        name="<?php echo $custom_field['name'] . '[' . $i . ']'; ?>">
+      name="<?php echo $custom_field['name'] . '[' . $i . ']'; ?>">
 
-        <option value="" selected="selected"><?php esc_html_e( '- Select -', 'baf-faqtfw' ); ?></option>
+      <option value="" selected="selected"><?php esc_html_e( '- Select -', 'baf-faqtfw' ); ?></option>
 
-						<?php foreach ( $custom_field['default_value'] as $default_key => $default_value ) : ?>
-        <option value="<?php echo $default_key; ?>"
-							<?php echo ( $db_save_value == $default_key ) ? 'selected=selected' : ''; ?>><?php echo $default_value; ?>
-        </option>
-        <?php endforeach; ?>
+      <?php foreach ( $custom_field['default_value'] as $default_key => $default_value ) : ?>
+      <option value="<?php echo $default_key; ?>"
+        <?php echo ( $db_save_value == $default_key ) ? 'selected=selected' : ''; ?>><?php echo $default_value; ?>
+      </option>
+      <?php endforeach; ?>
 
     </select>
 
     <a class="delete_row"
-        title="<?php esc_html_e( 'Delete', 'baf-faqtfw' ); ?>"><?php esc_html_e( 'Delete', 'baf-faqtfw' ); ?></a>
-    </li>
+      title="<?php esc_html_e( 'Delete', 'baf-faqtfw' ); ?>"><?php esc_html_e( 'Delete', 'baf-faqtfw' ); ?></a>
+  </li>
 
-						<?php
+  <?php
 						++$i;
 					}
 				}
@@ -146,15 +148,15 @@ class BAF_WC_Meta_Box {
 </ul>
 
 <input id="add_new_row" type="button" class="button" value="<?php echo $custom_field['btn_text']; ?>"
-    data-delete_text="<?php esc_html_e( 'Delete', 'baf-faqtfw' ); ?>"
-    data-upload_text="<?php esc_html_e( 'Upload', 'baf-faqtfw' ); ?>"
-    data-field_type="<?php echo $custom_field['type']; ?>" data-field_name="<?php echo $custom_field['name']; ?>"
-    data-label_text="<?php echo $custom_field['label_text']; ?>">
+  data-delete_text="<?php esc_html_e( 'Delete', 'baf-faqtfw' ); ?>"
+  data-upload_text="<?php esc_html_e( 'Upload', 'baf-faqtfw' ); ?>"
+  data-field_type="<?php echo $custom_field['type']; ?>" data-field_name="<?php echo $custom_field['name']; ?>"
+  data-label_text="<?php echo $custom_field['label_text']; ?>">
 
 
-			<?php endif; ?>
+<?php endif; ?>
 
-			<?php
+<?php
         endforeach;
     }
 
@@ -237,7 +239,7 @@ function baf_wc_custom_meta_init() {
 
     endif;
 
-    wp_reset_query();
+    wp_reset_postdata();
 
     $cmb_bkb_woo_item_fields = [
         'meta_box_id'      => 'cmb_bkb_woo_item_settings', // Unique id of meta box.
@@ -273,9 +275,9 @@ function baf_wc_custom_meta_init() {
         ],
     ];
 
-    new BAF_WC_Meta_Box( $cmb_bkb_woo_item_fields );
+    new \FTFWCWP\Controllers\Cmb\BAF_WC_Meta_Box( $cmb_bkb_woo_item_fields );
 }
 
 // META BOX START EXECUTION FROM HERE.
 
-add_action( 'admin_init', 'baf_wc_custom_meta_init' );
+add_action( 'admin_init', __NAMESPACE__ . '\\baf_wc_custom_meta_init' );
