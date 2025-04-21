@@ -26,6 +26,7 @@ class Init {
 			'helpers'    => self::get_helper_classes(),
 			'base'       => self::get_base_classes(),
 			'meta'       => self::get_meta_classes(),
+			'filters'    => self::get_filter_classes(),
 			// 'actions'    => self::get_action_classes(),
 			'shortcodes' => self::get_shortcodes_classes(),
 		];
@@ -84,6 +85,7 @@ class Init {
 			Base\Language::class,
 			// Base\FrontendAjaxHandlers::class,
 			Base\AdminAjaxHandlers::class,
+			Base\IncludePluginFiles::class,
 		];
 		return $classes;
 	}
@@ -109,6 +111,17 @@ class Init {
 	private static function get_meta_classes() {
 		$classes = [
 			Controllers\PluginMeta\MetaInfo::class,
+		];
+		return $classes;
+	}
+	/**
+	 * Get Filter classes.
+	 *
+	 * @return array
+	 */
+	private static function get_filter_classes() {
+		$classes = [
+			Controllers\Filters\AddonFilters::class,
 		];
 		return $classes;
 	}

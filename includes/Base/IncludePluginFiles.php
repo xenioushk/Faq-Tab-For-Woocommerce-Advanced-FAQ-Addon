@@ -1,11 +1,11 @@
 <?php
-namespace UVTADDON\Base;
+namespace FTFWCWP\Base;
 
 /**
  * Class for including plucin required files.
  *
  * @since: 1.1.0
- * @package UVTADDON
+ * @package FTFWCWP
  */
 class IncludePluginFiles {
 
@@ -38,13 +38,13 @@ class IncludePluginFiles {
 
 		if ( ! empty( $this->frontend_files ) ) {
 			foreach ( $this->frontend_files as $file ) {
-				include_once UVTADDON_PLUGIN_FILE_PATH . "/{$file}.php";
+				include_once FTFWCWP_PLUGIN_FILE_PATH . "/{$file}.php";
 			}
 		}
 
 		if ( is_admin() && ! empty( $this->admin_files ) ) {
 			foreach ( $this->admin_files as $file ) {
-				include_once UVTADDON_PLUGIN_FILE_PATH . "/{$file}.php";
+				include_once FTFWCWP_PLUGIN_FILE_PATH . "/{$file}.php";
 			}
 		}
 	}
@@ -62,7 +62,9 @@ class IncludePluginFiles {
 	 * Set the admin files.
 	 */
 	private function set_admin_files() {
-		$admin_files = [];
+		$admin_files = [
+			'includes/Controllers/OptionsPanel/Settings',
+		];
 		return $admin_files;
 	}
 }

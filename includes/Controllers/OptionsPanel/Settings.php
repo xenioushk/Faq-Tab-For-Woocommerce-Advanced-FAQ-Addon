@@ -7,26 +7,27 @@ function faqftw_settings()
 {
 ?>
 
-    <div class="wrap faq-wrapper baf-option-panel">
+<div class="wrap faq-wrapper baf-option-panel">
 
-        <h2><?php esc_html_e("FAQ Tab For WooCommerce Settings", "baf-faqtfw"); ?></h2>
+  <h2><?php esc_html_e("FAQ Tab For WooCommerce Settings", "baf-faqtfw"); ?></h2>
 
-        <?php if (isset($_GET['settings-updated'])) { ?>
-            <div id="message" class="updated">
-                <p><strong><?php esc_html_e("Settings saved.", "baf-faqtfw") ?></strong></p>
-            </div>
-        <?php } ?>
+  <?php if (isset($_GET['settings-updated'])) { ?>
+  <div id="message" class="updated">
+    <p><strong><?php esc_html_e("Settings saved.", "baf-faqtfw") ?></strong></p>
+  </div>
+  <?php } ?>
 
-        <form action="options.php" method="post">
-            <?php settings_fields('faqftw_options') ?>
-            <?php do_settings_sections(__FILE__); ?>
+  <form action="options.php" method="post">
+    <?php settings_fields('faqftw_options') ?>
+    <?php do_settings_sections(__FILE__); ?>
 
-            <p class="submit">
-                <input name="submit" type="submit" class="button-primary" value="<?php esc_html_e("Save Settings", "baf-faqtfw"); ?>" />
-            </p>
-        </form>
+    <p class="submit">
+      <input name="submit" type="submit" class="button-primary"
+        value="<?php esc_html_e("Save Settings", "baf-faqtfw"); ?>" />
+    </p>
+  </form>
 
-    </div>
+</div>
 
 <?php
 }
@@ -349,5 +350,4 @@ function faqftw_settings_submenu()
 }
 
 add_action('admin_menu', 'faqftw_settings_submenu');
-
 add_action('admin_init', 'faqftw_register_settings_fields');

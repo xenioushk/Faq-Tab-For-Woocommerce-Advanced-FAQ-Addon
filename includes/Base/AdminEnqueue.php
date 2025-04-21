@@ -46,7 +46,7 @@ class AdminEnqueue {
 				wp_enqueue_script(
 					$this->admin_script_slug,
 					FTFWCWP_PLUGIN_SCRIPTS_ASSETS_DIR . 'admin.js',
-					[ 'jquery' ],
+					[ 'jquery', 'jquery-ui-core', 'jquery-ui-sortable' ],
 					FTFWCWP_PLUGIN_VERSION, true
 				);
 
