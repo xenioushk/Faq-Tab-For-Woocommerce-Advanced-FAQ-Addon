@@ -3,6 +3,8 @@ namespace FTFWCWP\Controllers\OptionsPanel;
 
 use FTFWCWP\Callbacks\OptionsPanel\SettingsPageCb;
 use FTFWCWP\Callbacks\OptionsPanel\Fields\AllFieldsCb;
+use FTFWCWP\Callbacks\OptionsPanel\Fields\DisplayFieldsCb;
+use FTFWCWP\Callbacks\OptionsPanel\Fields\DisplayFieldsCb2;
 
 /**
  * Class for settings page.
@@ -102,94 +104,65 @@ class Settings {
         $this->register_options_group();
 
         // Register Sections.
-
         $sections = [
             'faqftw_display_section' => [
-                'title'    => esc_html__( 'TAB Content Settings: ', 'baf-faqtfw' ),
+				'title'    => esc_html__( 'TAB Content Settings: ', 'baf-faqtfw' ),
+				'callback' => [ $this, 'faqftw_display_section_cb' ],
+            ],
+            'faqftw_display_section_2' => [
+                'title'    => esc_html__( 'TAB Content Settings 2: ', 'baf-faqtfw' ),
                 'callback' => [ $this, 'faqftw_display_section_cb' ],
             ],
         ];
 
-        // Register Section.
-		add_settings_section(
-            'faqftw_display_section',
-            esc_html__( 'TAB Content Settings: ', 'baf-faqtfw' ),
-            [ $this, 'faqftw_display_section_cb' ],
-            $this->ftfwc_page_id
-		);
+        foreach ( $sections as $section_id => $section ) {
+            add_settings_section(
+                $section_id,
+                $section['title'],
+                $section['callback'],
+                $this->ftfwc_page_id
+            );
+            $this->register_fields( $section_id );
+        }
 
-        $this->set_fields()->register_fields();
 	}
 
 
     /**
      * Set the fields for the settings page
      */
-    public function set_fields() {
+    public function get_fields( $section_id ) {
 
-        $all_fields_cb = new AllFieldsCb();
-        // Register fields here if needed.
-
-        $this->settings_fields = [
-            'faqftw_tab_title' => [
-                'title'    => esc_html__( 'Tab Title:', 'baf-faqtfw' ),
-                'callback' => [ $all_fields_cb, 'faqftw_tab_title_settings' ],
-            ],
-            'faqftw_tab_position' => [
-                'title'    => esc_html__( 'Tab Position:', 'baf-faqtfw' ),
-                'callback' => [ $all_fields_cb, 'faqftw_tab_position_settings' ],
-            ],
-            'faqftw_faq_counter' => [
-                'title'    => esc_html__( 'Display FAQ Counter?', 'baf-faqtfw' ),
-                'callback' => [ $all_fields_cb, 'faqftw_faq_counter_settings' ],
-            ],
-            'faqftw_auto_hide_tab' => [
-                'title'    => esc_html__( 'Hide Tab If Total FAQs Are Zero?', 'baf-faqtfw' ),
-                'callback' => [ $all_fields_cb, 'faqftw_auto_hide_tab_settings' ],
-            ],
-            'faqftw_show_search_box' => [
-                'title'    => esc_html__( 'Show Search Box?', 'baf-faqtfw' ),
-                'callback' => [ $all_fields_cb, 'faqftw_show_search_box_settings' ],
-            ],
-            'faqftw_show_meta_box' => [
-                'title'    => esc_html__( 'Show Meta Info Box?', 'baf-faqtfw' ),
-                'callback' => [ $all_fields_cb, 'faqftw_show_meta_box_settings' ],
-            ],
-            'faqftw_show_voting_box' => [
-                'title'    => esc_html__( 'Show Voting Box?', 'baf-faqtfw' ),
-                'callback' => [ $all_fields_cb, 'faqftw_show_voting_box_settings' ],
-            ],
-            'faqftw_enable_pagination' => [
-                'title'    => esc_html__( 'Enable FAQ Pagination?', 'baf-faqtfw' ),
-                'callback' => [ $all_fields_cb, 'faqftw_enable_pagination_settings' ],
-            ],
-            'faqftw_item_per_page' => [
-                'title'    => esc_html__( 'Item Per Page', 'baf-faqtfw' ),
-                'callback' => [ $all_fields_cb, 'faqftw_item_per_page_settings' ],
-            ],
-        ];
-
-        return $this;
+        switch ( $section_id ) {
+            case 'faqftw_display_section':
+                return ( new DisplayFieldsCb() )->get_fields();
+			case 'faqftw_display_section_2':
+                return ( new DisplayFieldsCb2() )->get_fields();
+			default:
+                return ( new DisplayFieldsCb() )->get_fields();
+        }
 
     }
 
 
     /**
      * Register the fields for the settings page
+     *
+     * @param string $section_id The section id to register the fields to.
      */
-    public function register_fields() {
+    public function register_fields( $section_id = '' ) {
 
-        if ( ! empty( $this->settings_fields ) ) {
+        $settings_fields = $this->get_fields( $section_id );
 
-			foreach ( $this->settings_fields as $id => $field ) {
-				add_settings_field(
-                    $id,
-                    $field['title'],
-                    $field['callback'],
-                    $this->ftfwc_page_id,
-                    $this->ftfwc_section_id,
-				);
-			}
+		foreach ( $settings_fields as $id => $field ) {
+			add_settings_field(
+				$id,
+				$field['title'],
+				$field['callback'],
+				$this->ftfwc_page_id,
+				$section_id,
+			);
 		}
+
     }
 }

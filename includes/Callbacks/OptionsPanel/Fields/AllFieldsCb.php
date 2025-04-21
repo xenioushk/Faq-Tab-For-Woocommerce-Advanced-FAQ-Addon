@@ -12,7 +12,6 @@ class AllFieldsCb {
 
 	public function __construct() {
 		// Constructor code here.
-		// die();
 	}
 	public function faqftw_tab_title_settings() {
 
