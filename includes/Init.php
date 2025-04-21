@@ -85,6 +85,7 @@ class Init {
 			Base\Language::class,
 			Base\AdminAjaxHandlers::class,
 			Base\IncludePluginFiles::class,
+			Controllers\OptionsPanel\Settings::class,
 		];
 		return $classes;
 	}

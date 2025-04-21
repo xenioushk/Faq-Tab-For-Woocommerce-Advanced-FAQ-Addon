@@ -1,10 +1,10 @@
 <?php
-namespace RECAPADDON\Base;
+namespace FTFWCWP\Base;
 
 /**
  * Class for plucin redirection to about page.
  *
- * @package RECAPADDON
+ * @package FTFWCWP
  */
 class AboutPluginRedirect {
 

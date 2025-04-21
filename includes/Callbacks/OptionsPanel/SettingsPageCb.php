@@ -1,0 +1,30 @@
+<?php
+namespace FTFWCWP\Callbacks\OptionsPanel;
+
+use Xenioushk\BwlPluginApi\Api\View\ViewApi;
+
+/**
+ * Class for Settings page callback.
+ *
+ * @package FTFWCWP
+ * @since: 1.0.0
+ * @author: Mahbub Alam Khan
+ */
+class SettingsPageCb extends ViewApi {
+
+	/**
+	 * Load the settings page template.
+	 *
+	 * @return void
+	 */
+	public function load_template() {
+
+		$data = [
+			'options_id' => FTFWCWP_OPTIONS_ID,
+			'page_id'    => 'faqftw-settings',
+		];
+
+		$this->render( FTFWCWP_VIEWS_DIR . 'OptionsPanel/settings_page_tpl.php',$data );
+
+	}
+}

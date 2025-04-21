@@ -1,339 +1,195 @@
 <?php
-namespace FTFWCWP\Callbacks\OptionsPanel;
+namespace FTFWCWP\Controllers\OptionsPanel;
+
+use FTFWCWP\Callbacks\OptionsPanel\SettingsPageCb;
+use FTFWCWP\Callbacks\OptionsPanel\Fields\AllFieldsCb;
 
 /**
- * Render the settings screen
+ * Class for settings page.
+ *
+ * @package FTFWCWP
+ * @since: 1.0.0
  */
-function faqftw_settings() {
-	?>
+class Settings {
 
-<div class="wrap faq-wrapper baf-option-panel">
+    /**
+     * Plugin options id.
+     *
+     * @note: Must be unqiue, and we will fetch data using this id.
+     * @var string
+     */
+    public $options_id = FTFWCWP_OPTIONS_ID;
 
-    <h2><?php esc_html_e( 'FAQ Tab For WooCommerce Settings', 'baf-faqtfw' ); ?></h2>
+    /**
+     * Plugin page id.
+     *
+     * @note: Must be unique.
+     * @var string
+     */
+    public $ftfwc_page_id = 'faqftw-settings';
 
-	<?php if ( isset( $_GET['settings-updated'] ) ) { ?>
-    <div id="message" class="updated">
-    <p><strong><?php esc_html_e( 'Settings saved.', 'baf-faqtfw' ); ?></strong></p>
-    </div>
-    <?php } ?>
+	/**
+     * Plugin section id.
+     *
+     * @note: Section id will be attached to the settings fields.
+     * @var string
+     */
+    public $ftfwc_section_id = 'faqftw_display_section';
 
-    <form action="options.php" method="post">
-    <?php settings_fields( 'faqftw_options' ); ?>
-    <?php do_settings_sections( __FILE__ ); ?>
+    /**
+     * Settings fields.
+     *
+     * @var array
+     */
+    public $settings_fields = [];
 
-    <p class="submit">
-        <input name="submit" type="submit" class="button-primary"
-        value="<?php esc_html_e( 'Save Settings', 'baf-faqtfw' ); ?>" />
-    </p>
-    </form>
+    /**
+     * Register the settings page and fields
+     */
+	public function register() {
+        $this->initialize();
+	}
 
-</div>
+    /**
+     * Initialize the settings page and fields
+     */
+    public function initialize() {
+        // Initialize the settings page.
+        add_action( 'admin_menu',  [ $this, 'register_options_page' ] );
+		add_action( 'admin_init',  [ $this, 'register_settings_fields' ] );
+    }
 
-	<?php
+    /**
+     * Register options page to the parent menu.
+     * For this we are going to add the submenu page to the BWL Advanced FAQ menu.
+     */
+	public function register_options_page() {
+
+		// Initalize Callbacks.
+		$settings_page_cb = new SettingsPageCb();
+
+		add_submenu_page(
+            'edit.php?post_type=bwl_advanced_faq',
+            esc_html__( 'FAQ Tab For WooCommerce Settings', 'baf-faqtfw' ),
+            esc_html__( 'WooCommerce TAB', 'baf-faqtfw' ),
+            'manage_options',
+            $this->ftfwc_page_id,
+            [ $settings_page_cb, 'load_template' ]
+		);
+	}
+
+    /**
+     * Display the settings section
+     */
+	public function faqftw_display_section_cb() {
+        // echo 'hello from display sections!';
+	}
+
+    /**
+     * Register the options group
+     */
+    public function register_options_group() {
+
+		register_setting( 'faqftw_options', $this->options_id );
+    }
+
+    /**
+     * Register the settings fields
+     */
+	public function register_settings_fields() {
+
+        // Register Settings.
+        $this->register_options_group();
+
+        // Register Sections.
+
+        $sections = [
+            'faqftw_display_section' => [
+                'title'    => esc_html__( 'TAB Content Settings: ', 'baf-faqtfw' ),
+                'callback' => [ $this, 'faqftw_display_section_cb' ],
+            ],
+        ];
+
+        // Register Section.
+		add_settings_section(
+            'faqftw_display_section',
+            esc_html__( 'TAB Content Settings: ', 'baf-faqtfw' ),
+            [ $this, 'faqftw_display_section_cb' ],
+            $this->ftfwc_page_id
+		);
+
+        $this->set_fields()->register_fields();
+	}
+
+
+    /**
+     * Set the fields for the settings page
+     */
+    public function set_fields() {
+
+        $all_fields_cb = new AllFieldsCb();
+        // Register fields here if needed.
+
+        $this->settings_fields = [
+            'faqftw_tab_title' => [
+                'title'    => esc_html__( 'Tab Title:', 'baf-faqtfw' ),
+                'callback' => [ $all_fields_cb, 'faqftw_tab_title_settings' ],
+            ],
+            'faqftw_tab_position' => [
+                'title'    => esc_html__( 'Tab Position:', 'baf-faqtfw' ),
+                'callback' => [ $all_fields_cb, 'faqftw_tab_position_settings' ],
+            ],
+            'faqftw_faq_counter' => [
+                'title'    => esc_html__( 'Display FAQ Counter?', 'baf-faqtfw' ),
+                'callback' => [ $all_fields_cb, 'faqftw_faq_counter_settings' ],
+            ],
+            'faqftw_auto_hide_tab' => [
+                'title'    => esc_html__( 'Hide Tab If Total FAQs Are Zero?', 'baf-faqtfw' ),
+                'callback' => [ $all_fields_cb, 'faqftw_auto_hide_tab_settings' ],
+            ],
+            'faqftw_show_search_box' => [
+                'title'    => esc_html__( 'Show Search Box?', 'baf-faqtfw' ),
+                'callback' => [ $all_fields_cb, 'faqftw_show_search_box_settings' ],
+            ],
+            'faqftw_show_meta_box' => [
+                'title'    => esc_html__( 'Show Meta Info Box?', 'baf-faqtfw' ),
+                'callback' => [ $all_fields_cb, 'faqftw_show_meta_box_settings' ],
+            ],
+            'faqftw_show_voting_box' => [
+                'title'    => esc_html__( 'Show Voting Box?', 'baf-faqtfw' ),
+                'callback' => [ $all_fields_cb, 'faqftw_show_voting_box_settings' ],
+            ],
+            'faqftw_enable_pagination' => [
+                'title'    => esc_html__( 'Enable FAQ Pagination?', 'baf-faqtfw' ),
+                'callback' => [ $all_fields_cb, 'faqftw_enable_pagination_settings' ],
+            ],
+            'faqftw_item_per_page' => [
+                'title'    => esc_html__( 'Item Per Page', 'baf-faqtfw' ),
+                'callback' => [ $all_fields_cb, 'faqftw_item_per_page_settings' ],
+            ],
+        ];
+
+        return $this;
+
+    }
+
+
+    /**
+     * Register the fields for the settings page
+     */
+    public function register_fields() {
+
+        if ( ! empty( $this->settings_fields ) ) {
+
+			foreach ( $this->settings_fields as $id => $field ) {
+				add_settings_field(
+                    $id,
+                    $field['title'],
+                    $field['callback'],
+                    $this->ftfwc_page_id,
+                    $this->ftfwc_section_id,
+				);
+			}
+		}
+    }
 }
-
-/**
- * Register the settings fields
- */
-function faqftw_register_settings_fields() {
-
-    // First Parameter option group.
-    // Second Parameter contain keyword. use in get_options() function.
-
-    register_setting( 'faqftw_options', 'faqftw_options' );
-
-    // Common Settings.
-    add_settings_section( 'faqftw_display_section', esc_html__( 'TAB Content Settings: ', 'baf-faqtfw' ), 'faqftw_display_section_cb', __FILE__ );
-
-    add_settings_field( 'faqftw_tab_title', esc_html__( 'Tab Title: ', 'baf-faqtfw' ), 'faqftw_tab_title_settings', __FILE__, 'faqftw_display_section' );
-    add_settings_field( 'faqftw_tab_position', esc_html__( 'Tab Position: ', 'baf-faqtfw' ), 'faqftw_tab_position_settings', __FILE__, 'faqftw_display_section' );
-    add_settings_field( 'faqftw_faq_counter', esc_html__( 'Display FAQ Counter? ', 'baf-faqtfw' ), 'faqftw_faq_counter_settings', __FILE__, 'faqftw_display_section' );
-    add_settings_field( 'faqftw_auto_hide_tab', esc_html__( 'Hide Tab If Total FAQs Are Zero? ', 'baf-faqtfw' ), 'faqftw_auto_hide_tab_settings', __FILE__, 'faqftw_display_section' );
-    add_settings_field( 'faqftw_show_search_box', esc_html__( 'Show Search Box? ', 'baf-faqtfw' ), 'faqftw_show_search_box_settings', __FILE__, 'faqftw_display_section' );
-    add_settings_field( 'faqftw_show_meta_box', esc_html__( 'Show Meta Info Box? ', 'baf-faqtfw' ), 'faqftw_show_meta_box_settings', __FILE__, 'faqftw_display_section' );
-    add_settings_field( 'faqftw_show_voting_box', esc_html__( 'Show Voting Box? ', 'baf-faqtfw' ), 'faqftw_show_voting_box_settings', __FILE__, 'faqftw_display_section' );
-    add_settings_field( 'faqftw_enable_pagination', esc_html__( 'Enable FAQ Pagination? ', 'baf-faqtfw' ), 'faqftw_enable_pagination_settings', __FILE__, 'faqftw_display_section' );
-    add_settings_field( 'faqftw_item_per_page', esc_html__( 'Item Per Page: ', 'baf-faqtfw' ), 'faqftw_item_per_page_settings', __FILE__, 'faqftw_display_section' );
-}
-
-/**
- * @Description: Tab Title Settings
- * @Created At: 04-08-2015
- * @Last Edited AT: 04-08-2015
- * @Created By: Mahbub
- * */
-function faqftw_tab_title_settings() {
-
-    $faqftw_options = get_option( 'faqftw_options' );
-
-    $faqftw_tab_title = esc_html__( 'FAQ', 'baf-faqtfw' );
-
-    if ( isset( $faqftw_options['faqftw_tab_title'] ) ) {
-
-        $faqftw_tab_title = $faqftw_options['faqftw_tab_title'];
-    }
-
-    echo '<input type="text" name="faqftw_options[faqftw_tab_title]" id="faqftw_tab_title" class="medium-text" value="' . sanitize_textarea_field( $faqftw_tab_title ) . '" />';
-}
-
-/**
- * @Description: Tab Position Settings
- * @Created At: 04-08-2015
- * @Last Edited AT: 04-08-2015
- * @Created By: Mahbub
- * */
-function faqftw_tab_position_settings() {
-
-    $faqftw_options = get_option( 'faqftw_options' );
-
-    $faqftw_tab_position = '100';
-
-    if ( isset( $faqftw_options['faqftw_tab_position'] ) ) {
-
-        $faqftw_tab_position = strtoupper( $faqftw_options['faqftw_tab_position'] );
-    }
-
-    echo '<input type="text" name="faqftw_options[faqftw_tab_position]" id="faqftw_tab_position" class="small-text" value="' . absint( $faqftw_tab_position ) . '" /><em><small> ' . esc_html__( 'Set number like- 1,2,3. Set big number(100, 200, 300) to display FAQ tab at the last of tab contain .', 'baf-faqtfw' ) . '</small></em>';
-}
-
-/**
- * @Description: FAQ Counter Settings.
- * @Created At: 04-07-2015
- * @Last Edited AT: 04-07-2015
- * @Created By: Mahbub
- * */
-function faqftw_faq_counter_settings() {
-
-    $faqftw_options = get_option( 'faqftw_options' );
-
-    $faqftw_faq_counter = 1;
-
-    if ( isset( $faqftw_options['faqftw_faq_counter'] ) ) {
-
-        $faqftw_faq_counter = $faqftw_options['faqftw_faq_counter'];
-    }
-
-    if ( $faqftw_faq_counter == 1 ) {
-
-        $show_status = 'selected=selected';
-        $hide_status = '';
-    } else {
-
-        $show_status = '';
-        $hide_status = 'selected=selected';
-    }
-
-    echo '<select name="faqftw_options[faqftw_faq_counter]">
-                    <option value="1" ' . $show_status . '>' . esc_html__( 'Show', 'baf-faqtfw' ) . '</option>   
-                    <option value="0" ' . $hide_status . '>' . esc_html__( 'Hide', 'baf-faqtfw' ) . '</option>               
-                 </select><em><small> ' . esc_html__( 'Show total number of FAQ items.', 'baf-faqtfw' ) . '</small></em>';
-}
-
-/**
- * @Description: Auto Hide Tab Settings.
- * @Created At: 04-07-2015
- * @Last Edited AT: 04-07-2015
- * @Created By: Mahbub
- * */
-function faqftw_auto_hide_tab_settings() {
-
-    $faqftw_options = get_option( 'faqftw_options' );
-
-    $faqftw_auto_hide_tab = 1;
-
-    if ( isset( $faqftw_options['faqftw_auto_hide_tab'] ) ) {
-
-        $faqftw_auto_hide_tab = $faqftw_options['faqftw_auto_hide_tab'];
-    }
-
-    if ( $faqftw_auto_hide_tab == 1 ) {
-
-        $show_status = 'selected=selected';
-        $hide_status = '';
-    } else {
-
-        $show_status = '';
-        $hide_status = 'selected=selected';
-    }
-
-    echo '<select name="faqftw_options[faqftw_auto_hide_tab]">
-                    <option value="1" ' . $show_status . '>' . esc_html__( 'Yes', 'baf-faqtfw' ) . '</option>   
-                    <option value="0" ' . $hide_status . '>' . esc_html__( 'No', 'baf-faqtfw' ) . '</option>               
-                 </select>';
-}
-
-/**
- * @Description: Show Search Box Settings.
- * @Created At: 04-07-2015
- * @Last Edited AT: 04-07-2015
- * @Created By: Mahbub
- * */
-function faqftw_show_search_box_settings() {
-
-    $faqftw_options = get_option( 'faqftw_options' );
-
-    $faqftw_show_search_box = 1;
-
-    if ( isset( $faqftw_options['faqftw_show_search_box'] ) ) {
-
-        $faqftw_show_search_box = $faqftw_options['faqftw_show_search_box'];
-    }
-
-    if ( $faqftw_show_search_box == 1 ) {
-
-        $show_status = 'selected=selected';
-        $hide_status = '';
-    } else {
-
-        $show_status = '';
-        $hide_status = 'selected=selected';
-    }
-
-    echo '<select name="faqftw_options[faqftw_show_search_box]">
-                    <option value="1" ' . $show_status . '>' . esc_html__( 'Yes', 'baf-faqtfw' ) . '</option>   
-                    <option value="0" ' . $hide_status . '>' . esc_html__( 'No', 'baf-faqtfw' ) . '</option>               
-                 </select>';
-}
-
-/**
- * @Description: Show Voting Box Settings.
- * @Created At: 04-07-2015
- * @Last Edited AT: 04-07-2015
- * @Created By: Mahbub
- * */
-function faqftw_show_voting_box_settings() {
-
-    $faqftw_options = get_option( 'faqftw_options' );
-
-    $faqftw_show_voting_box = 1;
-
-    if ( isset( $faqftw_options['faqftw_show_voting_box'] ) ) {
-
-        $faqftw_show_voting_box = $faqftw_options['faqftw_show_voting_box'];
-    }
-
-    if ( $faqftw_show_voting_box == 1 ) {
-
-        $show_status = 'selected=selected';
-        $hide_status = '';
-    } else {
-
-        $show_status = '';
-        $hide_status = 'selected=selected';
-    }
-
-    echo '<select name="faqftw_options[faqftw_show_voting_box]">
-                    <option value="1" ' . $show_status . '>' . esc_html__( 'Yes', 'baf-faqtfw' ) . '</option>   
-                    <option value="0" ' . $hide_status . '>' . esc_html__( 'No', 'baf-faqtfw' ) . '</option>               
-                 </select>';
-}
-
-/**
- * @Description: FAQ Meta Box Settings.
- * @Created At: 04-07-2015
- * @Last Edited AT: 04-07-2015
- * @Created By: Mahbub
- * */
-function faqftw_show_meta_box_settings() {
-
-    $faqftw_options = get_option( 'faqftw_options' );
-
-    $faqftw_show_meta_box = 1;
-
-    if ( isset( $faqftw_options['faqftw_show_meta_box'] ) ) {
-
-        $faqftw_show_meta_box = $faqftw_options['faqftw_show_meta_box'];
-    }
-
-    if ( $faqftw_show_meta_box == 1 ) {
-
-        $show_status = 'selected=selected';
-        $hide_status = '';
-    } else {
-
-        $show_status = '';
-        $hide_status = 'selected=selected';
-    }
-
-    echo '<select name="faqftw_options[faqftw_show_meta_box]">
-                    <option value="1" ' . $show_status . '>' . esc_html__( 'Yes', 'baf-faqtfw' ) . '</option>   
-                    <option value="0" ' . $hide_status . '>' . esc_html__( 'No', 'baf-faqtfw' ) . '</option>               
-                 </select>';
-}
-
-/**
- * @Description: Enable Pagination Settings.
- * @Created At: 04-07-2015
- * @Last Edited AT: 04-07-2015
- * @Created By: Mahbub
- * */
-function faqftw_enable_pagination_settings() {
-
-    $faqftw_options = get_option( 'faqftw_options' );
-
-    $faqftw_enable_pagination = 1;
-
-    if ( isset( $faqftw_options['faqftw_enable_pagination'] ) ) {
-
-        $faqftw_enable_pagination = $faqftw_options['faqftw_enable_pagination'];
-    }
-
-    if ( $faqftw_enable_pagination == 1 ) {
-
-        $show_status = 'selected=selected';
-        $hide_status = '';
-    } else {
-
-        $show_status = '';
-        $hide_status = 'selected=selected';
-    }
-
-    echo '<select name="faqftw_options[faqftw_enable_pagination]">
-                    <option value="1" ' . $show_status . '>' . esc_html__( 'Yes', 'baf-faqtfw' ) . '</option>   
-                    <option value="0" ' . $hide_status . '>' . esc_html__( 'No', 'baf-faqtfw' ) . '</option>               
-                 </select>';
-}
-
-/**
- * @Description: Tab Position Settings
- * @Created At: 04-08-2015
- * @Last Edited AT: 04-08-2015
- * @Created By: Mahbub
- * */
-function faqftw_item_per_page_settings() {
-
-    $faqftw_options = get_option( 'faqftw_options' );
-
-    $faqftw_item_per_page = '5';
-
-    if ( isset( $faqftw_options['faqftw_tab_position'] ) ) {
-
-        $faqftw_item_per_page = trim( $faqftw_options['faqftw_item_per_page'] );
-    }
-
-    echo '<input type="text" name="faqftw_options[faqftw_item_per_page]" id="faqftw_item_per_page" class="small-text" value="' . absint( $faqftw_item_per_page ) . '" />';
-}
-
-/*---Form Input---*/
-
-function faqftw_display_section_cb() {
-    // Add option Later.
-}
-
-/**
- * Add the settings page to the admin menu
- */
-function faqftw_settings_submenu() {
-
-    add_submenu_page(
-		'edit.php?post_type=bwl_advanced_faq',
-		esc_html__( 'FAQ Tab For WooCommerce Settings', 'baf-faqtfw' ),
-		esc_html__( 'WooCommerce TAB', 'baf-faqtfw' ),
-		'administrator',
-		'faqftw-settings',
-		'faqftw_settings'
-	);
-}
-
-// add_action( 'admin_menu', [ __FILE__,'faqftw_settings_submenu' ] );
-// add_action( 'admin_init', [ __FILE__,'faqftw_register_settings_fields' ] );

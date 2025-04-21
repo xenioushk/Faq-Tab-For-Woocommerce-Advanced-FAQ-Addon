@@ -27,8 +27,10 @@ class PluginConstants {
 	 */
 	public static function init() {
 
+		define( 'FTFWCWP_OPTIONS_ID', 'faqftw_options' );
+
 		self::$plugin_options = get_option( 'bwl_advanced_faq_options' );
-		self::$addon_options  = get_option( 'faqftw_options' );
+		self::$addon_options  = get_option( FTFWCWP_OPTIONS_ID );
 	}
 
 	/**
