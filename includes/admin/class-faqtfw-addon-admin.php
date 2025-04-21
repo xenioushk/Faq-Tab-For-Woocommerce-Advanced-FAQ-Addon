@@ -28,12 +28,6 @@ class BAF_faqtfw_Admin {
         // Load public-facing style sheet and JavaScript.
         add_action( 'admin_enqueue_scripts', [ $this, 'faqtfwAdminEnqueueScripts' ] );
 
-        // After manage text we need to add "custom_post_type" value.
-        add_filter( 'manage_' . $post_types . '_posts_columns', [ $this, 'faqtfw_custom_column_header' ] );
-
-        // After manage text we need to add "custom_post_type" value.
-        add_action( 'manage_' . $post_types . '_posts_custom_column', [ $this, 'faqtfw_display_custom_column' ], 10, 1 );
-
         // Quick & Bulk Edit Section.
 
         add_action( 'bulk_edit_custom_box', [ $this, 'faqtfw_product_quick_edit_box' ], 10, 2 );
@@ -166,47 +160,6 @@ class BAF_faqtfw_Admin {
         ];
 
         return $meta_boxes;
-    }
-
-    function faqtfw_custom_column_header( $columns ) {
-
-        return array_merge(
-            $columns,
-            [
-                'faqftw_faq_post_ids'     => esc_html__( 'FAQs', 'baf-faqtfw' ),
-                'baf_woo_tab_hide_status' => esc_html__( 'FAQs Visibility', 'baf-faqtfw' ),
-            ]
-        );
-    }
-
-    function faqtfw_display_custom_column( $column ) {
-
-        // Add A Custom Image Size For Admin Panel.
-
-        global $post;
-
-        switch ( $column ) {
-
-			case 'faqftw_faq_post_ids':
-				$get_faqftw_faq_post_ids = apply_filters( 'filter_baftfwc_content_data', get_post_meta( $post->ID, 'faqftw_faq_post_ids' ) );
-				$faqftw_faq_post_ids     = (int) count( $get_faqftw_faq_post_ids );
-				echo '<div id="faqftw_faq_post_ids-' . $post->ID . '" >&nbsp;' . $faqftw_faq_post_ids . '</div>';
-
-                break;
-
-			case 'baf_woo_tab_hide_status':
-				$baf_woo_tab_hide_status = ( get_post_meta( $post->ID, 'baf_woo_tab_hide_status', true ) == '' ) ? '' : get_post_meta( $post->ID, 'baf_woo_tab_hide_status', true );
-
-				// FAQ Display Status In Text.
-
-				$visibilityIcon = BAF_WC_PLUGIN_DIR . 'libs/images/';
-
-				$iconType = ( $baf_woo_tab_hide_status == 1 ) ? 'hidden.png' : 'visible.png';
-
-				echo '<div id="baf_woo_tab_hide_status-' . $post->ID . '" data-status_code="' . $baf_woo_tab_hide_status . '" ><img src="' . $visibilityIcon . $iconType . '"></div>';
-
-                break;
-        }
     }
 
     /*---Bulk & Quick Edit Section---*/

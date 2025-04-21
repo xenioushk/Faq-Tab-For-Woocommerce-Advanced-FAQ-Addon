@@ -26,6 +26,7 @@ class Init {
 			'helpers'    => self::get_helper_classes(),
 			'base'       => self::get_base_classes(),
 			'meta'       => self::get_meta_classes(),
+			'cpt'        => self::get_cpt_classes(),
 			'filters'    => self::get_filter_classes(),
 			// 'actions'    => self::get_action_classes(),
 			'shortcodes' => self::get_shortcodes_classes(),
@@ -114,6 +115,22 @@ class Init {
 		];
 		return $classes;
 	}
+
+	/**
+	 * Get CPT classes.
+	 *
+	 * @return array
+	 */
+	private static function get_cpt_classes() {
+		$classes = [
+			// Controllers\Cpt\PluginCpt::class,
+			Controllers\Cpt\CustomColumns::class,
+			// Controllers\Cpt\QuickBulkEdit::class,
+			// Controllers\Cpt\TaxonomyFilters::class,
+		];
+		return $classes;
+	}
+
 	/**
 	 * Get Filter classes.
 	 *
