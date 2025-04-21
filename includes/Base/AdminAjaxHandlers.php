@@ -1,13 +1,12 @@
 <?php
-namespace UVTADDON\Base;
+namespace FTFWCWP\Base;
 
 use Xenioushk\BwlPluginApi\Api\AjaxHandlers\AjaxHandlersApi;
-use UVTADDON\Callbacks\AdminAjaxHandlers\ReportTableCb;
-use UVTADDON\Callbacks\AdminAjaxHandlers\PluginInstallationCb;
+use FTFWCWP\Callbacks\AdminAjaxHandlers\PluginInstallationCb;
 /**
  * Class for admin ajax handlers.
  *
- * @package UVTADDON
+ * @package FTFWCWP
  */
 class AdminAjaxHandlers {
 
@@ -19,18 +18,13 @@ class AdminAjaxHandlers {
 		$ajax_handlers_api = new AjaxHandlersApi();
 
 		// Initialize callbacks.
-		$report_table_cb        = new ReportTableCb();
 		$plugin_installation_cb = new PluginInstallationCb();
 
 		// Do not change the tag.
 		// If do so, you need to change in js file too.
 		$ajax_requests = [
 			[
-				'tag'      => 'uvt_voting_stats',
-				'callback' => [ $report_table_cb, 'get_the_data' ],
-			],
-			[
-				'tag'      => 'uvt_bpvm_installation_counter',
+				'tag'      => 'baf_ftfwc_installation_counter',
 				'callback' => [ $plugin_installation_cb, 'save' ],
 			],
 		];

@@ -1,5 +1,5 @@
 <?php
-namespace UVTADDON\Traits;
+namespace FTFWCWP\Traits;
 
 trait TraitAdminNotice {
 
