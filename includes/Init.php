@@ -125,7 +125,7 @@ class Init {
 		$classes = [
 			// Controllers\Cpt\PluginCpt::class,
 			Controllers\Cpt\CustomColumns::class,
-			// Controllers\Cpt\QuickBulkEdit::class,
+			Controllers\Actions\Admin\QuickBulkEdit::class,
 			// Controllers\Cpt\TaxonomyFilters::class,
 		];
 		return $classes;

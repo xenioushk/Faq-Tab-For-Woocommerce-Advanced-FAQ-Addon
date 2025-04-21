@@ -21,7 +21,7 @@ class AdminEnqueue {
 	public function __construct() {
 		// Frontend script slug.
 		// This is required to hook the loclization texts.
-		$this->admin_script_slug = 'bpvm-faqtfw-admin';
+		$this->admin_script_slug = 'baf-faqtfw-admin';
 	}
 
 	/**

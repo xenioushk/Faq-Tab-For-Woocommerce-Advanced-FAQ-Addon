@@ -2,6 +2,6 @@
 import "./styles/admin.scss"
 
 // Load JavaScripts
-import "./modules/admin.js"
-import "./modules/ftfwc_cmb.js"
+import "./modules/ftfwc_admin_scripts"
+import "./modules/ftfwc_cmb"
 import "./modules/installation_counter"
