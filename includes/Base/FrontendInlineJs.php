@@ -1,10 +1,12 @@
 <?php
-namespace UVTADDON\Base;
+namespace FTFWCWP\Base;
+
+use FTFWCWP\Helpers\PluginConstants;
 
 /**
  * Class for plucin frontend inline js.
  *
- * @package UVTADDON
+ * @package FTFWCWP
  * @since: 1.1.0
  * @auther: Mahbub Alam Khan
  */
@@ -22,8 +24,14 @@ class FrontendInlineJs {
 	 */
 	public function set_inline_js() {
 
-		$output = '';
+		$faqftw_options = PluginConstants::$addon_options;
 
-		echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        $faqftw_faq_counter = $faqftw_options['faqftw_faq_counter'] ?? 1;
+        ?>
+<script type="text/javascript">
+var faqftw_faq_counter = '<?php echo $faqftw_faq_counter; ?>';
+</script>
+
+		<?php
 	}
 }

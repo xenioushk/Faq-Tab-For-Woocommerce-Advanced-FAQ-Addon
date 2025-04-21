@@ -2,7 +2,7 @@
   function baf_ftfwc_installation_counter() {
     return $.ajax({
       type: "POST",
-      url: ajaxurl,
+      url: BafFtfwcAdminData.ajaxurl,
       data: {
         action: "baf_ftfwc_installation_counter", // this is the name of our WP AJAX function that we'll set up next
         product_id: BafFtfwcAdminData.product_id, // change the localization variable.

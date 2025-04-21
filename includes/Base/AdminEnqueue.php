@@ -1,10 +1,10 @@
 <?php
-namespace UVTADDON\Base;
+namespace FTFWCWP\Base;
 
 /**
  * Class for registering the plugin admin scripts and styles.
  *
- * @package UVTADDON
+ * @package FTFWCWP
  */
 class AdminEnqueue {
 
@@ -21,7 +21,7 @@ class AdminEnqueue {
 	public function __construct() {
 		// Frontend script slug.
 		// This is required to hook the loclization texts.
-		$this->admin_script_slug = 'bpvm-uvt-admin';
+		$this->admin_script_slug = 'bpvm-faqtfw-admin';
 	}
 
 	/**
@@ -36,11 +36,18 @@ class AdminEnqueue {
      */
 	public function get_the_scripts() {
 
+		wp_enqueue_style(
+			$this->admin_script_slug,
+			FTFWCWP_PLUGIN_STYLES_ASSETS_DIR . 'admin.css',
+			[],
+			FTFWCWP_PLUGIN_VERSION
+		);
+
 				wp_enqueue_script(
 					$this->admin_script_slug,
-					UVTADDON_PLUGIN_SCRIPTS_ASSETS_DIR . 'admin.js',
+					FTFWCWP_PLUGIN_SCRIPTS_ASSETS_DIR . 'admin.js',
 					[ 'jquery' ],
-					UVTADDON_PLUGIN_VERSION, true
+					FTFWCWP_PLUGIN_VERSION, true
 				);
 
 				$this->get_the_localization_texts();
@@ -53,15 +60,15 @@ class AdminEnqueue {
 
 		// Localize scripts.
 		// Frontend.
-		// Access data: uvtBpvmAdminData.version
+		// Access data: BafFtfwcAdminData.version
 		wp_localize_script(
             $this->admin_script_slug,
-            'uvtBpvmAdminData',
+            'BafFtfwcAdminData',
             [
-				'version'      => UVTADDON_PLUGIN_VERSION,
+				'version'      => FTFWCWP_PLUGIN_VERSION,
 				'ajaxurl'      => esc_url( admin_url( 'admin-ajax.php' ) ),
-				'product_id'   => UVTADDON_PRODUCT_ID,
-				'installation' => get_option( UVTADDON_PRODUCT_INSTALLATION_TAG ),
+				'product_id'   => FTFWCWP_PRODUCT_ID,
+				'installation' => get_option( FTFWCWP_PRODUCT_INSTALLATION_TAG ),
 			]
 		);
 	}

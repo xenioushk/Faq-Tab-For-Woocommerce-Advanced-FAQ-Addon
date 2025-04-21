@@ -15,12 +15,20 @@ class PluginConstants {
          */
 	public static $plugin_options = [];
 
+		/**
+         * Static property to hold addon options.
+         *
+         * @var array
+         */
+	public static $addon_options = [];
+
 	/**
 	 * Initialize the plugin options.
 	 */
 	public static function init() {
 
 		self::$plugin_options = get_option( 'bwl_advanced_faq_options' );
+		self::$addon_options  = get_option( 'faqftw_options' );
 	}
 
 	/**

@@ -17,116 +17,11 @@ class BAF_faqtfw {
         ) {
 
             // Load public-facing style sheet and JavaScript.
-            add_action( 'wp_head', [ $this, 'baf_faqtfw_custom_scripts' ] );
-            add_action( 'wp_enqueue_scripts', [ $this, 'faqtfwEnqueueScripts' ] );
 
             add_filter( 'woocommerce_product_tabs', [ $this, 'faqtfwAddCustomProductTab' ] );
 
             $this->include_files();
         }
-    }
-
-    public function get_plugin_slug() {
-        return $this->plugin_slug;
-    }
-
-    public static function get_instance() {
-
-        // If the single instance hasn't been set, set it now.
-        if ( null == self::$instance ) {
-            self::$instance = new self();
-        }
-
-        return self::$instance;
-    }
-
-    public static function activate( $network_wide ) {
-
-        if ( function_exists( 'is_multisite' ) && is_multisite() ) {
-
-            if ( $network_wide ) {
-
-                // Get all blog ids
-                $blog_ids = self::get_blog_ids();
-
-                foreach ( $blog_ids as $blog_id ) {
-
-                    switch_to_blog( $blog_id );
-                    self::single_activate();
-                }
-
-                restore_current_blog();
-            } else {
-                self::single_activate();
-            }
-        } else {
-            self::single_activate();
-        }
-    }
-
-    public static function deactivate( $network_wide ) {
-
-        if ( function_exists( 'is_multisite' ) && is_multisite() ) {
-
-            if ( $network_wide ) {
-
-                // Get all blog ids
-                $blog_ids = self::get_blog_ids();
-
-                foreach ( $blog_ids as $blog_id ) {
-
-                    switch_to_blog( $blog_id );
-                    self::single_deactivate();
-                }
-
-                restore_current_blog();
-            } else {
-                self::single_deactivate();
-            }
-        } else {
-            self::single_deactivate();
-        }
-    }
-
-    public function activate_new_site( $blog_id ) {
-
-        if ( 1 !== did_action( 'wpmu_new_blog' ) ) {
-            return;
-        }
-
-        switch_to_blog( $blog_id );
-        self::single_activate();
-        restore_current_blog();
-    }
-
-    private static function get_blog_ids() {
-
-        global $wpdb;
-
-        // get an array of blog ids
-        $sql = "SELECT blog_id FROM $wpdb->blogs
-			WHERE archived = '0' AND spam = '0'
-			AND deleted = '0'";
-
-        return $wpdb->get_col( $sql );
-    }
-
-    /**
-     * Fired for each blog when the plugin is activated.
-     *
-     * @since 1.0.0
-     */
-    private static function single_activate() {
-        // @TODO: Define activation functionality here
-    }
-
-    /**
-     * Fired for each blog when the plugin is deactivated.
-     *
-     * @since 1.0.0
-     */
-    private static function single_deactivate() {
-        // @TODO: Define deactivation functionality here
     }
 
     function include_files() {
@@ -135,33 +30,7 @@ class BAF_faqtfw {
         include_once FAQTFW_DIR . 'includes/public/class-faqtfw-addon.php';
     }
 
-    public function baf_faqtfw_custom_scripts() {
 
-        $faqftw_options = get_option( 'faqftw_options' );
-
-        $faqftw_faq_counter = 1;
-
-        if ( isset( $faqftw_options['faqftw_faq_counter'] ) && $faqftw_options['faqftw_faq_counter'] == 0 ) {
-
-            $faqftw_faq_counter = 0;
-        }
-        ?>
-<script type="text/javascript">
-var faqftw_faq_counter = '<?php echo $faqftw_faq_counter; ?>';
-</script>
-
-<?php
-    }
-
-
-    /**
-     * Enqueues front-end styles and scripts
-     *
-     * @since 1.0.0
-     */
-    public function faqtfwEnqueueScripts() {
-        wp_enqueue_script( $this->plugin_slug . '-frontend', BAF_WC_PLUGIN_DIR . 'assets/scripts/frontend.js', [ 'jquery' ], self::VERSION );
-    }
 
     /**
      * Register custom tab

@@ -1,10 +1,10 @@
 <?php
-namespace UVTADDON\Base;
+namespace FTFWCWP\Base;
 
 /**
  * Class for registering the plugin scripts and styles.
  *
- * @package UVTADDON
+ * @package FTFWCWP
  */
 class Enqueue {
 
@@ -21,7 +21,7 @@ class Enqueue {
 	public function __construct() {
 		// Frontend script slug.
 		// This is required to hook the loclization texts.
-		$this->frontend_script_slug = 'bpvm-uvt-frontend';
+		$this->frontend_script_slug = 'baf-faqtfw-frontend';
 	}
 
 	/**
@@ -41,9 +41,9 @@ class Enqueue {
 
 		wp_enqueue_style(
             $this->frontend_script_slug,
-            UVTADDON_PLUGIN_STYLES_ASSETS_DIR . 'frontend.css',
+            FTFWCWP_PLUGIN_STYLES_ASSETS_DIR . 'frontend.css',
             [],
-            UVTADDON_PLUGIN_VERSION
+            FTFWCWP_PLUGIN_VERSION
 		);
 	}
 
@@ -55,9 +55,9 @@ class Enqueue {
 		// Register JS
 		wp_enqueue_script(
             $this->frontend_script_slug,
-            UVTADDON_PLUGIN_SCRIPTS_ASSETS_DIR . 'frontend.js',
+            FTFWCWP_PLUGIN_SCRIPTS_ASSETS_DIR . 'frontend.js',
             [ 'jquery' ],
-            UVTADDON_PLUGIN_VERSION,
+            FTFWCWP_PLUGIN_VERSION,
             true
 		);
 
@@ -72,12 +72,12 @@ class Enqueue {
 
 		// Localize scripts.
 		// Frontend.
-		// Access data: bpvmUvtData.version
+		// Access data: BafFtfwcData.version
 		wp_localize_script(
             $this->frontend_script_slug,
-            'bpvmUvtData',
+            'BafFtfwcAdminData',
             [
-				'version' => UVTADDON_PLUGIN_VERSION,
+				'version' => FTFWCWP_PLUGIN_VERSION,
 			]
 		);
 	}
