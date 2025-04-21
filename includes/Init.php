@@ -25,7 +25,7 @@ class Init {
 		$service_classes = [
 			'helpers' => self::get_helper_classes(),
 			'base'    => self::get_base_classes(),
-			// 'meta'       => self::get_meta_classes(),
+			'meta'    => self::get_meta_classes(),
 			// 'actions'    => self::get_action_classes(),
 			// 'shortcodes' => self::get_shortcodes_classes(),
 		];
@@ -82,7 +82,7 @@ class Init {
 			Base\PluginUpdate::class,
 			Base\Language::class,
 			// Base\FrontendAjaxHandlers::class,
-			// Base\AdminAjaxHandlers::class,
+			Base\AdminAjaxHandlers::class,
 		];
 		return $classes;
 	}

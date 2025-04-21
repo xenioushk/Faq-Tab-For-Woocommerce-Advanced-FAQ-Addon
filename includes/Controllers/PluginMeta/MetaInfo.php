@@ -1,11 +1,11 @@
 <?php
-namespace UVTADDON\Controllers\PluginMeta;
+namespace FTFWCWP\Controllers\PluginMeta;
 
 /**
  * Class displays options panel, addons, documentation links below the plugin information.
  *
  * @since: 1.1.0
- * @package UVTADDON
+ * @package FTFWCWP
  */
 class MetaInfo {
 
@@ -26,22 +26,22 @@ class MetaInfo {
      */
 	public function get_meta_links( $links, $file ) {
 
-		if ( strpos( $file, UVTADDON_PLUGIN_ROOT_FILE ) !== false && is_plugin_active( $file ) ) {
+		if ( strpos( $file, FTFWCWP_PLUGIN_ROOT_FILE ) !== false && is_plugin_active( $file ) ) {
 
 			// nt = 1 // new tab.
 			$additional_links = [
 				[
-					'title' => esc_html__( 'My Votes Report', 'bpvm_uvt' ),
-					'url'   => get_admin_url() . 'users.php?page=bpvm-my-votes',
+					'title' => esc_html__( 'Options Panel', 'bpvm_uvt' ),
+					'url'   => get_admin_url() . '#',
 				],
 				[
 					'title' => esc_html__( 'Docs', 'bpvm_uvt' ),
-					'url'   => 'https://xenioushk.github.io/docs-plugins-addon/bpvm-addon/uvta/index.html',
+					'url'   => 'https://xenioushk.github.io/docs-plugins-addon/baf-addon/ftfwc/index.html',
 					'nt'    => 1,
 				],
 				[
 					'title' => esc_html__( 'Support', 'bpvm_uvt' ),
-					'url'   => 'https://codecanyon.net/item/bwl-pro-voting-manager/7616885/support',
+					'url'   => 'https://codecanyon.net/item/bwl-advanced-faq-manager/5007135/support/contact',
 					'nt'    => 1,
 				],
 
