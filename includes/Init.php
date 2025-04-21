@@ -23,11 +23,11 @@ class Init {
 		$services = [];
 
 		$service_classes = [
-			'helpers' => self::get_helper_classes(),
-			'base'    => self::get_base_classes(),
-			'meta'    => self::get_meta_classes(),
+			'helpers'    => self::get_helper_classes(),
+			'base'       => self::get_base_classes(),
+			'meta'       => self::get_meta_classes(),
 			// 'actions'    => self::get_action_classes(),
-			// 'shortcodes' => self::get_shortcodes_classes(),
+			'shortcodes' => self::get_shortcodes_classes(),
 		];
 
 		foreach ( $service_classes as $service_class ) {
