@@ -4,7 +4,7 @@ namespace FTFWCWP\Callbacks\Filters;
 use FTFWCWP\Helpers\PluginConstants;
 
 /**
- * Class for registering recaptcha overlay actions.
+ * Class for registering woocommerce FAQ tab filter.
  *
  * @package FTFWCWP
  * @since: 1.0.0

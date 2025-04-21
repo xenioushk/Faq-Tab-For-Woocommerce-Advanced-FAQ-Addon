@@ -26,7 +26,6 @@ class BAF_faqtfw {
 
     function include_files() {
 
-        include_once FAQTFW_DIR . 'includes/baf-wc-helpers.php';
         include_once FAQTFW_DIR . 'includes/public/class-faqtfw-addon.php';
     }
 
