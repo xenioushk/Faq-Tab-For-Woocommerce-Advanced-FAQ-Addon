@@ -2,9 +2,7 @@
 namespace FTFWCWP\Controllers\OptionsPanel;
 
 use FTFWCWP\Callbacks\OptionsPanel\SettingsPageCb;
-use FTFWCWP\Callbacks\OptionsPanel\Fields\AllFieldsCb;
 use FTFWCWP\Callbacks\OptionsPanel\Fields\DisplayFieldsCb;
-use FTFWCWP\Callbacks\OptionsPanel\Fields\DisplayFieldsCb2;
 
 /**
  * Class for settings page.
@@ -109,10 +107,6 @@ class Settings {
 				'title'    => esc_html__( 'TAB Content Settings: ', 'baf-faqtfw' ),
 				'callback' => [ $this, 'faqftw_display_section_cb' ],
             ],
-            'faqftw_display_section_2' => [
-                'title'    => esc_html__( 'TAB Content Settings 2: ', 'baf-faqtfw' ),
-                'callback' => [ $this, 'faqftw_display_section_cb' ],
-            ],
         ];
 
         foreach ( $sections as $section_id => $section ) {
@@ -136,8 +130,6 @@ class Settings {
         switch ( $section_id ) {
             case 'faqftw_display_section':
                 return ( new DisplayFieldsCb() )->get_fields();
-			case 'faqftw_display_section_2':
-                return ( new DisplayFieldsCb2() )->get_fields();
 			default:
                 return ( new DisplayFieldsCb() )->get_fields();
         }

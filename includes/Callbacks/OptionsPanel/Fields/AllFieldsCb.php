@@ -1,6 +1,9 @@
 <?php
 namespace FTFWCWP\Callbacks\OptionsPanel\Fields;
 
+use FTFWCWP\Helpers\PluginConstants;
+use FTFWCWP\Traits\OptionsFieldsTraits;
+
 /**
  * Class for Woo FAQ Tab shortcode callback.
  *
@@ -10,36 +13,54 @@ namespace FTFWCWP\Callbacks\OptionsPanel\Fields;
  */
 class AllFieldsCb {
 
+	use OptionsFieldsTraits;
+
+	/**
+	 * Options array.
+     *
+	 * @var array
+	 */
+	public $options;
+
+	/**
+	 * Options ID.
+	 *
+	 * @var string
+	 */
+	public $options_id;
+
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
-		// Constructor code here.
+		$this->options    = PluginConstants::$addon_options;
+		$this->options_id = FTFWCWP_OPTIONS_ID; // change here.
 	}
+
+	/**
+	 * Tab title field.
+	 */
 	public function faqftw_tab_title_settings() {
 
-		$faqftw_options = get_option( 'faqftw_options' );
+		$field_id   = 'faqftw_tab_title'; // change the id.
+		$field_name = $this->options_id . "[{$field_id}]";
+		$value      = $this->options[ $field_id ] ?? esc_html__( 'FAQ', 'baf-faqtfw' ); // change default value.
 
-		$faqftw_tab_title = esc_html__( 'FAQ', 'baf-faqtfw' );
-
-		if ( isset( $faqftw_options['faqftw_tab_title'] ) ) {
-
-			$faqftw_tab_title = $faqftw_options['faqftw_tab_title'];
-		}
-
-		echo '<input type="text" name="faqftw_options[faqftw_tab_title]" id="faqftw_tab_title" class="medium-text" value="' . sanitize_textarea_field( $faqftw_tab_title ) . '" />';
+		echo $this->get_text_field( $field_name, $field_id, $value ); //phpcs:ignore
 	}
 
-
+	/**
+	 * Tab position field.
+	 */
 	public function faqftw_tab_position_settings() {
 
-		$faqftw_options = get_option( 'faqftw_options' );
+		$field_id   = 'faqftw_tab_position'; // change the id.
+		$field_name = $this->options_id . "[{$field_id}]";
+		$value      = $this->options[ $field_id ] ?? 100; // change default value.
+		$hints      = esc_html__( 'Set number like- 1,2,3. Set big number(100, 200, 300) to display FAQ tab at the last of tab contain.', 'baf-faqtfw' );
 
-		$faqftw_tab_position = '100';
+		echo $this->get_text_field( $field_name, $field_id, intval($value), '', 'small-text', $hints ); //phpcs:ignore
 
-		if ( isset( $faqftw_options['faqftw_tab_position'] ) ) {
-
-			$faqftw_tab_position = strtoupper( $faqftw_options['faqftw_tab_position'] );
-		}
-
-		echo '<input type="text" name="faqftw_options[faqftw_tab_position]" id="faqftw_tab_position" class="small-text" value="' . absint( $faqftw_tab_position ) . '" /><em><small> ' . esc_html__( 'Set number like- 1,2,3. Set big number(100, 200, 300) to display FAQ tab at the last of tab contain .', 'baf-faqtfw' ) . '</small></em>';
 	}
 
 
@@ -210,17 +231,16 @@ class AllFieldsCb {
 	}
 
 
+	/**
+	 * FAQ item per page field.
+	 */
 	public function faqftw_item_per_page_settings() {
 
-		$faqftw_options = get_option( 'faqftw_options' );
+		$field_id   = 'faqftw_item_per_page'; // change the id.
+		$field_name = $this->options_id . "[{$field_id}]";
+		$value      = $this->options[ $field_id ] ?? 5; // change default value.
 
-		$faqftw_item_per_page = '5';
+		echo $this->get_text_field( $field_name, $field_id, intval($value), '', 'small-text' ); //phpcs:ignore
 
-		if ( isset( $faqftw_options['faqftw_tab_position'] ) ) {
-
-			$faqftw_item_per_page = trim( $faqftw_options['faqftw_item_per_page'] );
-		}
-
-		echo '<input type="text" name="faqftw_options[faqftw_item_per_page]" id="faqftw_item_per_page" class="small-text" value="' . absint( $faqftw_item_per_page ) . '" />';
 	}
 }
