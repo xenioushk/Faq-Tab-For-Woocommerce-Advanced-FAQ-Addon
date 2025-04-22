@@ -27,6 +27,7 @@ class Init {
 			'base'          => self::get_base_classes(),
 			'meta'          => self::get_meta_classes(),
 			'cpt'           => self::get_cpt_classes(),
+			'cmb'           => self::get_cmb_classes(),
 			'filters'       => self::get_filter_classes(),
 			'shortcodes'    => self::get_shortcodes_classes(),
 			'options_panel' => self::get_options_panel_classes(),
@@ -123,6 +124,18 @@ class Init {
 		$classes = [
 			Controllers\Cpt\CustomColumns::class,
 			Controllers\Actions\Admin\QuickBulkEdit::class,
+		];
+		return $classes;
+	}
+
+	/**
+	 * Get CMB classes.
+	 *
+	 * @return array
+	 */
+	private static function get_cmb_classes() {
+		$classes = [
+			Controllers\Cmb\FtfwcCmb::class,
 		];
 		return $classes;
 	}

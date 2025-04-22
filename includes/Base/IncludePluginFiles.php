@@ -62,9 +62,7 @@ class IncludePluginFiles {
 	 * Set the admin files.
 	 */
 	private function set_admin_files() {
-		$admin_files = [
-			'includes/Controllers/Cmb/FtfwcCmb',
-		];
+		$admin_files = [];
 		return $admin_files;
 	}
 }
