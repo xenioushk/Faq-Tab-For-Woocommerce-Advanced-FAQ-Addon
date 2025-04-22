@@ -87,7 +87,7 @@ class FtfwcCmb {
     private function set_post_ids() {
         $args = [
             'post_status'    => 'publish',
-            'post_type'      => 'bwl_advanced_faq',
+            'post_type'      => BAF_POST_TYPE,
             'orderby'        => 'title',
             'order'          => 'ASC',
             'posts_per_page' => -1,

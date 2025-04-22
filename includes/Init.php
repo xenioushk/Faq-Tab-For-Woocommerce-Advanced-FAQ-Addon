@@ -80,7 +80,6 @@ class Init {
 	 */
 	private static function get_base_classes() {
 		$classes = [
-			Base\FrontendInlineJs::class,
 			Base\Enqueue::class,
 			Base\AdminEnqueue::class,
 			Base\PluginUpdate::class,

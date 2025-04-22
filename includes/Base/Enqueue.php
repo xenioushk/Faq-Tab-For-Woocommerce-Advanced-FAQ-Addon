@@ -1,6 +1,8 @@
 <?php
 namespace FTFWCWP\Base;
 
+use FTFWCWP\Helpers\PluginConstants;
+
 /**
  * Class for registering the plugin scripts and styles.
  *
@@ -73,11 +75,15 @@ class Enqueue {
 		// Localize scripts.
 		// Frontend.
 		// Access data: BafFtfwcData.version
+
+		$show_faq_counter = PluginConstants::$addon_options['faqftw_faq_counter'] ?? 1;
+
 		wp_localize_script(
             $this->frontend_script_slug,
-            'BafFtfwcAdminData',
+            'BafFtfwcData',
             [
-				'version' => FTFWCWP_PLUGIN_VERSION,
+				'version'            => FTFWCWP_PLUGIN_VERSION,
+				'faqftw_faq_counter' => $show_faq_counter,
 			]
 		);
 	}

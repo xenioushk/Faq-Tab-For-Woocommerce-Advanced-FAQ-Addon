@@ -2,7 +2,7 @@
   "use strict"
 
   $(function () {
-    if ($(".faqtfw_tab_tab").length && faqftw_faq_counter == 1) {
+    if ($(".faqtfw_tab_tab").length && BafFtfwcData.faqftw_faq_counter == 1) {
       var $faqtfw_tab = $("#tab-faqtfw_tab"),
         $faqftw_total_faq_items = $faqtfw_tab.find("div.bwl-faq-container").length,
         $faqftw_faq_title_text = $(".faqtfw_tab_tab").find("a").text()
