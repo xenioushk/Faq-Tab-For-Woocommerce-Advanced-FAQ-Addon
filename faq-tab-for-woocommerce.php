@@ -61,7 +61,7 @@ register_deactivation_hook( __FILE__, __NAMESPACE__ . '\\deactivate_plugin' );
  *
  * @return void
  */
-function init_recap_addon() {
+function init_ftfwcwp_addon() {
 
 	// Check if the parent plugin installed.
 	if ( ! class_exists( 'BwlFaqManager\\Init' ) ) {
@@ -94,4 +94,4 @@ function init_recap_addon() {
 	}
 }
 
-add_action( 'init', __NAMESPACE__ . '\\init_recap_addon' );
+add_action( 'init', __NAMESPACE__ . '\\init_ftfwcwp_addon' );

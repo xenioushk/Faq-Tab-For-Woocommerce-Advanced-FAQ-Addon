@@ -26,7 +26,7 @@ class SettingsPage {
      * @note: Must be unique.
      * @var string
      */
-    public $ftfwc_page_id = 'faqftw-settings';
+    public $options_page_id = 'faqftw-settings';
 
     /**
      * Settings fields.
@@ -64,7 +64,7 @@ class SettingsPage {
             esc_html__( 'FAQ Tab For WooCommerce Settings', 'baf-faqtfw' ),
             esc_html__( 'WooCommerce TAB', 'baf-faqtfw' ),
             'manage_options',
-            $this->ftfwc_page_id,
+            $this->options_page_id,
             [ $settings_page_cb, 'load_template' ]
 		);
 	}
@@ -111,7 +111,7 @@ class SettingsPage {
                 $section_id,
                 $section['title'],
                 $section['callback'],
-                $this->ftfwc_page_id
+                $this->options_page_id
             );
             $this->register_fields( $section_id );
         }
@@ -158,7 +158,7 @@ class SettingsPage {
 				$id,
 				$field['title'],
 				$field['callback'],
-				$this->ftfwc_page_id,
+				$this->options_page_id,
 				$section_id,
 			);
 		}
