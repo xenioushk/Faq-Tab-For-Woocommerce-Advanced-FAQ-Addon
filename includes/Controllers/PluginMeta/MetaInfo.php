@@ -31,17 +31,17 @@ class MetaInfo {
 			// nt = 1 // new tab.
 			$additional_links = [
 				[
-					'title' => esc_html__( 'Options Panel', 'bpvm_uvt' ),
-					'url'   => get_admin_url() . '#',
+					'title' => '🛠️ Options Panel',
+					'url'   => FTFWCWP_PRODUCT_OPTIONS_PANEL,
 				],
 				[
-					'title' => esc_html__( 'Docs', 'bpvm_uvt' ),
-					'url'   => 'https://xenioushk.github.io/docs-plugins-addon/baf-addon/ftfwc/index.html',
+					'title' => '📘 Documentation',
+					'url'   => FTFWCWP_PRODUCT_DOC,
 					'nt'    => 1,
 				],
 				[
-					'title' => esc_html__( 'Support', 'bpvm_uvt' ),
-					'url'   => 'https://codecanyon.net/item/bwl-advanced-faq-manager/5007135/support/contact',
+					'title' => '🛟 Support',
+					'url'   => FTFWCWP_SUPPORT,
 					'nt'    => 1,
 				],
 

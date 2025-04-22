@@ -9,13 +9,6 @@ namespace FTFWCWP\Helpers;
 class PluginConstants {
 
 		/**
-         * Static property to hold plugin options.
-         *
-         * @var array
-         */
-	public static $plugin_options = [];
-
-		/**
          * Static property to hold addon options.
          *
          * @var array
@@ -29,8 +22,13 @@ class PluginConstants {
 
 		define( 'FTFWCWP_OPTIONS_ID', 'faqftw_options' );
 
-		self::$plugin_options = get_option( 'bwl_advanced_faq_options' );
-		self::$addon_options  = get_option( FTFWCWP_OPTIONS_ID );
+		self::$addon_options = get_option( FTFWCWP_OPTIONS_ID );
+
+		// Addon Installation Date Time.
+		define( 'FTFWCWP_INSTALLATION_DATE', 'baf_ftfwc_installation_date' );
+		if ( empty( get_option( FTFWCWP_INSTALLATION_DATE ) ) ) {
+			update_option( FTFWCWP_INSTALLATION_DATE, date( 'Y-m-d H:i:s' ) );
+		}
 	}
 
 	/**
@@ -131,5 +129,10 @@ class PluginConstants {
 	private static function set_product_info_constants() {
 		define( 'FTFWCWP_PRODUCT_ID', '12509686' ); // Plugin codecanyon/themeforest Id.
 		define( 'FTFWCWP_PRODUCT_INSTALLATION_TAG', 'baf_ftfwc_installation_' . str_replace( '.', '_', FTFWCWP_PLUGIN_VERSION ) );
+
+		define( 'FTFWCWP_PRODUCT_OPTIONS_PANEL', admin_url( 'edit.php?post_type=bwl_advanced_faq&page=faqftw-settings' ) );
+		define( 'FTFWCWP_PRODUCT_DOC', 'https://xenioushk.github.io/docs-plugins-addon/baf-addon/ftfwc/index.html' );
+		define( 'FTFWCWP_SUPPORT', 'https://codecanyon.net/item/bwl-advanced-faq-manager/5007135/support/contact' );
+		define( 'FTFWCWP_PRODUCT_YOUTUBE_PLAYLIST', '#' );
 	}
 }

@@ -20,7 +20,7 @@ class WooFaqTabCb {
 	public function get_the_output( $atts ) {
 
 		$atts = shortcode_atts([
-			'post_type'        => 'bwl_advanced_faq',
+			'post_type'        => BAF_POST_TYPE,
 			'post_ids'         => '',
 			'orderby'          => 'post__in',
 			'order'            => 'ASC',

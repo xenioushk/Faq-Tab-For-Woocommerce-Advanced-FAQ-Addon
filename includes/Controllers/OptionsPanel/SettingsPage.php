@@ -60,9 +60,9 @@ class SettingsPage {
 		$settings_page_cb = new SettingsPageCb();
 
 		add_submenu_page(
-            'edit.php?post_type=bwl_advanced_faq',
-            esc_html__( 'FAQ Tab For WooCommerce Settings', 'baf-faqtfw' ),
-            esc_html__( 'WooCommerce TAB', 'baf-faqtfw' ),
+            'edit.php?post_type=' . BAF_POST_TYPE,
+            'FAQ Tab For WooCommerce Settings',
+            'WooCommerce TAB',
             'manage_options',
             $this->options_page_id,
             [ $settings_page_cb, 'load_template' ]
