@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-21T10:12:44+00:00\n"
+"POT-Creation-Date: 2025-04-22T02:52:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: baf-faqtfw\n"
@@ -40,7 +40,7 @@ msgid "https://codecanyon.net/user/xenioushk"
 msgstr ""
 
 #: includes/Callbacks/Actions/Admin/QuickEditCb.php:40
-#: includes/Controllers/Cmb/FtfwcCmb.php:250
+#: includes/Controllers/Cmb/FtfwcCmb.php:252
 msgid "Hide FAQ Tab?"
 msgstr ""
 
@@ -49,22 +49,14 @@ msgid "- No Change -"
 msgstr ""
 
 #: includes/Callbacks/Actions/Admin/QuickEditCb.php:43
-#: includes/Controllers/Cmb/FtfwcCmb.php:255
-#: includes/Controllers/OptionsPanel/Settings.php:157
-#: includes/Controllers/OptionsPanel/Settings.php:190
-#: includes/Controllers/OptionsPanel/Settings.php:223
-#: includes/Controllers/OptionsPanel/Settings.php:256
-#: includes/Controllers/OptionsPanel/Settings.php:289
+#: includes/Controllers/Cmb/FtfwcCmb.php:257
+#: includes/Traits/OptionsFieldsTraits.php:92
 msgid "Yes"
 msgstr ""
 
 #: includes/Callbacks/Actions/Admin/QuickEditCb.php:44
-#: includes/Controllers/Cmb/FtfwcCmb.php:256
-#: includes/Controllers/OptionsPanel/Settings.php:158
-#: includes/Controllers/OptionsPanel/Settings.php:191
-#: includes/Controllers/OptionsPanel/Settings.php:224
-#: includes/Controllers/OptionsPanel/Settings.php:257
-#: includes/Controllers/OptionsPanel/Settings.php:290
+#: includes/Controllers/Cmb/FtfwcCmb.php:258
+#: includes/Traits/OptionsFieldsTraits.php:93
 msgid "No"
 msgstr ""
 
@@ -72,20 +64,73 @@ msgstr ""
 msgid "FAQ "
 msgstr ""
 
-#: includes/Controllers/Cmb/FtfwcCmb.php:127
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:25
+msgid "Tab Title:"
+msgstr ""
+
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:29
+msgid "Tab Position:"
+msgstr ""
+
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:33
+msgid "Display FAQ Counter?"
+msgstr ""
+
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:37
+msgid "Hide Tab If Total FAQs Are Zero?"
+msgstr ""
+
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:41
+msgid "Show Search Box?"
+msgstr ""
+
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:45
+msgid "Show Meta Info Box?"
+msgstr ""
+
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:49
+msgid "Show Voting Box?"
+msgstr ""
+
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:53
+msgid "Enable FAQ Pagination?"
+msgstr ""
+
+#: includes/Callbacks/OptionsPanel/FieldsSettings/DisplayFieldsCb.php:57
+msgid "Item Per Page"
+msgstr ""
+
+#: includes/Callbacks/OptionsPanel/RenderFields/DisplayFieldsRenderCb.php:47
+msgid "FAQ"
+msgstr ""
+
+#: includes/Callbacks/OptionsPanel/RenderFields/DisplayFieldsRenderCb.php:60
+msgid "Set number like- 1,2,3. Set big number(100, 200, 300) to display FAQ tab at the last of tab contain."
+msgstr ""
+
+#: includes/Callbacks/OptionsPanel/RenderFields/DisplayFieldsRenderCb.php:73
+msgid "Show total number of FAQ items."
+msgstr ""
+
+#: includes/Callbacks/OptionsPanel/SettingsPageCb.php:23
+#: includes/Controllers/OptionsPanel/Settings.php:65
+msgid "FAQ Tab For WooCommerce Settings"
+msgstr ""
+
+#: includes/Controllers/Cmb/FtfwcCmb.php:129
 msgid "- Select -"
 msgstr ""
 
-#: includes/Controllers/Cmb/FtfwcCmb.php:138
-#: includes/Controllers/Cmb/FtfwcCmb.php:149
+#: includes/Controllers/Cmb/FtfwcCmb.php:140
+#: includes/Controllers/Cmb/FtfwcCmb.php:151
 msgid "Delete"
 msgstr ""
 
-#: includes/Controllers/Cmb/FtfwcCmb.php:150
+#: includes/Controllers/Cmb/FtfwcCmb.php:152
 msgid "Upload"
 msgstr ""
 
-#: includes/Controllers/Cmb/FtfwcCmb.php:262
+#: includes/Controllers/Cmb/FtfwcCmb.php:264
 msgid "Add FAQ Items"
 msgstr ""
 
@@ -97,95 +142,34 @@ msgstr ""
 msgid "FAQs Visibility"
 msgstr ""
 
-#: includes/Controllers/OptionsPanel/Settings.php:12
-#: includes/Controllers/OptionsPanel/Settings.php:327
-msgid "FAQ Tab For WooCommerce Settings"
-msgstr ""
-
-#: includes/Controllers/OptionsPanel/Settings.php:16
-msgid "Settings saved."
-msgstr ""
-
-#: includes/Controllers/OptionsPanel/Settings.php:26
-msgid "Save Settings"
-msgstr ""
-
-#: includes/Controllers/OptionsPanel/Settings.php:43
-msgid "TAB Content Settings: "
-msgstr ""
-
-#: includes/Controllers/OptionsPanel/Settings.php:45
-msgid "Tab Title: "
-msgstr ""
-
-#: includes/Controllers/OptionsPanel/Settings.php:46
-msgid "Tab Position: "
-msgstr ""
-
-#: includes/Controllers/OptionsPanel/Settings.php:47
-msgid "Display FAQ Counter? "
-msgstr ""
-
-#: includes/Controllers/OptionsPanel/Settings.php:48
-msgid "Hide Tab If Total FAQs Are Zero? "
-msgstr ""
-
-#: includes/Controllers/OptionsPanel/Settings.php:49
-msgid "Show Search Box? "
-msgstr ""
-
-#: includes/Controllers/OptionsPanel/Settings.php:50
-msgid "Show Meta Info Box? "
-msgstr ""
-
-#: includes/Controllers/OptionsPanel/Settings.php:51
-msgid "Show Voting Box? "
-msgstr ""
-
-#: includes/Controllers/OptionsPanel/Settings.php:52
-msgid "Enable FAQ Pagination? "
-msgstr ""
-
-#: includes/Controllers/OptionsPanel/Settings.php:53
-msgid "Item Per Page: "
-msgstr ""
-
 #: includes/Controllers/OptionsPanel/Settings.php:66
-msgid "FAQ"
-msgstr ""
-
-#: includes/Controllers/OptionsPanel/Settings.php:93
-msgid "Set number like- 1,2,3. Set big number(100, 200, 300) to display FAQ tab at the last of tab contain ."
-msgstr ""
-
-#: includes/Controllers/OptionsPanel/Settings.php:124
-msgid "Show"
-msgstr ""
-
-#: includes/Controllers/OptionsPanel/Settings.php:125
-msgid "Hide"
-msgstr ""
-
-#: includes/Controllers/OptionsPanel/Settings.php:126
-msgid "Show total number of FAQ items."
-msgstr ""
-
-#: includes/Controllers/OptionsPanel/Settings.php:328
 msgid "WooCommerce TAB"
 msgstr ""
 
+#: includes/Controllers/OptionsPanel/Settings.php:106
+msgid "TAB Content Settings:"
+msgstr ""
+
 #. translators: 1: Plugin name, 2: Addon title, 3: Current version, 4: Minimum required version
-#: includes/Helpers/DependencyManager.php:117
+#: includes/Helpers/DependencyManager.php:110
 msgid "The %2$s requires %1$s %4$s or higher. You are using %3$s"
 msgstr ""
 
 #. translators: 1: Plugin name, 2: Addon title
-#: includes/Helpers/DependencyManager.php:136
-#: includes/Helpers/DependencyManager.php:153
+#: includes/Helpers/DependencyManager.php:129
+#: includes/Helpers/DependencyManager.php:146
 msgid "Please install and activate the %1$s plugin to use %2$s."
 msgstr ""
 
 #. translators: 1: Plugin activation link, 2: Addon title
-#: includes/Helpers/DependencyManager.php:170
+#: includes/Helpers/DependencyManager.php:163
 msgid "Please Activate the %1$s to use the %2$s."
+msgstr ""
+
+#: includes/Views/OptionsPanel/settings_page_tpl.php:7
+msgid "Settings saved."
+msgstr ""
+
+#: includes/Views/OptionsPanel/settings_page_tpl.php:20
+msgid "Save Settings"
 msgstr ""

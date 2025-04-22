@@ -23,12 +23,13 @@ class Init {
 		$services = [];
 
 		$service_classes = [
-			'helpers'    => self::get_helper_classes(),
-			'base'       => self::get_base_classes(),
-			'meta'       => self::get_meta_classes(),
-			'cpt'        => self::get_cpt_classes(),
-			'filters'    => self::get_filter_classes(),
-			'shortcodes' => self::get_shortcodes_classes(),
+			'helpers'       => self::get_helper_classes(),
+			'base'          => self::get_base_classes(),
+			'meta'          => self::get_meta_classes(),
+			'cpt'           => self::get_cpt_classes(),
+			'filters'       => self::get_filter_classes(),
+			'shortcodes'    => self::get_shortcodes_classes(),
+			'options_panel' => self::get_options_panel_classes(),
 		];
 
 		foreach ( $service_classes as $service_class ) {
@@ -85,7 +86,6 @@ class Init {
 			Base\Language::class,
 			Base\AdminAjaxHandlers::class,
 			Base\IncludePluginFiles::class,
-			Controllers\OptionsPanel\Settings::class,
 		];
 		return $classes;
 	}
@@ -147,6 +147,18 @@ class Init {
 	private static function get_shortcodes_classes() {
 		$classes = [
 			Controllers\Shortcodes\AddonShortcodes::class,
+		];
+		return $classes;
+	}
+
+	/**
+	 * Get Options Panel classes.
+	 *
+	 * @return array
+	 */
+	private static function get_options_panel_classes() {
+		$classes = [
+			Controllers\OptionsPanel\SettingsPage::class,
 		];
 		return $classes;
 	}

@@ -2,15 +2,15 @@
 namespace FTFWCWP\Controllers\OptionsPanel;
 
 use FTFWCWP\Callbacks\OptionsPanel\SettingsPageCb;
-use FTFWCWP\Callbacks\OptionsPanel\Fields\DisplayFieldsCb;
+use FTFWCWP\Callbacks\OptionsPanel\FieldsSettings\DisplayFieldsCb;
 
 /**
- * Class for settings page.
+ * Class for the plugin settings page.
  *
  * @package FTFWCWP
  * @since: 1.0.0
  */
-class Settings {
+class SettingsPage {
 
     /**
      * Plugin options id.
@@ -27,14 +27,6 @@ class Settings {
      * @var string
      */
     public $ftfwc_page_id = 'faqftw-settings';
-
-	/**
-     * Plugin section id.
-     *
-     * @note: Section id will be attached to the settings fields.
-     * @var string
-     */
-    public $ftfwc_section_id = 'faqftw_display_section';
 
     /**
      * Settings fields.
@@ -64,7 +56,6 @@ class Settings {
      * For this we are going to add the submenu page to the BWL Advanced FAQ menu.
      */
 	public function register_options_page() {
-
 		// Initalize Callbacks.
 		$settings_page_cb = new SettingsPageCb();
 
@@ -82,29 +73,35 @@ class Settings {
      * Display the settings section
      */
 	public function faqftw_display_section_cb() {
-        // echo 'hello from display sections!';
+        return '';
 	}
 
     /**
      * Register the options group
      */
     public function register_options_group() {
-
-		register_setting( 'faqftw_options', $this->options_id );
+        // We will keep the group name same as the options id.
+        // This group name should be the into the settings_page_tpl.php file
+        // settings_fields( $options_id ); // Matches the group name.
+		register_setting( $this->options_id, $this->options_id );
     }
 
     /**
      * Register the settings fields
+     *
+     * @note: Register sections here.
      */
 	public function register_settings_fields() {
 
-        // Register Settings.
+        // Register Options Group.
         $this->register_options_group();
 
         // Register Sections.
+        // You can register multiple sections here.
+        // Each section must be an array with a unique id.
         $sections = [
             'faqftw_display_section' => [
-				'title'    => esc_html__( 'TAB Content Settings: ', 'baf-faqtfw' ),
+				'title'    => esc_html__( 'TAB Content Settings:', 'baf-faqtfw' ),
 				'callback' => [ $this, 'faqftw_display_section_cb' ],
             ],
         ];
@@ -118,33 +115,43 @@ class Settings {
             );
             $this->register_fields( $section_id );
         }
-
 	}
-
 
     /**
      * Set the fields for the settings page
+     *
+     * @param string $section_id The section id to get the fields from.
+     * @note: Add a new case for new section. Also register callback function for the new section.
+     *
+     * @return array The fields for the settings page.
      */
     public function get_fields( $section_id ) {
-
         switch ( $section_id ) {
             case 'faqftw_display_section':
                 return ( new DisplayFieldsCb() )->get_fields();
 			default:
-                return ( new DisplayFieldsCb() )->get_fields();
+                return [];
         }
-
     }
-
 
     /**
      * Register the fields for the settings page
      *
      * @param string $section_id The section id to register the fields to.
+     * @note: No need to change this function.
      */
     public function register_fields( $section_id = '' ) {
 
+        if ( empty( $section_id ) ) {
+            return;
+        }
+
         $settings_fields = $this->get_fields( $section_id );
+
+        if ( empty( $settings_fields ) ) {
+            echo "Empty settings fields for section: {$section_id}"; //phpcs:ignore
+            exit();
+        }
 
 		foreach ( $settings_fields as $id => $field ) {
 			add_settings_field(
@@ -155,6 +162,5 @@ class Settings {
 				$section_id,
 			);
 		}
-
     }
 }

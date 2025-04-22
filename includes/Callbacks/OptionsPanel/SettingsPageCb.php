@@ -4,7 +4,7 @@ namespace FTFWCWP\Callbacks\OptionsPanel;
 use Xenioushk\BwlPluginApi\Api\View\ViewApi;
 
 /**
- * Class for Settings page callback.
+ * Class for loading the settings page template.
  *
  * @package FTFWCWP
  * @since: 1.0.0
@@ -20,6 +20,7 @@ class SettingsPageCb extends ViewApi {
 	public function load_template() {
 
 		$data = [
+			'page_title' => esc_html__( 'FAQ Tab For WooCommerce Settings', 'baf-faqtfw' ),
 			'options_id' => FTFWCWP_OPTIONS_ID,
 			'page_id'    => 'faqftw-settings',
 		];
