@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-22T02:52:34+00:00\n"
+"POT-Creation-Date: 2025-04-22T03:27:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: baf-faqtfw\n"
@@ -40,7 +40,7 @@ msgid "https://codecanyon.net/user/xenioushk"
 msgstr ""
 
 #: includes/Callbacks/Actions/Admin/QuickEditCb.php:40
-#: includes/Controllers/Cmb/FtfwcCmb.php:252
+#: includes/Controllers/Cmb/FtfwcCmb.php:53
 msgid "Hide FAQ Tab?"
 msgstr ""
 
@@ -49,14 +49,12 @@ msgid "- No Change -"
 msgstr ""
 
 #: includes/Callbacks/Actions/Admin/QuickEditCb.php:43
-#: includes/Controllers/Cmb/FtfwcCmb.php:257
-#: includes/Traits/OptionsFieldsTraits.php:92
+#: includes/Controllers/Cmb/FtfwcCmb.php:58
 msgid "Yes"
 msgstr ""
 
 #: includes/Callbacks/Actions/Admin/QuickEditCb.php:44
-#: includes/Controllers/Cmb/FtfwcCmb.php:258
-#: includes/Traits/OptionsFieldsTraits.php:93
+#: includes/Controllers/Cmb/FtfwcCmb.php:59
 msgid "No"
 msgstr ""
 
@@ -113,25 +111,29 @@ msgid "Show total number of FAQ items."
 msgstr ""
 
 #: includes/Callbacks/OptionsPanel/SettingsPageCb.php:23
-#: includes/Controllers/OptionsPanel/Settings.php:65
+#: includes/Controllers/OptionsPanel/SettingsPage.php:64
 msgid "FAQ Tab For WooCommerce Settings"
 msgstr ""
 
-#: includes/Controllers/Cmb/FtfwcCmb.php:129
+#: includes/Controllers/Cmb/BafCmbFramework.php:134
 msgid "- Select -"
 msgstr ""
 
-#: includes/Controllers/Cmb/FtfwcCmb.php:140
-#: includes/Controllers/Cmb/FtfwcCmb.php:151
+#: includes/Controllers/Cmb/BafCmbFramework.php:145
+#: includes/Controllers/Cmb/BafCmbFramework.php:156
 msgid "Delete"
 msgstr ""
 
-#: includes/Controllers/Cmb/FtfwcCmb.php:152
+#: includes/Controllers/Cmb/BafCmbFramework.php:157
 msgid "Upload"
 msgstr ""
 
-#: includes/Controllers/Cmb/FtfwcCmb.php:264
+#: includes/Controllers/Cmb/FtfwcCmb.php:65
 msgid "Add FAQ Items"
+msgstr ""
+
+#: includes/Controllers/Cmb/FtfwcCmb.php:72
+msgid "Add New FAQ"
 msgstr ""
 
 #: includes/Controllers/Cpt/CustomColumns.php:35
@@ -142,11 +144,11 @@ msgstr ""
 msgid "FAQs Visibility"
 msgstr ""
 
-#: includes/Controllers/OptionsPanel/Settings.php:66
+#: includes/Controllers/OptionsPanel/SettingsPage.php:65
 msgid "WooCommerce TAB"
 msgstr ""
 
-#: includes/Controllers/OptionsPanel/Settings.php:106
+#: includes/Controllers/OptionsPanel/SettingsPage.php:104
 msgid "TAB Content Settings:"
 msgstr ""
 
@@ -166,10 +168,10 @@ msgstr ""
 msgid "Please Activate the %1$s to use the %2$s."
 msgstr ""
 
-#: includes/Views/OptionsPanel/settings_page_tpl.php:7
+#: includes/Views/OptionsPanel/settings_page_tpl.php:17
 msgid "Settings saved."
 msgstr ""
 
-#: includes/Views/OptionsPanel/settings_page_tpl.php:20
+#: includes/Views/OptionsPanel/settings_page_tpl.php:30
 msgid "Save Settings"
 msgstr ""

@@ -89,8 +89,8 @@ trait OptionsFieldsTraits {
 	public function get_boolean_dropdown_options( $data = [] ) {
 
 		$options = [
-			'1' => esc_html__( 'Yes', 'baf-faqtfw' ),
-			'0' => esc_html__( 'No', 'baf-faqtfw' ),
+			'1' => esc_html__( 'Yes', 'default' ),
+			'0' => esc_html__( 'No', 'default' ),
 		];
 
 		if ( ! empty( $data ) ) {
