@@ -25,7 +25,7 @@ class SettingsPageCb extends ViewApi {
 			'page_id'    => 'faqftw-settings',
 		];
 
-		$this->render( FTFWCWP_VIEWS_DIR . 'OptionsPanel/settings_page_tpl.php',$data );
+		$this->render( FTFWCWP_VIEWS_DIR . 'Admin/OptionsPanel/tpl_settings_page.php',$data );
 
 	}
 }

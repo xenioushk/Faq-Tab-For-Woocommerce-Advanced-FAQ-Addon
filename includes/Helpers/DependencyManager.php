@@ -64,7 +64,7 @@ class DependencyManager {
 	 * Set the plugin dependency constants.
 	 */
 	private static function set_dependency_constants() {
-		define( 'FTFWCWP_MIN_BAF_VERSION', '2.1.6' );
+		define( 'FTFWCWP_MIN_BAF_VERSION', '2.1.7' );
 		define( 'FTFWCWP_MIN_PHP_VERSION', '7.0' );
 	}
 

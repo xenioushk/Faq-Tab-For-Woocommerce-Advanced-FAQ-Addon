@@ -2,7 +2,8 @@
 namespace FTFWCWP\Callbacks\OptionsPanel\RenderFields;
 
 use FTFWCWP\Helpers\PluginConstants;
-use FTFWCWP\Traits\OptionsFieldsTraits;
+
+use BwlFaqManager\Traits\OptionsFieldsTraits;
 
 /**
  * Class for rendering the fields.
