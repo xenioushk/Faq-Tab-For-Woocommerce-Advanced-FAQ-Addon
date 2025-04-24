@@ -3,9 +3,9 @@
  * Plugin Name:     FAQ Tab For WooCommerce - Advanced FAQ Addon
  * Plugin URI: https://bluewindlab.net/portfolio/faq-tab-for-woocommerce-advanced-faq-addon/
  * Description:      FAQ tab for woocommerce Addon allows you to convert you're existing FAQ posts in to WooCommerce product FAQ item with in a minute. You can add unlimited number of FAQ post as product FAQ items and using drag drop feature sort them according to you're choice.
- * Author: Mahbub Alam Khan
+ * Author: BlueWindLab
  * Version: 2.0.0
- * Author URI: https://codecanyon.net/user/xenioushk
+ * Author URI: https://bluewindlab.net
  * WP Requires at least: 6.0+
  * Text Domain: baf-faqtfw
  * Domain Path: /lang/
@@ -14,7 +14,7 @@
  * @author    Mahbub Alam Khan
  * @license   GPL-2.0+
  * @link      https://codecanyon.net/user/xenioushk
- * @copyright 2024 BlueWindLab
+ * @copyright 2025 BlueWindLab
  */
 
 namespace FTFWCWP;
