@@ -4,7 +4,7 @@
  * Plugin URI: https://bluewindlab.net/portfolio/faq-tab-for-woocommerce-advanced-faq-addon/
  * Description:     Integrate existing FAQ posts in to WooCommerce product FAQ item with in a minute.
  * Author: BlueWindLab
- * Version: 2.1.0
+ * Version: 2.1.1
  * Author URI: https://bluewindlab.net
  * WP Requires at least: 6.0+
  * Text Domain: baf-faqtfw
